@@ -49,7 +49,6 @@ void RoleModel::setRole(std::string path,std::string name,int count)
 void RoleModel::playArmation(std::string name,bool loop)
 {
     ArmatureAnimation* lArmation = m_pRole->getAnimation();
-    lArmation->stop();
     lArmation->play(name,-1,loop);
     
 }

@@ -1,7 +1,7 @@
 
 #include "MapScene.h"
 #include "SceneManager.h"
-#include "SSCMoreGameManager.h"
+#include "Analytics.h"
 
 MapScene::MapScene()
 {
@@ -139,13 +139,12 @@ bool MapScene::init()
 void MapScene::onEnter()
 {
     ExtensionScene::onEnter();
-    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_MAP);
+    
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_MAP);
 }
 
 void MapScene::onExit()
 {
-    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_MAP);
-    
     ExtensionScene::onExit();
 }
 void MapScene::onButtonCallback(Ref* ref,Widget::TouchEventType type)
@@ -167,8 +166,7 @@ void MapScene::onButtonCallback(Ref* ref,Widget::TouchEventType type)
             }else if(tag==6){
                 AudioHelp::getInstance()->playBackGroundMusic("bg_make2.mp3");
 //                STSystemFunction st;
-//                st.showMoreGame();
-                SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
+                SSCInternalLibManager::getInstance()->showMoreGames();
                 return;
             }
             if (GameDataManager::getInstance()->getStepCount()<=tag){

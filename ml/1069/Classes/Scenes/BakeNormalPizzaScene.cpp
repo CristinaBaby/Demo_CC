@@ -6,13 +6,11 @@ BakeNormalPizzaScene::BakeNormalPizzaScene()
     m_bBaked = false;
     m_bPlateReady = false;
     m_nBakeCount = 0;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(BakeNormalPizzaScene));
 }
 
 BakeNormalPizzaScene::~BakeNormalPizzaScene()
 {
     
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(BakeNormalPizzaScene));
 }
 bool BakeNormalPizzaScene::init()
 {
@@ -47,25 +45,18 @@ bool BakeNormalPizzaScene::init()
     m_pieSize = m_pPie->getContentSize()*1.1;
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"normal_cheese.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"normal_dec.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"normal_decripe.png");
+    m_pCheese = Sprite::create(FileUtility::getStoragePath()+"normal_cheese.png");
 #else
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/normal_cheese.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/normal_dec.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/normal_decripe.png");
-#endif
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    m_pCheese = Sprite::create(SSCFileUtility::getStoragePath()+"normal_cheese.png");
-    m_pDecoration = Sprite::create(SSCFileUtility::getStoragePath()+"normal_dec.png");
-#else
-    m_pCheese = Sprite::create(SSCFileUtility::getStoragePath()+"/normal_cheese.png");
-    m_pDecoration = Sprite::create(SSCFileUtility::getStoragePath()+"/normal_dec.png");
+    m_pCheese = Sprite::create(FileUtility::getStoragePath()+"/normal_cheese.png");
 #endif
     m_pPizzaNode->addChild(m_pCheese);
 //    m_pCheese->setPosition(pos);
     
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    m_pDecoration = Sprite::create(FileUtility::getStoragePath()+"normal_dec.png");
+#else
+    m_pDecoration = Sprite::create(FileUtility::getStoragePath()+"/normal_dec.png");
+#endif
     m_pPizzaNode->addChild(m_pDecoration);
 //    m_pDecoration->setPosition(pos);
     m_pSholve->runAction( MoveBy::create(1, Vec2(600, 100)));
@@ -138,7 +129,6 @@ void BakeNormalPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoi
                 m_pPizzaRipeNode->setPosition(m_pPlate->getContentSize()*0.5);
                 m_pPizzaRipeNode->release();
                 
-                m_pPlate->setScale(1);
                 m_pPlate->runAction(Sequence::create(DelayTime::create(0.5),
                                                      MoveTo::create(0.5, Vec2(visibleSize.width/2, visibleSize.height*0.4)),
                                                      CallFunc::create([=](){
@@ -199,7 +189,6 @@ void BakeNormalPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoi
 //                                                       MoveBy::create(1, Vec2(-600, 100)),
 //                                                       ScaleTo::create(1, 1), NULL));
                     CMVisibleRect::setPosition(m_pSholve, 410, 260);
-                    m_pSholve->getDragSprite()->stopAllActions();
                     m_pSholve->getDragSprite()->setRotation3D(Vec3(0, 0, 0));
                     m_pSholve->getDragSprite()->setRotation(90);
                     m_pSholve->getDragSprite()->setScale(0.2,0.5);
@@ -223,7 +212,7 @@ void BakeNormalPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoi
 }
 void BakeNormalPizzaScene::dragNodeClicked(DragNode* pDragNode,Point worldPoint)
 {
-    dragNodeTouchEnded(pDragNode,worldPoint);
+    
 }
 #pragma mark - initData
 void BakeNormalPizzaScene::_initData()
@@ -244,9 +233,9 @@ void BakeNormalPizzaScene::_doBake(float dt)
     
     Sprite* pBakedDec;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    pBakedDec = Sprite::create(SSCFileUtility::getStoragePath()+"normal_decripe.png");
+    pBakedDec = Sprite::create(FileUtility::getStoragePath()+"normal_decripe.png");
 #else
-    pBakedDec = Sprite::create(SSCFileUtility::getStoragePath()+"/normal_decripe.png");
+    pBakedDec = Sprite::create(FileUtility::getStoragePath()+"/normal_decripe.png");
 #endif
     m_pPizzaRipeNode->addChild(pBakedDec);
     pBakedDec->setPosition(Vec2(0, 28));
@@ -254,7 +243,6 @@ void BakeNormalPizzaScene::_doBake(float dt)
     pBakedDec->setScale(0.9, 0.6);
     
     pBaked->runAction(Sequence::create(FadeIn::create(3),
-                                       DelayTime::create(2),
                                        CallFunc::create([=](){
         m_pPizzaNode->removeAllChildren();
 //        _finishBake();
@@ -314,7 +302,6 @@ void BakeNormalPizzaScene::_showPlate()
     this->addChildToContentLayer(m_pPlate);
     CMVisibleRect::setPositionAdapted(m_pPlate, 750+visibleSize.width, 300);
     m_bPlateReady = false;
-    m_pPlate->setScale(0.8);
     m_pPlate->runAction(Sequence::create(MoveBy::create(1, Vec2(-visibleSize.width, 0)),
                                          CallFunc::create([=](){
         m_bPlateReady = true;

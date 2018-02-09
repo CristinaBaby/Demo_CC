@@ -1,23 +1,12 @@
 #import <UIKit/UIKit.h>
-
-#if __has_include(<SSCAppRootControllerLib/SSCAppRootControllerLib.h>)
-#include <SSCAppRootControllerLib/SSCAppRootControllerLib.h>
-#define ENABLE_COMPONENT_IOS  1
-#else
-#define ENABLE_COMPONENT_IOS  0
-#endif
+#import <SSCAppRootControllerLib/AppRootController.h>
 
 @class RootViewController;
 
-@interface AppController :
-#if ENABLE_COMPONENT_IOS
-AppRootController
-#else
-NSObject
-#endif
-<UIApplicationDelegate> {
+@interface AppController : AppRootController <UIApplicationDelegate> {
     UIWindow *window;
 }
+
 @property(nonatomic, readonly) RootViewController* viewController;
 @property(nonatomic, retain) UIWindow *window;
 

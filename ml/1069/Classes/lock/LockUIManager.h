@@ -41,11 +41,8 @@ public:
     //reward lock
     bool registerLock(string typeName, const int inx, Node* lockParent);
     
-    void distroyRegister(){
-        _mapRewardInfos.clear();
-    }
     //iap lock
-    //    bool registerIAPLock(string iapId, string iapModuelName, const int inx, Node* lockParent);
+//    bool registerIAPLock(string iapId, string iapModuelName, const int inx, Node* lockParent);
     
     void setLockPos(Vec2 pos);
     void setLockOriginPos(Vec2 pos){
@@ -64,7 +61,7 @@ public:
     
     //广告逻辑，在ios上如果reward广告请求失败，则将reward的item标记为iap，要求用户购买
     void changeRewardToIAP();
-    
+
 private:
     
     void registerRewardLock(string moduleName, string keyInModule, const int inx, Node* lockParent);

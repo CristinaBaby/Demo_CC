@@ -12,7 +12,7 @@
 #include "SceneManager.h"
 #include "AdsManager.h"
 #include "SoundPlayer.h"
-#include "SSCInternalLibManager.h"
+#include "CFSystemFunction.h"
 #include "GameData.h"
 
 using namespace cocostudio;
@@ -67,16 +67,16 @@ bool LoadingLayer::initUI()
     kAdapterScreen->setExactPosition(bgSprite, 480, 320);
     this->addChild(bgSprite);
     
-    ArmatureDataManager::getInstance()->addArmatureFileInfo("images/loading/loading0.png", "images/loading/loading0.plist", "images/loading/loading.ExportJson");
-    ArmatureDataManager::getInstance()->addArmatureFileInfo("images/loading/loading1.png", "images/loading/loading1.plist", "images/loading/loading.ExportJson");
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("images/loading/loading.ExportJson");
     
     
-    Armature* lArmature = Armature::create("loading");
-    kAdapterScreen->setExactPosition(lArmature, 480, 320);
-    this->addChild(lArmature);
-    ArmatureAnimation* lArmation = lArmature->getAnimation();
-//    lArmation->playWithIndex(0,-1,0);
-    
+    Armature* m_pModel = Armature::create("loading");
+    m_pModel->setScale(0.7f);
+    m_pModel->ignoreAnchorPointForPosition(false);
+    m_pModel->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    m_pModel->getAnimation()->play("Animation1");
+    kAdapterScreen->setExactPosition(m_pModel, 480, 320);
+    this->addChild(m_pModel);
     
     this->runAction(Sequence::create(DelayTime::create(5.5f), CallFunc::create([=](){
     

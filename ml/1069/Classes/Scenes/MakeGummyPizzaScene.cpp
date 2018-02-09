@@ -31,12 +31,11 @@ MakeGummyPizzaScene::MakeGummyPizzaScene()
     m_nJellewCutCount = 0;
     m_bIsJellewOnBoard = false;
     
-    //    AudioHelp::getInstance()->registerEffectScene(ClassString(MakeGummyPizzaScene));
 }
 
 MakeGummyPizzaScene::~MakeGummyPizzaScene()
 {
-    //    AudioHelp::getInstance()->removeEffectScene(ClassString(MakeGummyPizzaScene));
+    
 }
 bool MakeGummyPizzaScene::init()
 {
@@ -70,42 +69,30 @@ bool MakeGummyPizzaScene::init()
         _createMakeCandyUI();
     }), NULL));
     
-    //    **************** test cut jellew  ********
-    //    _showBoard();
-    //    _showJellewIngredient(0);
-    //    *****************************
+//    **************** test cut jellew  ********
+//    _showBoard();
+//    _showJellewIngredient(0);
+//    *****************************
     
-    //    *************** test make Vanilla *****
-    //    _createMakeVanillaUI();
-    //    _createMakeJellewPieceUI();
-    //    ****************************************
+//    *************** test make Vanilla *****
+//    _createMakeVanillaUI();
+//    _createMakeJellewPieceUI();
+//    ****************************************
     
     m_pGuideLayer = GuideLayer::create();
     this->addChildToUILayer(m_pGuideLayer);
     m_pGuideLayer->setLocalZOrder(10);
-    //    AdsManager::getInstance()->setLayoutBanner(LAYOUT_TYPE::kLayoutCenterRight);
-    
-    if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
-    }
-    
+//    AdsManager::getInstance()->setLayoutBanner(LAYOUT_TYPE::kLayoutCenterRight);
+    this->runAction(Sequence::create(DelayTime::create(1),
+                                     CallFunc::create([=](){
+        if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
+            AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+        }
+    }), NULL));
     m_pGameUI->showNormalLayout();
-    AudioHelp::getInstance()->playBackGroundMusic("make_bg.mp3");
     return true;
 }
 
-void MakeGummyPizzaScene::onEnter()
-{
-    ExtensionScene::onEnter();
-    //    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_MAKE_GUMMY);
-    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_MAKE_GUMMY);
-}
-
-void MakeGummyPizzaScene::onExit()
-{
-    //    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_MAKE_GUMMY);
-    ExtensionScene::onExit();
-}
 void MakeGummyPizzaScene::onButtonCallback(Button* btn)
 {
     int tag = btn->getTag();
@@ -120,35 +107,21 @@ void MakeGummyPizzaScene::onButtonCallback(Button* btn)
             m_pGameUI->hideNext();
             _finishAddCandy(0);
         }else if(m_nStep == eStepAddJellew){
-            //            m_pGameUI->hideNext();
-            //            _saveMixture();
-            //            _finishAddCandy(1);
-#if __cplusplus > 201100L
-            RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int           requestcode,bool bgranted){
-                onPermissionGrantedResult(requestcode, bgranted);
-            };
-#else
-            RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
-            
-            //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-            int requestCode = 2;
-            //调用权限申请的方法,根据需要申请敏感权限
-            RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
+            m_pGameUI->hideNext();
+            _saveMixture();
+            _finishAddCandy(1);
         }else{
             
             SceneManager::replaceTheScene<DecorateScene>();
         }
-    }else{
-        ExtensionScene::onButtonCallback(btn);
     }
 }
 
 void MakeGummyPizzaScene::onOvenDoorCallback(OvenNode* pOven)
 {
     m_pGuideLayer->removeGuide();
-    //    pOven->setTouchEnable(true);
-    //    open
+//    pOven->setTouchEnable(true);
+//    open
     if (pOven->getIsOpen()) {
         pOven->setSwitchEnable(false);
         if (!pOven->getBaked()) {
@@ -167,7 +140,7 @@ void MakeGummyPizzaScene::onOvenDoorCallback(OvenNode* pOven)
             m_pBowlFrontView->setTouchEnabled(true);
             m_pGuideLayer->showGuideMove(Vec2(pOven->getDoorWorldRect().getMidX(), pOven->getDoorWorldRect().getMidY()),m_pBowl->getPosition());
         }
-        //        close
+//        close
     }else{
         if (!pOven->getBaked()){
             m_pBowlFrontView->setTouchEnabled(false);
@@ -378,8 +351,8 @@ void MakeGummyPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoin
         }
     }else if (pDragNode==m_pRing) {
         Vec2 pos = m_pRing->getPosition();
-        int radius = 110;
-        Vec2 offset = pos-(m_pPan->getPosition()-Vec2(0, 15));
+        int radius = 100;
+        Vec2 offset = pos-(m_pPan->getPosition()-Vec2(0, 10));
         if (powf(offset.x, 2)+powf(offset.y, 2)<=powf(radius, 2)) {
             int size = m_ringVector.size();
             bool newRing = true;
@@ -401,7 +374,7 @@ void MakeGummyPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoin
                 pSprite->setPosition(m_pMixturePan->convertToNodeSpace(worldPoint));
                 m_ringVector.push_back(pSprite);
                 if (size>=3) {
-                    //                    finish
+//                    finish
                     _finishCutCandy();
                 }
             }
@@ -497,14 +470,6 @@ void MakeGummyPizzaScene::_createMakeCandyUI()
                                      CallFunc::create([=]{
         m_pGuideLayer->showGuideMove(m_pWater->getPosition(), m_pBowl->getPosition());
     }), NULL));
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"candypiece.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"gummypiece.png");
-#else
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/candypiece.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/gummypiece.png");
-#endif
 }
 
 void MakeGummyPizzaScene::_showCandyIngredient(int group)
@@ -601,7 +566,7 @@ void MakeGummyPizzaScene::_showRing()
     
     CMVisibleRect::setPositionAdapted(m_pRing,800+visibleSize.width/2, 300);
     m_pRing->runAction(Sequence::create(MoveBy::create(0.5, Vec2(-visibleSize.width/2, 0)),
-                                        CallFunc::create([=](){
+                                         CallFunc::create([=](){
         m_pRing->setOrgPositionDefault();
         m_pRing->setTouchEnabled(true);
     }), NULL));
@@ -684,7 +649,7 @@ void MakeGummyPizzaScene::_showJellewIngredient(int group)
         default:
             break;
     }
-    
+
 }
 
 void MakeGummyPizzaScene::_showBoard()
@@ -852,7 +817,7 @@ void MakeGummyPizzaScene::_showVanillaIngredient(int group)
         default:
             break;
     }
-    
+
 }
 
 void MakeGummyPizzaScene::_showAddCandyIngredient(int group)
@@ -1051,9 +1016,9 @@ void MakeGummyPizzaScene::_showPeiceWithCandy()
     
     std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    path = SSCFileUtility::getStoragePath()+"candypiece.png";
+    path = FileUtility::getStoragePath()+"candypiece.png";
 #else
-    path = SSCFileUtility::getStoragePath()+"/candypiece.png";
+    path = FileUtility::getStoragePath()+"/candypiece.png";
 #endif
     m_pGummyPan = Sprite::create(localPath("make2/plate_medium.png"));
     this->addChildToContentLayer(m_pGummyPan);
@@ -1070,10 +1035,9 @@ void MakeGummyPizzaScene::_showPeiceWithCandy()
     
     m_pGummyPan->runAction(MoveBy::create(0.5, Vec2(-visibleSize.width/2, 0)));
     m_pGummyPiece->runAction(Sequence::create(MoveBy::create(0.5, Vec2(-visibleSize.width/2, 0)),
-                                              CallFunc::create([=](){
+                                         CallFunc::create([=](){
         m_pGummyPiece->setOrgPositionDefault();
         m_pGummyPiece->setTouchEnabled(true);
-        AudioHelp::getInstance()->playEffect("vo_combine2layers.mp3");
     }), NULL));
 }
 
@@ -1097,7 +1061,7 @@ void MakeGummyPizzaScene::_showShadow(DragNode* pIngredient)
 }
 
 void MakeGummyPizzaScene::_hideShadow(DragNode* pIngredient)
-{
+{    
     if(pIngredient==m_pWater){
         pIngredient->getDragSprite()->setTexture(localPath("make1/water_1.png"));
     }else if (pIngredient == m_pGelatin) {
@@ -1206,13 +1170,13 @@ void MakeGummyPizzaScene::_showBowlFrontView()
 {
     if (!m_pBowlFrontView) {
         if (m_nStep==eStepMakeCandy){
-            //            m_pTableMat->setScale(0.6);
+//            m_pTableMat->setScale(0.6);
             m_pBowlFrontView = _createDrageNode(localPath("make1/bowl_batter_red.png"));
         }else if (m_nStep==eStepMakeVanlia) {
-            //            m_pTableMat->setScale(0.8);
+//            m_pTableMat->setScale(0.8);
             m_pBowlFrontView = _createDrageNode(localPath("make2/bowl_batter_white.png"));
         }else if (m_nStep==eStepMakeJellew) {
-            //            m_pTableMat->setScale(1);
+//            m_pTableMat->setScale(1);
             m_pBowlFrontView = _createDrageNode(localPath("make3/bowl_batter_yellow.png"));
         }
         this->addChildToContentLayer(m_pBowlFrontView);
@@ -1233,18 +1197,16 @@ void MakeGummyPizzaScene::_showPan()
 {
     _showTableMat();
     if (!m_pPan) {
-        m_pMixturePan = Node::create();
         if (m_nStep==eStepMakeCandy){
             m_pPan = _createDrageNode(localPath("make1/plate_small.png"),false);
-            m_pMixturePan->setPosition(Vec2(-3, 5));
         }else if (m_nStep==eStepMakeVanlia) {
             m_pPan = _createDrageNode(localPath("make2/plate_medium.png"),false);
-            m_pMixturePan->setPosition(Vec2(-3, 10));
         }else if (m_nStep==eStepMakeJellew) {
             m_pPan = _createDrageNode(localPath("make3/plate_big.png"),false);
-            m_pMixturePan->setPosition(Vec2(-3, 10));
         }
         this->addChildToContentLayer(m_pPan);
+        m_pMixturePan = Node::create();
+        m_pMixturePan->setPosition(Vec2(-3, 10));
         m_pPan->addChild(m_pMixturePan);
     }else{
         if (m_nStep==eStepMakeCandy){
@@ -1266,7 +1228,7 @@ void MakeGummyPizzaScene::_showPan()
     m_pPan->stopAllActions();
     CMVisibleRect::setPosition(m_pPan, 320-visibleSize.width, 300);
     m_pPan->runAction(Sequence::create(MoveBy::create(0.5, Vec2(visibleSize.width, 0)),
-                                       CallFunc::create([=](){
+                                        CallFunc::create([=](){
         
     }), NULL));
     
@@ -1311,18 +1273,18 @@ void MakeGummyPizzaScene::_showPanFrontView()
     }else if (m_nStep==eStepAddJellew) {
         std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        path = SSCFileUtility::getStoragePath()+"candypiece.png";
+        path = FileUtility::getStoragePath()+"candypiece.png";
 #else
-        path = SSCFileUtility::getStoragePath()+"/candypiece.png";
+        path = FileUtility::getStoragePath()+"/candypiece.png";
 #endif
         pMixture = Sprite::create(path);
         pMixture->setScale(1, 0.438);
     }else if (m_nStep==eStepAddJellewPiece) {
         std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        path = SSCFileUtility::getStoragePath()+"gummypiece.png";
+        path = FileUtility::getStoragePath()+"gummypiece.png";
 #else
-        path = SSCFileUtility::getStoragePath()+"/gummypiece.png";
+        path = FileUtility::getStoragePath()+"/gummypiece.png";
 #endif
         pMixture = Sprite::create(path);
         pMixture->setScale(0.83, 0.38);
@@ -1403,9 +1365,9 @@ void MakeGummyPizzaScene::_moveBowlLeft()
     }),
                                         DelayTime::create(1),
                                         CallFunc::create([=](){
-        //        Rect rect = m_pOven->getDoorWorldRect();
-        //        m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
-        //        m_pOven->setTouchEnable(true);
+//        Rect rect = m_pOven->getDoorWorldRect();
+//        m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
+//        m_pOven->setTouchEnable(true);
         m_pOven->openDoor();
     }), NULL));
     m_pOven->runAction(MoveBy::create(dt, Vec2(350, -350)));
@@ -1460,7 +1422,7 @@ void MakeGummyPizzaScene::_movePanMiddle()
     m_pBg->runAction(MoveBy::create(dt, Vec2(350, 350)));
     m_pOven->runAction(MoveBy::create(dt, Vec2(350, 350)));
     m_pFreezer->runAction(MoveBy::create(dt, Vec2(350, 350)));
-    //    m_pFreezer->reset();
+//    m_pFreezer->reset();
 }
 
 void MakeGummyPizzaScene::_movePanRight()
@@ -1492,8 +1454,8 @@ void MakeGummyPizzaScene::_movePanRight()
         m_pPan->setRotation3D(Vec3(0, 0, 0));
         m_pPan->setScale(1);
         m_pFreezer->openDoor();
-        //        Rect rect = m_pFreezer->getDoorWorldRect();
-        //        m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
+//        Rect rect = m_pFreezer->getDoorWorldRect();
+//        m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
     }), NULL));
     m_pOven->runAction(MoveBy::create(dt, Vec2(-350, -350)));
     m_pFreezer->runAction(MoveBy::create(dt, Vec2(-350, -350)));
@@ -1546,7 +1508,7 @@ void MakeGummyPizzaScene::_addCandyIngredient(DragNode *pIngredient)
             pIngredient->back();
         }),
                                                 NULL));
-        
+
 #pragma mark  ===== add Gelatin ======
     }else if (pIngredient == m_pGelatin) {
         lNameStr = "make1/bowl_gelatin.png";
@@ -1581,7 +1543,7 @@ void MakeGummyPizzaScene::_addCandyIngredient(DragNode *pIngredient)
             _finishMakeCandyAdd(0);
         }),
                                                 NULL));
-        
+
 #pragma mark  ===== add Powder Jellew ======
     }else if (pIngredient == m_pPowderJellew) {
         lNameStr = "make1/bowl_jelly powder.png";
@@ -1613,7 +1575,7 @@ void MakeGummyPizzaScene::_addCandyIngredient(DragNode *pIngredient)
         pIngredient->setPosition(Vec2(m_pBowl->getPositionX()+150, m_pBowl->getPositionY()+250));
         pIngredient->runAction(Sequence::create(RotateBy::create(0.5, -50),
                                                 CallFunc::create([=](){
-            AudioHelp::getInstance()->playEffect("buter.mp3");
+            AudioHelp::getInstance()->playPourPowderEffect();
             
             Node* pIn = pIngredient->getChildByName("syrup");
             if (pIn) {
@@ -1624,20 +1586,20 @@ void MakeGummyPizzaScene::_addCandyIngredient(DragNode *pIngredient)
                                                 CallFunc::create([=](){
                     pIn->removeFromParent();
                 }), NULL));
-                //                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.9),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.6),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.7),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.4),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                FadeOut::create(0.2),
-                //                                                CallFunc::create([=](){
-                //                    pIn->removeFromParent();
-                //                }), NULL));
+//                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.9),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.6),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.7),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.4),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                FadeOut::create(0.2),
+//                                                CallFunc::create([=](){
+//                    pIn->removeFromParent();
+//                }), NULL));
             };
         }),
                                                 ScaleTo::create(0.5, 1.1,0.9),
@@ -1720,7 +1682,7 @@ void MakeGummyPizzaScene::_mix(int step)
             m_pSpoon->setPosition(m_pBowl->getPosition());
         }), NULL));
         _hideTray();
-        
+
     }
 }
 
@@ -1753,7 +1715,7 @@ void MakeGummyPizzaScene::_putinOven()
 
 void MakeGummyPizzaScene::_putinFreezer()
 {
-    //    m_pFreezer->setTouchEnable(true);
+//    m_pFreezer->setTouchEnable(true);
     m_pPanFrontView->setTouchEnabled(false);
     m_pPanFrontView->setVisible(false);
     m_pPanFrontView->setOrgPositionDefault();
@@ -1767,9 +1729,9 @@ void MakeGummyPizzaScene::_putinFreezer()
     }else if (m_nStep==eStepAddJellew) {
         std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        path = SSCFileUtility::getStoragePath()+"candypiece.png";
+        path = FileUtility::getStoragePath()+"candypiece.png";
 #else
-        path = SSCFileUtility::getStoragePath()+"/candypiece.png";
+        path = FileUtility::getStoragePath()+"/candypiece.png";
 #endif
         pIn= Sprite::create(localPath("make2/plate_down.png"));
         
@@ -1785,9 +1747,9 @@ void MakeGummyPizzaScene::_putinFreezer()
     }else if (m_nStep==eStepAddJellewPiece) {
         std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        path = SSCFileUtility::getStoragePath()+"gummypiece.png";
+        path = FileUtility::getStoragePath()+"gummypiece.png";
 #else
-        path = SSCFileUtility::getStoragePath()+"/gummypiece.png";
+        path = FileUtility::getStoragePath()+"/gummypiece.png";
 #endif
         pIn= Sprite::create(localPath("make3/plate_down.png"));
         
@@ -1807,18 +1769,18 @@ void MakeGummyPizzaScene::_putinFreezer()
     Vec2 pos = m_pFreezer->convertToWorldSpace(pIn->getPosition());
     m_pPanFrontView->setPosition(m_pBowl->getParent()->convertToNodeSpace(pos));
     m_pPanFrontView->setScale(0.7);
-    //    Rect rect = m_pFreezer->getDoorTouchWorldRect();
-    //    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
+//    Rect rect = m_pFreezer->getDoorTouchWorldRect();
+//    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
     {
         m_pFreezer->closeDoor();
         m_pFreezer->setTouchEnable(false);
-        //        Node* pIn = m_pFreezer->getChildByName("freezerin");
-        //        if (pIn) {
-        //            m_pPanFrontView->setTouchEnabled(false);
-        //
-        //            m_pFreezer->setTouchEnable(false);
-        //            _freeze();
-        //        }
+//        Node* pIn = m_pFreezer->getChildByName("freezerin");
+//        if (pIn) {
+//            m_pPanFrontView->setTouchEnabled(false);
+//            
+//            m_pFreezer->setTouchEnable(false);
+//            _freeze();
+//        }
     }
 }
 
@@ -1954,7 +1916,7 @@ void MakeGummyPizzaScene::_addBatterPan()
     pPour->setLocalZOrder(20);
     
     this->runAction(Sequence::create(DelayTime::create(1),
-                                     CallFunc::create([=](){
+                                        CallFunc::create([=](){
         m_pMixture->removeAllChildren();
         m_pMixture->setScale(1);
         m_pMixture->setPosition(Vec2::ZERO);
@@ -1994,7 +1956,7 @@ void MakeGummyPizzaScene::_cutJellew(int type)
     
     m_nJellewCutCount+=2;
     if (m_nJellewCutCount>=count) {
-        //        finish
+//        finish
         _finishCutJellew(type);
         m_pKnife->setTouchEnabled(false);
     }
@@ -2153,7 +2115,7 @@ void MakeGummyPizzaScene::_addVanlliaIngredient(DragNode *pIngredient)
         pIngredient->setPosition(Vec2(m_pBowl->getPositionX()-50, m_pBowl->getPositionY()+250));
         pIngredient->runAction(Sequence::create(RotateBy::create(0.5, -50),
                                                 CallFunc::create([=](){
-            AudioHelp::getInstance()->playEffect("buter.mp3");
+            AudioHelp::getInstance()->playPourPowderEffect();
             
             Node* pIn = pIngredient->getChildByName("vanilla");
             if (pIn) {
@@ -2164,22 +2126,22 @@ void MakeGummyPizzaScene::_addVanlliaIngredient(DragNode *pIngredient)
                     pIn->removeFromParent();
                 }), NULL));
             }
-            //            if (pIn) {
-            //                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
-            //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-            //                                                Spawn::create(ScaleTo::create(0.2, 0.9),
-            //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-            //                                                Spawn::create(ScaleTo::create(0.2, 0.6),
-            //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-            //                                                Spawn::create(ScaleTo::create(0.2, 0.7),
-            //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-            //                                                Spawn::create(ScaleTo::create(0.2, 0.4),
-            //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-            //                                                FadeOut::create(0.2),
-            //                                                CallFunc::create([=](){
-            //                    pIn->removeFromParent();
-            //                }), NULL));
-            //            }
+//            if (pIn) {
+//                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.9),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.6),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.7),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.4),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                FadeOut::create(0.2),
+//                                                CallFunc::create([=](){
+//                    pIn->removeFromParent();
+//                }), NULL));
+//            }
             
         }),
                                                 ScaleTo::create(0.5, 1.1,0.9),
@@ -2199,7 +2161,7 @@ void MakeGummyPizzaScene::_addVanlliaIngredient(DragNode *pIngredient)
         pIngredient->setPosition(Vec2(m_pBowl->getPositionX()+150, m_pBowl->getPositionY()+250));
         pIngredient->runAction(Sequence::create(RotateBy::create(0.5, -50),
                                                 CallFunc::create([=](){
-            AudioHelp::getInstance()->playEffect("buter.mp3");
+            AudioHelp::getInstance()->playPourPowderEffect();
             
             Node* pIn = pIngredient->getChildByName("syrup");
             if (pIn) {
@@ -2210,28 +2172,28 @@ void MakeGummyPizzaScene::_addVanlliaIngredient(DragNode *pIngredient)
                                                 CallFunc::create([=](){
                     pIn->removeFromParent();
                 }), NULL));
-                //            Node* pIn = pIngredient->getChildByName("syrup");
-                //            if (pIn) {
-                //                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.9),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.6),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.7),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.4),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                FadeOut::create(0.2),
-                //                                                CallFunc::create([=](){
-                //                    pIn->removeFromParent();
-                //                }), NULL));
+//            Node* pIn = pIngredient->getChildByName("syrup");
+//            if (pIn) {
+//                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.9),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.6),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.7),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.4),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                FadeOut::create(0.2),
+//                                                CallFunc::create([=](){
+//                    pIn->removeFromParent();
+//                }), NULL));
             };
             
-            //            ParticleSystemQuad* pParticle = ParticleSystemQuad::create("particle/flour.plist");
-            //            this->addChildToContentLayer(pParticle);
-            //            pParticle->setPosition(m_pContentLayer->convertToNodeSpace(pIngredient->getWorldSpaceActionPoint()));
-            //            pParticle->setLocalZOrder(6);
+//            ParticleSystemQuad* pParticle = ParticleSystemQuad::create("particle/flour.plist");
+//            this->addChildToContentLayer(pParticle);
+//            pParticle->setPosition(m_pContentLayer->convertToNodeSpace(pIngredient->getWorldSpaceActionPoint()));
+//            pParticle->setLocalZOrder(6);
         }),
                                                 ScaleTo::create(0.5, 1.1,0.9),
                                                 DelayTime::create(1),
@@ -2280,20 +2242,20 @@ void MakeGummyPizzaScene::_saveMixture()
     if (m_nStep==eStepAddJellew) {
         bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"candypiece.png", false);
-        TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"candypiece.png");
+        issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"candypiece.png", false);
+        TextureCache::getInstance()->removeTextureForKey(FileUtility::getStoragePath()+"candypiece.png");
 #else
-        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/candypiece.png", false);
-        TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/candypiece.png");
+        issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/candypiece.png", false);
+        TextureCache::getInstance()->removeTextureForKey(FileUtility::getStoragePath()+"/candypiece.png");
 #endif
     }else if (m_nStep == eStepAddJellewPiece) {
         bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"gummypiece.png", false);
-        TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"gummypiece.png");
+        issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"gummypiece.png", false);
+        TextureCache::getInstance()->removeTextureForKey(FileUtility::getStoragePath()+"gummypiece.png");
 #else
-        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/gummypiece.png", false);
-        TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/gummypiece.png");
+        issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/gummypiece.png", false);
+        TextureCache::getInstance()->removeTextureForKey(FileUtility::getStoragePath()+"/gummypiece.png");
 #endif
     }
     pImage->autorelease();
@@ -2404,7 +2366,7 @@ void MakeGummyPizzaScene::_addJewllewPieceIngredient(DragNode* pIngredient)
         pIngredient->setPosition(Vec2(m_pBowl->getPositionX()+150, m_pBowl->getPositionY()+250));
         pIngredient->runAction(Sequence::create(RotateBy::create(0.5, -50),
                                                 CallFunc::create([=](){
-            AudioHelp::getInstance()->playEffect("buter.mp3");
+            AudioHelp::getInstance()->playPourPowderEffect();
             
             Node* pIn = pIngredient->getChildByName("syrup");
             if (pIn) {
@@ -2415,28 +2377,28 @@ void MakeGummyPizzaScene::_addJewllewPieceIngredient(DragNode* pIngredient)
                                                 CallFunc::create([=](){
                     pIn->removeFromParent();
                 }), NULL));
-                //            Node* pIn = pIngredient->getChildByName("syrup");
-                //            if (pIn) {
-                //                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.9),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.6),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.7),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                Spawn::create(ScaleTo::create(0.2, 0.4),
-                //                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
-                //                                                FadeOut::create(0.2),
-                //                                                CallFunc::create([=](){
-                //                    pIn->removeFromParent();
-                //                }), NULL));
+//            Node* pIn = pIngredient->getChildByName("syrup");
+//            if (pIn) {
+//                pIn->runAction(Sequence::create(Spawn::create(ScaleTo::create(0.2, 0.8),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.9),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.6),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.7),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                Spawn::create(ScaleTo::create(0.2, 0.4),
+//                                                              MoveBy::create(0.2, Vec2(-5, -5)), NULL),
+//                                                FadeOut::create(0.2),
+//                                                CallFunc::create([=](){
+//                    pIn->removeFromParent();
+//                }), NULL));
             };
             
-            //            ParticleSystemQuad* pParticle = ParticleSystemQuad::create("particle/flour.plist");
-            //            this->addChildToContentLayer(pParticle);
-            //            pParticle->setPosition(m_pContentLayer->convertToNodeSpace(pIngredient->getWorldSpaceActionPoint()));
-            //            pParticle->setLocalZOrder(6);
+//            ParticleSystemQuad* pParticle = ParticleSystemQuad::create("particle/flour.plist");
+//            this->addChildToContentLayer(pParticle);
+//            pParticle->setPosition(m_pContentLayer->convertToNodeSpace(pIngredient->getWorldSpaceActionPoint()));
+//            pParticle->setLocalZOrder(6);
         }),
                                                 ScaleTo::create(0.5, 1.1,0.9),
                                                 DelayTime::create(1),
@@ -2459,7 +2421,7 @@ void MakeGummyPizzaScene::_addJewllewPieceIngredient(DragNode* pIngredient)
                                          CallFunc::create([=](){
         }), NULL));
     }
-    
+
 }
 
 
@@ -2520,19 +2482,19 @@ void MakeGummyPizzaScene::_finishMix(int step)
 
 void MakeGummyPizzaScene::_finishBake()
 {
-    //    m_pOven->setTouchEnable(true);
-    //    Rect rect = m_pOven->getDoorWorldRect();
-    //    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
+//    m_pOven->setTouchEnable(true);
+//    Rect rect = m_pOven->getDoorWorldRect();
+//    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
     
     m_pOven->openDoor();
     
-    //    Node* pIn = m_pOven->getChildByName("ovenin");
-    //    if (pIn) {
-    //        pIn->removeFromParent();
-    //    }
-    //    m_pBowlFrontView->setVisible(true);
-    //    m_pBowlFrontView->setTouchEnabled(true);
-    //    m_pGuideLayer->showGuideMove(Vec2(m_pOven->getDoorWorldRect().getMidX(), m_pOven->getDoorWorldRect().getMidY()),m_pBowl->getPosition());
+//    Node* pIn = m_pOven->getChildByName("ovenin");
+//    if (pIn) {
+//        pIn->removeFromParent();
+//    }
+//    m_pBowlFrontView->setVisible(true);
+//    m_pBowlFrontView->setTouchEnabled(true);
+//    m_pGuideLayer->showGuideMove(Vec2(m_pOven->getDoorWorldRect().getMidX(), m_pOven->getDoorWorldRect().getMidY()),m_pBowl->getPosition());
 }
 
 void MakeGummyPizzaScene::_finishFreeze()
@@ -2548,20 +2510,20 @@ void MakeGummyPizzaScene::_finishFreeze()
         }
     }
     m_pFreezer->stopFreeze();
-    //    m_pFreezer->setTouchEnable(true);
-    //
-    //    Rect rect = m_pFreezer->getDoorWorldRect();
-    //    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
+//    m_pFreezer->setTouchEnable(true);
+//    
+//    Rect rect = m_pFreezer->getDoorWorldRect();
+//    m_pGuideLayer->showGuideTap(Vec2(rect.getMidX(), rect.getMidY()));
     
     m_pFreezer->openDoor();
-    //    m_pFreezer->setTouchEnable(false);
-    //    Node* pIn = m_pFreezer->getChildByName("freezerin");
-    //    if (pIn) {
-    //        pIn->removeFromParent();
-    //    }
-    //    m_pPanFrontView->setVisible(true);
-    //    m_pPanFrontView->setTouchEnabled(true);
-    //    m_pGuideLayer->showGuideMove(Vec2(m_pFreezer->getDoorWorldRect().getMidX(), m_pFreezer->getDoorWorldRect().getMidY()),m_pPan->getPosition());
+//    m_pFreezer->setTouchEnable(false);
+//    Node* pIn = m_pFreezer->getChildByName("freezerin");
+//    if (pIn) {
+//        pIn->removeFromParent();
+//    }
+//    m_pPanFrontView->setVisible(true);
+//    m_pPanFrontView->setTouchEnabled(true);
+//    m_pGuideLayer->showGuideMove(Vec2(m_pFreezer->getDoorWorldRect().getMidX(), m_pFreezer->getDoorWorldRect().getMidY()),m_pPan->getPosition());
 }
 
 
@@ -2605,6 +2567,7 @@ void MakeGummyPizzaScene::_finishAddBatter()
 
 void MakeGummyPizzaScene::_finishCutCandy()
 {
+    AudioHelp::getInstance()->playEffect("vo_first_step_done.mp3");
     
     std::vector<Sprite*> candyVector;
     int size = m_ringVector.size();
@@ -2635,6 +2598,7 @@ void MakeGummyPizzaScene::_finishCutCandy()
         
         m_pTableMat->runAction(MoveBy::create(1, Vec2(visibleSize.width, 0)));
         m_pPan->runAction(MoveBy::create(1, Vec2(visibleSize.width, 0)));
+        AudioHelp::getInstance()->playEffect("vo_next_step.mp3");
     }),
                                      DelayTime::create(1),
                                      CallFunc::create([=](){
@@ -2658,14 +2622,14 @@ void MakeGummyPizzaScene::_finishCutJellew(int type)
                                                         CallFunc::create([=](){
             m_pKnife->setTouchEnabled(false);
             m_pKnife->back();
-            //            m_pKnife->runAction(MoveTo::create(0.5, CMVisibleRect::getPositionAdapted(Vec2(100, 320))));
+//            m_pKnife->runAction(MoveTo::create(0.5, CMVisibleRect::getPositionAdapted(Vec2(100, 320))));
             m_pGuideLayer->showGuideMove(m_pBoard->getPosition(), m_pJellewPlateEmpty->getPosition());
             m_pJellewBoard->setTouchEnabled(true);
         }), NULL));
     }else{
         m_pKnife->setTouchEnabled(false);
         m_pKnife->back();
-        //        m_pKnife->runAction(MoveTo::create(0.5, CMVisibleRect::getPositionAdapted(Vec2(100, 320))));
+//        m_pKnife->runAction(MoveTo::create(0.5, CMVisibleRect::getPositionAdapted(Vec2(100, 320))));
         m_pGuideLayer->showGuideMove(m_pBoard->getPosition(), m_pJellewPlateEmpty->getPosition());
         m_pJellewBoard->setTouchEnabled(true);
     }
@@ -2692,8 +2656,6 @@ void MakeGummyPizzaScene::_finishPutJellew(int type)
         
     }else{
         
-        AudioHelp::getInstance()->playEffect("vo_first_step_done.mp3");
-        
         this->runAction(Sequence::create(DelayTime::create(1),
                                          CallFunc::create([=](){
             _hideTray();
@@ -2708,7 +2670,6 @@ void MakeGummyPizzaScene::_finishPutJellew(int type)
                                          DelayTime::create(1),
                                          CallFunc::create([=](){
             _createMakeVanillaUI();
-            AudioHelp::getInstance()->playEffect("vo_next_step.mp3");
         }),
                                          NULL));
     }
@@ -2766,7 +2727,7 @@ void MakeGummyPizzaScene::_finishAddCandy(int type)
                                          DelayTime::create(1),
                                          CallFunc::create([=](){
             
-            //            m_pGameUI->showNextLayout();
+//            m_pGameUI->showNextLayout();
         }), NULL));
     }else if (type==1) {
         m_pGreenCandy->setTouchEnabled(false);
@@ -2811,34 +2772,20 @@ void MakeGummyPizzaScene::_finishMakeJellewPieceAdd(int step)
 
 void MakeGummyPizzaScene::_finishAddGummyPiece()
 {
-    //    _saveMixture();
-    //
-    //    _hideTray();
-    //    m_pGummyPan->runAction(MoveBy::create(0.5, Vec2(visibleSize.width, 0)));
-    //
-    //    this->runAction(Sequence::create(DelayTime::create(1),
-    //                                     CallFunc::create([=](){
-    //        _movePanRight();
-    //    }), NULL));
+    _saveMixture();
     
-#if __cplusplus > 201100L
-    RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int           requestcode,bool bgranted){
-        onPermissionGrantedResult(requestcode, bgranted);
-    };
-#else
-    RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
+    _hideTray();
+    m_pGummyPan->runAction(MoveBy::create(0.5, Vec2(visibleSize.width, 0)));
     
-    //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-    int requestCode = 1;
-    //调用权限申请的方法,根据需要申请敏感权限
-    RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
+    this->runAction(Sequence::create(DelayTime::create(1),
+                                     CallFunc::create([=](){
+        _movePanRight();
+    }), NULL));
 }
 
 void MakeGummyPizzaScene::_finishFreezeGummyPiece(int type)
 {
     if(type == 0){
-        AudioHelp::getInstance()->playEffect("vo_well_done.mp3");
         m_pTableMat->runAction(Sequence::create(DelayTime::create(1),
                                                 MoveBy::create(1, Vec2(visibleSize.width, 0)),
                                                 NULL));
@@ -2846,6 +2793,7 @@ void MakeGummyPizzaScene::_finishFreezeGummyPiece(int type)
                                            MoveBy::create(1, Vec2(visibleSize.width, 0)),
                                            CallFunc::create([=](){
             _createMakeJellewPieceUI();
+            AudioHelp::getInstance()->playEffect("vo_well_done.mp3");
         }), NULL));
     }else if (type==1) {
         m_pTableMat->runAction(MoveBy::create(0.5, Vec2(100, 0)));
@@ -2861,55 +2809,5 @@ void MakeGummyPizzaScene::_finishFreezeGummyPiece(int type)
             
             m_pGameUI->showNextLayout();
         }), NULL));
-    }
-}
-
-void MakeGummyPizzaScene::saveImage1(){
-    
-    _saveMixture();
-    
-    _hideTray();
-    m_pGummyPan->runAction(MoveBy::create(0.5, Vec2(visibleSize.width, 0)));
-    
-    this->runAction(Sequence::create(DelayTime::create(1),
-                                     CallFunc::create([=](){
-        _movePanRight();
-    }), NULL));
-    
-}
-
-void MakeGummyPizzaScene::saveImage2(){
-    m_pGameUI->hideNext();
-    _saveMixture();
-    _finishAddCandy(1);
-    
-}
-
-
-void MakeGummyPizzaScene::onPermissionGrantedResult(int requestCode,bool bGranted){
-    if (requestCode == 1) {
-        if (bGranted) {
-            this->runAction(Sequence::create(DelayTime::create(0.0f),
-                                             CallFunc::create([=] {
-                saveImage1();
-            }),NULL))    ;
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
-    }
-    if (requestCode == 2) {
-        
-        if (bGranted) {
-            this->runAction(Sequence::create(DelayTime::create(0.0f),
-                                             CallFunc::create([=] {
-                saveImage2();
-            }),NULL))    ;
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
     }
 }

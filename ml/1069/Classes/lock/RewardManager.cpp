@@ -8,7 +8,7 @@
 #include "CSVParse.h"
 #include "cocos2d.h"
 #include "StringHelp.h"
-
+#include "STSystemFunction.h"
 #include "Analytics.h"
 #include <sys/time.h>
 #include "audio/include/SimpleAudioEngine.h"
@@ -48,36 +48,34 @@ RewardManager::RewardManager()
 void RewardManager::showRewardAds(const string key, const int inx)
 {
     if (!ConfigManager::getInstance()->getVideoUnLocked(key, inx)) {
-        //        return;
-//        STSystemFunction sys;
-//        if (!sys.checkNetworkAvailable()) {
-//            Analytics::getInstance()->sendEvent("RequestVideoFailed-NIC", "No internet connected!");
-//            if(showRewardFalseCall)
-//            {
-//                showRewardFalseCall();
-//            }
-//            return;
-//        }
-        
-        registerAdsEvents();
+//        return;
+        STSystemFunction sys;
+        if (!sys.checkNetworkAvailable()) {
+            Analytics::getInstance()->sendEvent("RequestVideoFailed-NIC", "No internet connected!");
+            if(showRewardFalseCall)
+            {
+                showRewardFalseCall();
+            }
+            return;
+        }
         
         _rewardRequestResult = AdsManager::getInstance()->showAds(ADS_TYPE::kTypeRewardedAds);
         log("======kTypeRewardedAds %d====",_rewardRequestResult);
         if(!_rewardRequestResult)
         {
-//            AdsManager::getInstance()->preloadAds(ADS_TYPE::kTypeRewardedAds);
+            AdsManager::getInstance()->preloadAds(ADS_TYPE::kTypeRewardedAds);
             
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//            showRewardFailedHandleIos();
-//            return;
-//#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+            showRewardFailedHandleIos();
+            return;
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
             bool result = showRewardFailedHandleAndroid();
             log("======kTypeRewardedAdsFailed %d====",result);
             if(!result)
                 return;
-            _waitingUnLockItemInfo = {key, inx};
+            _waitingUnLockItemInfo = item;
             this->onAdsRewarded("", 0, false);
-//#endif
+#endif
         }
         else
         {
@@ -98,6 +96,7 @@ void RewardManager::showRewardAds(const string key, const int inx)
         }
         
         _waitingUnLockItemInfo = {key, inx};
+        registerAdsEvents();
     }
 }
 
@@ -111,7 +110,7 @@ void RewardManager::showRewardFailedHandleIos()
 
 bool RewardManager::showRewardFailedHandleAndroid()
 {
-    bool result = AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+    bool result = AdsManager::getInstance()->showAds(ADS_TYPE::kTypeCrosspromoAds);
     if(!result)
     {
         if(showRewardFalseCall)
@@ -134,26 +133,24 @@ void RewardManager::removeLoadingSchedule(float dt)
     if (_rewardRequestResult && !_rewardAdsExpanded)
     {
         unRegisterAdsEvents();
-        
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//        showRewardFailedHandleIos();
-//        return;
-//#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        showRewardFailedHandleIos();
+        return;
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         bool result = showRewardFailedHandleAndroid();
         log("======kTypeRewardedAdsFailed %d====",result);
         if(!result)
             return;
         this->onAdsRewarded("", 0, false);
-//#endif
-    }else if(_rewardAdsExpanded){
-        this->onAdsRewarded("", 0, false);
+#endif
     }
 }
 
 void RewardManager::onAdsExpanded(ADS_TYPE adType)
 {
     Director::getInstance()->getScheduler()->unschedule("removeLoadingSchedule", this);
-    
+
     if (ADS_TYPE::kTypeRewardedAds == adType)
     {
         //reward广告成功显示
@@ -165,7 +162,6 @@ void RewardManager::onAdsExpanded(ADS_TYPE adType)
 
 void RewardManager::onAdsCollapsed(ADS_TYPE adType)
 {
-    removeLoadingSchedule(0.5);
     Director::getInstance()->getScheduler()->schedule(CC_CALLBACK_1(RewardManager::removeLoadingSchedule, this), this, 5, 0, 0, false, "removeLoadingSchedule");
 }
 
@@ -173,7 +169,7 @@ void RewardManager::onAdsRewarded(std::string, int, bool skip)
 {
     CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     Director::getInstance()->getScheduler()->unschedule("removeLoadingSchedule", this);
-    
+
     unRegisterAdsEvents();
     if(removeRewardLoadingCall)
     {
@@ -189,7 +185,7 @@ void RewardManager::onAdsRewarded(std::string, int, bool skip)
 void RewardManager::onAdsLoadFailed(std::string error, ADS_TYPE adType)
 {
     Director::getInstance()->getScheduler()->unschedule("removeLoadingSchedule", this);
-    
+
     if (adType == ADS_TYPE::kTypeRewardedAds)
     {
         this->onAdsRewarded("", 0, true);
@@ -222,8 +218,8 @@ void RewardManager::unLocked(const RewardInfoItem &item)
 void RewardManager::lockAll()
 {
     _lastLockAllSecondsAt0ClockOfThatDay = getTodaySecondAt0Clock();
-    //    UserDefault::getInstance()->setStringForKey(kRewardLastLockAllTimeKey, to_string(_lastLockAllSecondsAt0ClockOfThatDay));
-    //    UserDefault::getInstance()->flush();
+//    UserDefault::getInstance()->setStringForKey(kRewardLastLockAllTimeKey, to_string(_lastLockAllSecondsAt0ClockOfThatDay));
+//    UserDefault::getInstance()->flush();
 }
 
 bool RewardManager::isItTimeToLockAll()

@@ -23,10 +23,11 @@
  ****************************************************************************/
 
 #import "AppController.h"
-#import "platform/ios/CCEAGLView-ios.h"
+#import "CCEAGLView-ios.h"
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import <AnalyticsSDK/AnalyticsSDK.h>
 
 @implementation AppController
 
@@ -45,10 +46,6 @@ static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    cocos2d::Application *app = cocos2d::Application::getInstance();
-    app->initGLContextAttrs();
-    cocos2d::GLViewImpl::convertAttrs();
-    
     // Override point for customization after application launch.
     
     // Add the view controller's view to the window and display.
@@ -56,15 +53,12 @@ static AppDelegate s_sharedApplication;
     
     // Init the CCEAGLView
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: [window bounds]
-                                         pixelFormat: (NSString*)cocos2d::GLViewImpl::_pixelFormat
-                                         depthFormat: cocos2d::GLViewImpl::_depthFormat
+                                         pixelFormat: kEAGLColorFormatRGBA8
+                                         depthFormat: GL_DEPTH24_STENCIL8_OES
                                   preserveBackbuffer: NO
                                           sharegroup: nil
                                        multiSampling: NO
-                                     numberOfSamples: 0 ];
-    
-    // Enable or disable multiple touches
-    [eaglView setMultipleTouchEnabled:true];
+                                     numberOfSamples: 0];
     
     // Use RootViewController manage CCEAGLView
     _viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
@@ -91,11 +85,11 @@ static AppDelegate s_sharedApplication;
     cocos2d::GLView *glview = cocos2d::GLViewImpl::createWithEAGLView(eaglView);
     cocos2d::Director::getInstance()->setOpenGLView(glview);
     
-    app->run();
+    cocos2d::Application::getInstance()->run();
     
-#if ENABLE_COMPONENT_IOS
+    [[SSCAnalytics getInstance] setDebugMode:true];
+    
     [super launchingWorkOnDebugMode:YES];
-#endif
     
     return YES;
 }
@@ -108,6 +102,8 @@ static AppDelegate s_sharedApplication;
      */
     //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->pause(); */
+    
+    [super applicationWillResignActive:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -116,6 +112,8 @@ static AppDelegate s_sharedApplication;
      */
     //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
+    
+    [super applicationDidBecomeActive:application];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -123,6 +121,7 @@ static AppDelegate s_sharedApplication;
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
+    [super applicationDidEnterBackground:application];
     cocos2d::Application::getInstance()->applicationDidEnterBackground();
 }
 
@@ -138,6 +137,7 @@ static AppDelegate s_sharedApplication;
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+    [super applicationWillTerminate:application];
 }
 
 

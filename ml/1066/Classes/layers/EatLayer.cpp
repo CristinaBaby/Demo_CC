@@ -9,15 +9,15 @@
 #include "EatLayer.h"
 #include "Global.h"
 #include "IAPManager.h"
-#include "SSCInternalLibManager.h"
-#include "SSCFileUtility.h"
+#include "CFSystemFunction.h"
+#include "FileUtility.h"
 #include "LockScreenLayer.h"
 #include "AdsManager.h"
 #include "SoundPlayer.h"
-#include "AdsManager.h"
+#include "AdsLoadingLayer.h"
+#include "AdLoadingLayerBase.h"
 #include "RecipeLayer.hpp"
 #include "EatSprite.h"
-#include "RuntimePermissionManager.h"
 
 #define FOOD_MARGIN 0
 
@@ -185,52 +185,11 @@ void EatLayer::initLayer()
     }
 }
 
-void EatLayer::onPermissionGrantedResult(int requestCode,bool bGranted){
-    if (requestCode == 1) {
-        if (bGranted) {
-            //add your code....
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-            SoundPlayer::getInstance()->playEffect(cameraSound);
-            
-            string str = SSCFileUtility::getStoragePath() + "IceCream.png";
-            Director::getInstance()->getTextureCache()->removeTextureForKey(str);
-            
-            auto pSaveImage = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8);
-            pSaveImage->begin();
-            m_pBg->visit();
-            m_pStickerLayer->visit();
-            m_pContentLayer->visit();
-            pSaveImage->end();
-            Director::getInstance()->getRenderer()->render();
-            pSaveImage->getSprite()->getTexture()->setAntiAliasTexParameters();
-            
-            //            CFSystemFunction album;
-            SSCInternalLibManager::getInstance()->saveToAlbum(pSaveImage->newImage(), [=](bool save)
-                                                              {
-                                                                  saveToAlbumCallback(save);
-                                                                  
-                                                              }, "IceCream");
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-            this->runAction(Sequence::create(DelayTime::create(0.01),
-                                             CallFunc::create([=](){
-                Dialog* dialog = Dialog::create((void*)kDialogAlbum, Dialog::DIALOG_TYPE_SINGLE, DialogDirection::HORIZONTAL, 0.8f, 0.45f);
-                dialog->setContentText("This app does not have access to your photos.You can enable access in Privacy Setting.");
-                dialog->setCallback(this);
-                this->addChild(dialog, INT16_MAX);
-            }), NULL));
-            
-        }
-    }else{
-        log("-------->anroid runtime permisson was not granted ,%d,requestcode = %d",bGranted,requestCode);
-    }
-}
 void EatLayer::addTouchEatNode()
 {
     ////////////////////////////////////////////////////////////
     // add icecream
-    string str = SSCFileUtility::getStoragePath() + "food.png";
+    string str = FileUtility::getStoragePath() + "food.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
 
     auto eatSpirte = EatSprite::create();
@@ -270,17 +229,26 @@ void EatLayer::onTouchUpInBoundingBox(ToolSprite* toolSprite,Touch *pTouch)
             
         case eCameraBtn_tag:
         {
-#if __cplusplus > 201100L
-            RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int requestcode,bool bgranted){
-                onPermissionGrantedResult(requestcode, bgranted);
-            };
-#else
-            RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
-            //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-            int requestCode = 1;
-            //调用权限申请的方法,根据需要申请敏感权限
-            RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
+            SoundPlayer::getInstance()->playEffect(cameraSound);
+
+            string str = FileUtility::getStoragePath() + "IceCream.png";
+            Director::getInstance()->getTextureCache()->removeTextureForKey(str);
+            
+            auto pSaveImage = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8);
+            pSaveImage->begin();
+            m_pBg->visit();
+            m_pStickerLayer->visit();
+            m_pContentLayer->visit();
+            pSaveImage->end();
+            Director::getInstance()->getRenderer()->render();
+            pSaveImage->getSprite()->getTexture()->setAntiAliasTexParameters();
+            
+            CFSystemFunction album;
+            album.saveToAlbum(pSaveImage->newImage(), [=](bool save)
+                              {
+                                  saveToAlbumCallback(save);
+                                  
+                              }, "IceCream");
         }
             break;
             

@@ -16,7 +16,7 @@
 #include "NotificationDef.h"
 //
 
-#include "STSystemFunction.h"
+#include "SSCInternalLibManager.h"
 #include "AlumnAdapter.h"
 #include "ShopAdapter.h"
 #include "IAPManager.h"
@@ -38,7 +38,7 @@
 #include "FlowPageView.h"
 
 #include "AdsManager.h"
-#include "AdsManager.h"
+#include "AdsLoadingScene.h"
 #include "ProgressBar.h"
 #include "GameUIEvent.h"
 #include "TipLayer.h"

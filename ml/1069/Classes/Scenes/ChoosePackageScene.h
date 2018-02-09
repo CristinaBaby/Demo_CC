@@ -14,9 +14,6 @@ public:
     MY_SCENE(ChoosePackageScene);
     CREATE_FUNC(ChoosePackageScene);
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(ChoosePackageScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(ChoosePackageScene));}
-    
     virtual bool init();
     void onPackageCallback(LockItem* item);
     void onButtonCallback(Ref*,Widget::TouchEventType type);

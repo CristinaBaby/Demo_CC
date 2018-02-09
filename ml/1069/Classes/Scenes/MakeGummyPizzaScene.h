@@ -6,8 +6,7 @@
 #include "ExtensionScene.h"
 #include "OvenNode.h"
 #include "FreezerNode.h"
-#include "RuntimePermission.h"
-#include "RuntimePermissionManager.h"
+
 class MakeGummyPizzaScene : public ExtensionScene
 {
 public:
@@ -19,9 +18,6 @@ public:
     
     virtual bool init();
     
-    virtual void onEnter();
-    virtual void onExit();
-    
     enum{
         eStepMakeCandy,
         eStepCutCandy,
@@ -32,8 +28,6 @@ public:
         eStepMakeJellew,
         eStepAddJellewPiece,
     };
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(MakeGummyPizzaScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(MakeGummyPizzaScene));}
     
     virtual void onButtonCallback(Button* btn);
     
@@ -48,35 +42,35 @@ public:
 protected:
     virtual void _initData();
     
-    //   *******Make Candy UI
+//   *******Make Candy UI
     void _createMakeCandyUI();
     void _showCandyIngredient(int group); //4 ingredient
-    
-    //    *******Cut Candy UI
+
+//    *******Cut Candy UI
     void _showRing();
     
-    //    *******Cut Jellew UI
+//    *******Cut Jellew UI
     void _showJellewIngredient(int group); //2 ingredient
     void _showBoard();
     void _removeBoard();
     void _showKnife();
     void _showJellewBoard(int type);
     
-    //    *******Make Vanilla Piece UI
+//    *******Make Vanilla Piece UI
     void _createMakeVanillaUI();
     void _showVanillaIngredient(int group); //5 ingredient
     
-    //    add candy jellew
+//    add candy jellew
     void _showAddCandyIngredient(int group); //2 ingredient
     
-    //    ********Make Jellew Piece UI
+//    ********Make Jellew Piece UI
     void _createMakeJellewPieceUI();
     void _showJellewPieceIngredient(int group); //5 ingredient
     
-    //    ******* add piece
+//    ******* add piece
     void _showPeiceWithCandy();
     
-    //    共同
+//    共同
     void _showShadow(DragNode* pIngredient);
     void _hideShadow(DragNode* pIngredient);
     
@@ -101,7 +95,7 @@ protected:
     
     void _movePanMiddle();
     void _movePanRight();
-    //    deel
+//    deel
     void _addCandyIngredient(DragNode* pIngredient);
     void _mix(int step);
     void _putinOven();
@@ -123,7 +117,7 @@ protected:
     
     void _addGummyPiece();
     
-    //    finish
+//    finish
     void _finishMakeCandyAdd(int step);
     void _finishMix(int step);
     void _finishBake();
@@ -143,7 +137,7 @@ protected:
     void _finishMakeJellewPieceAdd(int step);
     
     void _finishAddGummyPiece();
-    //    Make Candy Unit
+//    Make Candy Unit
     DragNode* m_pWater;
     DragNode* m_pGelatin;
     DragNode* m_pPowderJellew;
@@ -151,10 +145,10 @@ protected:
     int m_nCandyAddCount;
     std::vector<Sprite*> m_ringVector;
     
-    //    cut candy
+//    cut candy
     DragNode* m_pRing;
     
-    //    cut Jewllew
+//    cut Jewllew
     Sprite* m_pJellewPlate;
     Sprite* m_pJellewPlateEmpty;
     std::vector<DragNode*> m_JellewGreens;
@@ -169,26 +163,26 @@ protected:
     Node* m_pJellewGreenBlock;
     Node* m_pJellewYellowBlock;
     
-    //    Make Vanilla
+//    Make Vanilla
     DragNode* m_pMilk;
     DragNode* m_pSugar;
     DragNode* m_pVanilla;
     
-    //    add candy jellew
+//    add candy jellew
     Sprite* m_pCandyPlate;
     DragNode* m_pRedCandy;
     DragNode* m_pGreenCandy;
     DragNode* m_pYellowCandy;
     std::vector<Sprite*> m_candyVector;
     
-    //    add piece
+//    add piece
     DragNode* m_pGummyPiece;
     Sprite* m_pGummyPan;
     
-    //    make Jellew yellow piece
+//    make Jellew yellow piece
     DragNode* m_pPowderJellew2;
     
-    //    共同工具
+//    共同工具
     Sprite* m_pBg;
     OvenNode* m_pOven;
     FreezerNode* m_pFreezer;
@@ -213,13 +207,7 @@ protected:
     bool m_bSpoonReady;
     int m_nMixCount;
     int m_nStep; //0 make candy  1 cut candy ...
-    //    bool m_bIsBake;
-    
-    
-private:
-    void saveImage1();
-    void saveImage2();
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
+//    bool m_bIsBake;
 };
 
 #endif

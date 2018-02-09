@@ -33,9 +33,9 @@ bool PackPizzaScene::init()
     this->addChildToBGLayer(pBg);
     m_pBg = pBg;
     
-    m_pTypeScrollView = DecTypeScrollView::createWithSize(Size(220,480));
+    m_pTypeScrollView = DecTypeScrollView::createWithSize(Size(150,540));
     this->addChildToUILayer(m_pTypeScrollView);
-    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  -10-visibleSize.width/2,(640-m_pTypeScrollView->getContentSize().height)/2-50+30,kBorderLeft);
+    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  0-visibleSize.width/2,(visibleSize.height-m_pTypeScrollView->getContentSize().height)/2,kBorderLeft);
     m_pTypeScrollView->onItemCellSelected = CC_CALLBACK_3(PackPizzaScene::onTypeCallback, this);
     m_pTypeScrollView->btnPathEX = "content/category/icon/";
     m_pTypeScrollView->setLocalZOrder(1);
@@ -43,11 +43,9 @@ bool PackPizzaScene::init()
     m_pTypeScrollView->runAction(Sequence::create(DelayTime::create(0.5),
                                                   EaseBackIn::create(MoveBy::create(1, Vec2(visibleSize.width/2, 0))),
                                                   DelayTime::create(2), NULL));
-    m_pTypeScrollView->setSingleAsset(false);
-    m_pTypeScrollView->setMargin(-10);
-    m_pTypeScrollView->boxPathEX = "content/category/icon/box_1.png";
+    m_pTypeScrollView->setSingleAsset(true);
+    m_pTypeScrollView->setMargin(20);
     m_pTypeScrollView->loadType(ConfigManager::getInstance()->getDecorateType("pack"));
-    m_pTypeScrollView->setScale(.9);
 
     _initDefaultDecorate();
     
@@ -68,10 +66,20 @@ bool PackPizzaScene::init()
 void PackPizzaScene::onEnter()
 {
     ExtensionScene::onEnter();
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE_ICECREAM);
+    }
 }
 
 void PackPizzaScene::onExit()
 {
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE_ICECREAM);
+    }
     ExtensionScene::onExit();
 }
 #pragma mark - initData
@@ -100,9 +108,9 @@ void PackPizzaScene::_initDefaultDecorate()
         
         std::string str;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        str = SSCFileUtility::getStoragePath()+"normal_decripe.png";
+        str = FileUtility::getStoragePath()+"normal_decripe.png";
 #else
-        str = SSCFileUtility::getStoragePath()+"/normal_decripe.png";
+        str = FileUtility::getStoragePath()+"/normal_decripe.png";
 #endif
         Sprite*pPizza = Sprite::create(str);
         
@@ -126,9 +134,9 @@ void PackPizzaScene::_initDefaultDecorate()
         
         std::string str;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        str = SSCFileUtility::getStoragePath()+"gummypiece.png";
+        str = FileUtility::getStoragePath()+"gummypiece.png";
 #else
-        str = SSCFileUtility::getStoragePath()+"/gummypiece.png";
+        str = FileUtility::getStoragePath()+"/gummypiece.png";
 #endif
         Sprite*pPizza = Sprite::create(str);
 //        380,260
@@ -359,25 +367,27 @@ void PackPizzaScene::onTypeCallback(int index,DecorateTypeConfigData typeData,bo
         ostr.str("");
         ostr<<"content/category/"<<data.pathName<<"_icon/";
         if (!m_pDecorationScrollView) {
-            m_pDecorationScrollView = ItemScrollView::createWithSize(Size(260, 425),false);
+            m_pDecorationScrollView = ItemScrollView::createWithSize(Size(180, 550),false);
             this->addChildToUILayer(m_pDecorationScrollView);
             
             m_pDecorationScrollView->decorationData = data;
-            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(PackPizzaScene::onDecorationCallback, this);
+            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(PackPizzaScene::onDecorationCallback, this);
         }else{
             m_pDecorationScrollView->decorationData = data;
         }
         m_pDecorationScrollView->setDirection(ItemScrollView::Direction::eDirectionV);
-        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(PackPizzaScene::onDecorationCallback, this);
+        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(PackPizzaScene::onDecorationCallback, this);
         m_pDecorationScrollView->stopAllActions();
         m_pDecorationScrollView->setMargin(10);
-        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView,  120-visibleSize.width/2-20,(640-m_pDecorationScrollView->getContentSize().height)/2-50+30,kBorderLeft);
+//        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, (640-m_pDecorationScrollView->getContentSize().width)*0.5,60-visibleSize.height/2);
+//        m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(0, visibleSize.height/2)));
+        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, (640-m_pDecorationScrollView->getContentSize().width)*0.5,720+visibleSize.height/2);
+        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView,  120-visibleSize.width/2,(visibleSize.height-m_pDecorationScrollView->getContentSize().height)/2,kBorderLeft);
         m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(visibleSize.width/2,0)));
         m_pDecorationScrollView->btnPathEX = ostr.str();
-        m_pDecorationScrollView->setScale(0.85);
         
         m_pDecorationScrollView->bgHighlightPath = "content/category/icon/c.png";
-        m_pDecorationScrollView->boxPathEX = "content/category/icon/box_2.png";
+        m_pDecorationScrollView->boxPathEX = "content/category/icon/box_1.png";
         if (std::strcmp(m_sCurTypePath.c_str(), "sprinkle")==0 || std::strcmp(m_sCurTypePath.c_str(), "fruit")==0  || std::strcmp(m_sCurTypePath.c_str(), "candy")==0) {
             m_pDecorationScrollView->setMargin(30);
         }else{
@@ -415,16 +425,33 @@ void PackPizzaScene::onDecorateOK()
                                                       EaseBackOut::create(MoveBy::create(1, Vec2(visibleSize.width, 0))), NULL));
     }
 }
-void PackPizzaScene::onDecorationCallback(int index,int type,DecorateConfigData decData)
+void PackPizzaScene::onDecorationCallback(int index,DecorateConfigData decData)
 {
-    if (type==1) {
-        if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
-            RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
+//    m_pTypeScrollView->setNormal();
+//    if (m_pDecorationScrollView) {
+//        m_pDecorationScrollView->runAction(Sequence::create(Spawn::create(MoveBy::create(0.5, Vec2(-80, 0)),
+//                                                                          ScaleTo::create(0.5, 0), NULL),
+//                                                            CallFunc::create([=]()
+//                                                                             {
+//                                                                                 m_pDecorationScrollView->removeFromParent();
+//                                                                                 m_pDecorationScrollView = nullptr;
+//                                                                             }), NULL));
+////        m_pDecorationScrollView->removeFromParent();
+////        m_pDecorationScrollView = nullptr;
+//    }
+    
+    if (!gNoneIap) {
+        if (index>=decData.freeCount+decData.beginIndex && !(index<decData.totalCount+decData.beginIndex && index>=decData.holidayIndex && decData.holidayIndex>=0 && decData.holidayCount==0)){
+            
+            ShopLayer* pLayer = ShopLayer::create();
+            this->addChildToUILayer(pLayer);
+            pLayer->setLocalZOrder(100);
+            pLayer->showBannerDismiss();
             m_pDecorationScrollView->setSelected(false);
+            
             return;
         }
     }
-    
     if (!m_bCanDecorate) {
         return;
     }
@@ -505,22 +532,20 @@ void PackPizzaScene::_saveBox()
     Size mixtureSize = Size(m_boxSize.width+100,m_boxSize.height+100);
     RenderTexture* render = RenderTexture::create(mixtureSize.width, mixtureSize.height,Texture2D::PixelFormat::RGBA8888,
                                                   GL_DEPTH24_STENCIL8_OES);//针对clippingNode 设置了深度
-    if (m_pBoxNode) {
-        Vec2 pos = m_pBoxNode->getPosition();
-        m_pBoxNode->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
-        
-        render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
-        m_pBoxNode->visit();
-        render->end();
-        
-        m_pBoxNode->setPosition(pos);
-        
-        Director::getInstance()->getRenderer()->render();
-        
-        __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_BACKGROUND);
-        __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_FOREGROUND);
-
-    }
+    
+    Vec2 pos = m_pBoxNode->getPosition();
+    m_pBoxNode->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
+    
+    render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    m_pBoxNode->visit();
+    render->end();
+    
+    m_pBoxNode->setPosition(pos);
+    
+    Director::getInstance()->getRenderer()->render();
+    
+    __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_BACKGROUND);
+    __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_FOREGROUND);
     
     Image* pImage = render->newImage();
     
@@ -531,9 +556,9 @@ void PackPizzaScene::_saveBox()
     
     std::string name = StringUtils::format("%ld.jpg",time);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+ name, false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+ name, false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/"+ name, false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/"+ name, false);
 #endif
     pImage->autorelease();
 }

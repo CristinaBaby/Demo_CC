@@ -2,6 +2,8 @@
 #include "DecorateConeScene.h"
 #include "SceneManager.h"
 #include "ShopLayer.h"
+#include "SSCFileUtility.h"
+#include "Analytics.h"
 
 static Color4B gPenColor[] = {
     {255,255,255,255},
@@ -109,8 +111,10 @@ bool DecorateConeScene::init()
 void DecorateConeScene::onEnter()
 {
     ExtensionScene::onEnter();
+    
     m_bShowShop = false;
     FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DESIGN_CONE);
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_DESIGN_CONE);
 }
 
 void DecorateConeScene::onExit()
@@ -263,9 +267,15 @@ void DecorateConeScene::onButtonCallback(Button* btn)
         
         GameDataManager::getInstance()->m_nDecorateStep++;
         Image* pImage = getResultRender()->newImage();
+        std::stringstream ostr;
         
         bool issuccess;
-        issuccess = pImage->saveToFile(FileUtils::getInstance()->getWritablePath()+"cone.png", false);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        ostr<<"cone.png";
+#else
+        ostr<<"/cone.png";
+#endif
+        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+ostr.str(), false);
         pImage->autorelease();
         log("===save success %d==",issuccess);
         GameDataManager::getInstance()->setStepCount(5);

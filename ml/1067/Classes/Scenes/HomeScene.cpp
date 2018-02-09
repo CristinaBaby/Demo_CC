@@ -4,7 +4,6 @@
 #include "ShopLayer.h"
 #include "DecorateManager.h"
 #include "Analytics.h"
-#include "SSCMoreGameButton.h"
 
 static  Vec2 gKidPos[] = {
     Vec2(170,225),
@@ -133,30 +132,21 @@ bool HomeScene::init()
                                                                               AudioHelp::getInstance()->playEffect("logo.mp3");
                                                                           }), NULL));
                                                                           
-                                                                          SSCMoreGameButton* m_moreGameButton = SSCMoreGameButton::create();
-                                                                          //    //当首页有banner广告时调用该方法，第二个参数传true，来显示button并设置位置
-                                                                          m_moreGameButton->showButton(m_pContentLayer,true);
-                                                                          m_moreGameButton->setClickCall(CC_CALLBACK_0(HomeScene::clickedMoreGameButton,this));
-                                                                          CMVisibleRect::setPosition(m_moreGameButton, 80, 155,kBorderRight,kBorderBottom);
                                                                       }), NULL));
                 }
             }
         }
     });
-    
+
     
     AudioHelp::getInstance()->playBackGroundMusic("bg_home_map.mp3");
     
     m_bShowAds = false;
     GameDataManager::getInstance()->m_nDecorateStep= 0;
     if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+        AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
     }
     return true;
-}
-void HomeScene::clickedMoreGameButton()
-{
-    SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
 }
 
 void HomeScene::onEnter()
@@ -212,8 +202,9 @@ void HomeScene::onButtonCallback(Button* btn)
         case GameUILayoutLayer::eUIButtonTagHomeMore:
         {
             m_bShowMoreGame = true;
-            STSystemFunction st;
-            st.showMoreGame();
+//            STSystemFunction st;
+//            st->showMoreGame();
+            SSCInternalLibManager::getInstance()->showMoreGames();
         }
             break;
         case GameUILayoutLayer::eUIButtonTagHomeShop:

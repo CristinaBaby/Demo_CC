@@ -5,12 +5,11 @@
 ChoosePackageScene::ChoosePackageScene()
 {
     m_bSelected = false;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(ChoosePackageScene));
 }
 
 ChoosePackageScene::~ChoosePackageScene()
 {
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(ChoosePackageScene));
+    
 }
 bool ChoosePackageScene::init()
 {
@@ -177,12 +176,7 @@ bool ChoosePackageScene::init()
     m_pScrollView->setDirection(cocos2d::ui::ScrollView::Direction::HORIZONTAL);
     m_pScrollView->getInnerContainer()->setContentSize(pBg->getContentSize());
     m_pGameUI->showNormalLayout();
-    AudioHelp::getInstance()->playEffect("vo_choose_pizza_001.mp3");
-    this->runAction(Sequence::create(DelayTime::create(3),
-                                     CallFunc::create([=](){
-        AudioHelp::getInstance()->playEffect("vo_choose_pizza_002.mp3");
-    }), NULL));
-    AudioHelp::getInstance()->playBackGroundMusic("background.mp3");
+    AudioHelp::getInstance()->playEffect("vo_choose_pizza.mp3");
     return true;
 }
 
@@ -217,9 +211,6 @@ void ChoosePackageScene::onPackageCallback(LockItem* item)
 void ChoosePackageScene::onSelectCallback(int index)
 {
     m_bSelected = true;
-    this->stopAllActions();
-    AudioHelp::getInstance()->stopEffect("vo_choose_pizza_001.mp3");
-    AudioHelp::getInstance()->stopEffect("vo_choose_pizza_002.mp3");
     AudioHelp::getInstance()->playEffect("selected_stars.mp3");
     AudioHelp::getInstance()->playEffect("vo_nice_choice.mp3");
     int tag = index;

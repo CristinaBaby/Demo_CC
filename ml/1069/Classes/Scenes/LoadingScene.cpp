@@ -58,7 +58,7 @@ void LoadingScene::preLoad()
     GameDataManager::getInstance()->setup(); //要放在ConfigManager后面
     ConfigManager::getInstance()->restoreDecorateConfigData();
     
-//    AdsManager::getInstance()->preloadAllAds();
+    AdsManager::getInstance()->preloadAllAds();
     
 //    IAPManager::getInstance()->loadIapInfo("Config/IAPConfig.plist");
     

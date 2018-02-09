@@ -12,8 +12,8 @@
 #include <iostream>
 #include <vector>
 #include "cocos2d.h"
-#include "SSCInAppBilling.h"
-#include "SSCCSVParse.h"
+#include "CFAppBilling.h"
+#include "../utils/CSVParse.h"
 
 #define IAP_ID          "IapId"
 #define IAP_IMG_NAME    "ImgName"
@@ -33,7 +33,7 @@ class Product;
 typedef vector<Vec2> PaidRange;
 typedef unordered_map<string, PaidRange> ImgMap;
 
-class IAPManager : public SSCInAppBillingDelegate{
+class IAPManager : public CFAppBillingDelegate{
     
 protected:
     IAPManager();
@@ -115,7 +115,7 @@ public:
     
     virtual void restoreFailed(const char* pid, int errorCode);
 private:
-    void csvParse(SSCCSVParse*);
+    void csvParse(CSVParse*);
     Product* findProduct(const string& iapId);
     Product* findProductByName(const string& name);
     bool checkAllNormalPackage();
@@ -125,7 +125,7 @@ private:
     /*iap products*/
     Vector<Product*>    m_vProducts;
     
-    SSCInAppBilling    m_oAppBilling;
+    CFAppBilling    m_oAppBilling;
 public:
     /*debug print*/
     void printProductInfos();

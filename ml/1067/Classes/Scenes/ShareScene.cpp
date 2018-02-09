@@ -1,9 +1,7 @@
 
 #include "ShareScene.h"
 #include "SceneManager.h"
-#include "SSCInternalLibManager.h"
-#include "RuntimePermission.h"
-#include "RuntimePermissionManager.h"
+#include "SSCFileUtility.h"
 
 static std::string gPackageName[] = {
     "lemonade",
@@ -25,6 +23,7 @@ ShareScene::ShareScene()
 {
     m_pTip = nullptr;
     m_bBack = false;
+    m_nRequestType = -1;
 }
 
 ShareScene::~ShareScene()
@@ -62,46 +61,6 @@ void ShareScene::onEnter()
     
 }
 
-void ShareScene::onPermissionGrantedResult(int requestCode,bool bGranted)
-{
-    if (requestCode == 1) {
-        if (bGranted) {
-            this->runAction(Sequence::create(DelayTime::create(0.1f),
-                                             CallFunc::create([=] {
-                saveImageAlbum();
-            }),NULL))    ;
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-            Button *btn = m_pGameUI->getButton(GameUILayoutLayer::eUIButtonTagPhoto);
-            btn->setTouchEnabled(true);
-            btn->setEnabled(true);
-        }
-    }
-    
-}
-void ShareScene::saveImageAlbum(){
-    
-    Image* image = getResultRender()->newImage();
-    SSCInternalLibManager::getInstance()->saveToAlbum(image, [=](bool ok){
-        if (ok) {
-            Dialog* dialog=Dialog::create(Size(497,355), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
-            dialog->setContentText("Your image has been saved to your Camera Roll!");
-            Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
-            dialog->setPosition(Director::getInstance()->getVisibleOrigin());
-        }else{
-            Dialog* dialog=Dialog::create(Size(497*1.3,355*1.3), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
-            dialog->setContentText("This app does not have access to your photos.You can enable access in Privacy Setting.");
-            Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
-            dialog->setPosition(Director::getInstance()->getVisibleOrigin());
-        }
-        Button *btn = m_pGameUI->getButton(GameUILayoutLayer::eUIButtonTagPhoto);
-        btn->setTouchEnabled(true);
-        btn->setEnabled(true);
-        delete image;
-    },"SnowCone");
-}
 void ShareScene::onButtonCallback(Button* btn)
 {
     ExtensionScene::onButtonCallback(btn);
@@ -110,57 +69,54 @@ void ShareScene::onButtonCallback(Button* btn)
 
         
     }else if (GameUILayoutLayer::eUIButtonTagPhoto==tag){
-        Image* image = getResultRender()->newImage();
-        STSystemFunction st;
+//        STSystemFunction st;
         btn->setEnabled(false);
-        AudioHelp::getInstance()->playCameraEffect();
-//        this->runAction(Sequence::create(DelayTime::create(1),
-//                                         CallFunc::create([=]()
-//                                                          {
-//                                                              btn->setEnabled(true);
-//                                                          }), NULL));
         
-        st.saveToAlbum(image, [=](bool ok){
-            btn->setEnabled(true);
-            if (ok) {
-                Dialog* dialog=Dialog::create(Size(497,355), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
-                dialog->setContentText("Your image has been saved to your Camera Roll!");
-                Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
-                dialog->setPosition(Director::getInstance()->getVisibleOrigin());
-            }else{
-                Dialog* dialog=Dialog::create(Size(497*1.3,355*1.3), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
-                dialog->setContentText("This app does not have access to your photos.You can enable access in Privacy Setting.");
-                Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
-                dialog->setPosition(Director::getInstance()->getVisibleOrigin());
-            }
-            delete image;
-        },"SnowCone");
-        
-        
+        this->runAction(Sequence::create(DelayTime::create(1),
+                                         CallFunc::create([=]()
+                                                          {
+                                                              btn->setEnabled(true);
+                                                          }), NULL));
+        m_nRequestType = 1;
+        {
+#if __cplusplus > 201100L
+            RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int requestcode,bool bgranted){
+                onPermissionGrantedResult(requestcode, bgranted);
+            };
+#else
+            RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
+#endif
+            //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
+            int requestCode = 1;
+            //调用权限申请的方法,根据需要申请敏感权限
+            RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
+        }
     }else if (GameUILayoutLayer::eUIButtonTagEmail==tag){
-        STSystemFunction st;
+
         btn->setEnabled(false);
         this->runAction(Sequence::create(DelayTime::create(1),
                                          CallFunc::create([=]()
                                                           {
                                                               btn->setEnabled(true);
                                                           }), NULL));
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        Image* pImage = getResultRender()->newImage();
-        pImage->saveToFile(FileUtility::getStoragePath()+"shotscreen.png", false);
-        pImage->autorelease();
         
-        st.sendEmailAndFilePic("Summer Snow Cone!",
-                               "<p>What a hot summer. A snow cone is really hit the spot.  Look at this snow cone I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.</p>  <p><a href=‘http://itunes.apple.com/app/id1118224950’>http://itunes.apple.com/app/id1118224950</a></p>",
-                               (FileUtility::getStoragePath()+"shotscreen.png").c_str());
+        
+        m_nRequestType = 2;
+        {
+#if __cplusplus > 201100L
+            RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int requestcode,bool bgranted){
+                onPermissionGrantedResult(requestcode, bgranted);
+            };
 #else
-        Image* pImage = getResultRender()->newImage();
-        pImage->saveToFile(FileUtility::getStoragePath()+"/shotscreen.png", false);
-        pImage->autorelease();
-        st.sendEmailAndFilePic("Summer Snow Cone!",
-                               "What a hot summer. A snow cone is really hit the spot.  Look at this snow cone I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.",
-                               (FileUtility::getStoragePath()+"/shotscreen.png").c_str());
+            RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
 #endif
+            //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
+            int requestCode = 1;
+            //调用权限申请的方法,根据需要申请敏感权限
+            RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
+        }
+        
+
     }else if (GameUILayoutLayer::eUIButtonTagEatAgain==tag){
         btn->setVisible(false);
         btn->setEnabled(true);
@@ -235,6 +191,41 @@ void ShareScene::onButtonCallback(Button* btn)
         
     }
 }
+void ShareScene::onPermissionGrantedResult(int requestCode,bool bGranted){
+    if (requestCode == 1) {
+        if (bGranted) {
+            //add your code....
+            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
+            if(m_nRequestType==2){
+                this->runAction(Sequence::create(DelayTime::create(0.01),
+                                                 CallFunc::create([=](){
+                    _sendEmail();
+                }), NULL));
+            }else if(m_nRequestType==1){
+                this->runAction(Sequence::create(DelayTime::create(0.01),
+                                                 CallFunc::create([=](){
+                    _savePhoto();
+                }), NULL));
+                
+            }
+        }else{
+            //add your code....
+            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
+            
+            this->runAction(Sequence::create(DelayTime::create(0.01),
+                                             CallFunc::create([=](){
+                Dialog* dialog=Dialog::create(Size(504*1.2,360*1.2), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
+                dialog->setContentText("This app does not have access to your photos.You can enable access in Privacy Setting.");
+                Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
+                dialog->setPosition(Director::getInstance()->getVisibleOrigin());
+            }), NULL));
+            
+        }
+    }else{
+        log("-------->anroid runtime permisson was not granted ,%d,requestcode = %d",bGranted,requestCode);
+    }
+}
+
 #pragma mark - initData
 void ShareScene::_initData()
 {
@@ -273,6 +264,47 @@ void ShareScene::_showEatScene()
         AudioHelp::getInstance()->playEffect("enjoy.mp3");
     }), NULL));
     
+}
+
+void ShareScene::_savePhoto()
+{
+    AudioHelp::getInstance()->playCameraEffect();
+    
+    Image* image = getResultRender()->newImage();
+    SSCInternalLibManager::getInstance()->saveToAlbum(image, [=](bool ok){
+        if (ok) {
+            Dialog* dialog=Dialog::create(Size(497,355), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
+            dialog->setContentText("Your image has been saved to your Camera Roll!");
+            Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
+            dialog->setPosition(Director::getInstance()->getVisibleOrigin());
+        }else{
+            Dialog* dialog=Dialog::create(Size(497*1.3,355*1.3), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
+            dialog->setContentText("This app does not have access to your photos.You can enable access in Privacy Setting.");
+            Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
+            dialog->setPosition(Director::getInstance()->getVisibleOrigin());
+        }
+        delete image;
+    },"SnowCone");
+}
+
+void ShareScene::_sendEmail()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    Image* pImage = getResultRender()->newImage();
+    pImage->saveToFile(SSCFileUtility::getStoragePath()+"shotscreen.png", false);
+    pImage->autorelease();
+    
+    SSCInternalLibManager::getInstance()->sendEmailAndFilePic("Summer Snow Cone!",
+                                                              "<p>What a hot summer. A snow cone is really hit the spot.  Look at this snow cone I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.</p>  <p><a href=‘http://itunes.apple.com/app/id1118224950’>http://itunes.apple.com/app/id1118224950</a></p>",
+                                                              (SSCFileUtility::getStoragePath()+"shotscreen.png").c_str());
+#else
+    Image* pImage = getResultRender()->newImage();
+    pImage->saveToFile(SSCFileUtility::getStoragePath()+"/shotscreen.png", false);
+    pImage->autorelease();
+    SSCInternalLibManager::getInstance()->sendEmailAndFilePic("Summer Snow Cone!",
+                                                              "What a hot summer. A snow cone is really hit the spot.  Look at this snow cone I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.",
+                                                              (SSCFileUtility::getStoragePath()+"/shotscreen.png").c_str());
+#endif
 }
 
 RenderTexture* ShareScene::getResultRender()

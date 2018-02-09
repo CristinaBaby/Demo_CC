@@ -70,7 +70,9 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
     
     if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);        
+        if (Director::getInstance()->getRunningScene()) {
+            AdLoadingLayerBase::showLoading<AdsLoadingScene>(false);
+        }
     }
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();

@@ -26,7 +26,7 @@ public:
     void playArmation(int index,bool loop);
     void gotoAndPause(int index){
         ArmatureAnimation* lArmation = m_pRole->getAnimation();
-//        lArmation->stop();
+        lArmation->stop();
         lArmation->gotoAndPause(index);
     }
     Armature* getArmature(){

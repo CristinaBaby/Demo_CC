@@ -1,5 +1,7 @@
 
 #include "PuzzleGameScene.h"
+#include "Analytics.h"
+
 PuzzleGameScene::PuzzleGameScene()
 {
     
@@ -79,7 +81,7 @@ bool PuzzleGameScene::init()
 void PuzzleGameScene::onEnter()
 {
     ExtensionScene::onEnter();
-    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_SHAPE);
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_SHAPE);
 }
 
 void PuzzleGameScene::onExit()

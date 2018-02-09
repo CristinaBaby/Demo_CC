@@ -8,8 +8,9 @@
 #include "CandlePosition.h"
 #include "CandleNode.h"
 #include "ChooseBackgroudLayer.h"
+#include "RuntimePermissionManager.h"
 
-class ShareScene : public ExtensionScene
+class ShareScene : public ExtensionScene,public RuntimePermissionDelegate
 {
 public:
     ShareScene();
@@ -27,12 +28,14 @@ public:
     void onEatBeinCallback(Vec2 location,bool drinkable);
     void onEatEndCallback(Vec2 location);
     
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
     void onBgCallback(int index);
-    void saveImageAlbum();
+    void onPermissionGrantedResult(int requestCode,bool bGranted);
 protected:
     virtual void _initData();
     void _showEatScene();
+    
+    void _savePhoto();
+    void _sendEmail();
     
     RenderTexture* getResultRender();
     
@@ -46,6 +49,7 @@ protected:
     
     bool m_bBack;
     int m_nBgIndex;
+    int m_nRequestType;
 };
 
 #endif

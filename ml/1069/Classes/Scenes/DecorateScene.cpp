@@ -21,12 +21,11 @@ DecorateScene::DecorateScene()
     m_bPacked = false;
     m_bCanDecorate = true;
     m_pScribble = nullptr;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(DecorateScene));
 }
 
 DecorateScene::~DecorateScene()
 {
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(DecorateScene));
+    
 }
 bool DecorateScene::init()
 {
@@ -57,7 +56,7 @@ bool DecorateScene::init()
     
     m_pTypeScrollView = DecTypeScrollView::createWithSize(Size(210,480));
     this->addChildToUILayer(m_pTypeScrollView);
-    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  -10-visibleSize.width/2,(640-m_pTypeScrollView->getContentSize().height)/2-50+30,kBorderLeft);
+    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  -10-visibleSize.width/2,(640-m_pTypeScrollView->getContentSize().height)/2-50,kBorderLeft);
     m_pTypeScrollView->onItemCellSelected = CC_CALLBACK_3(DecorateScene::onTypeCallback, this);
     m_pTypeScrollView->btnPathEX = "content/category/icon/";
     m_pTypeScrollView->boxPathEX = "content/category/icon/box_1.png";
@@ -69,18 +68,14 @@ bool DecorateScene::init()
     m_pTypeScrollView->setSingleAsset(false);
     m_pTypeScrollView->setMargin(-10);
     m_pTypeScrollView->loadType(ConfigManager::getInstance()->getDecorateType("pack"));
-    m_pTypeScrollView->setScale(0.8);
 
     _initDefaultDecorate();
     
-    this->runAction(Sequence::create(DelayTime::create(0.5),
-                                     CallFunc::create([=](){
-        AudioHelp::getInstance()->playEffect("vo_pack_pizza.mp3");
-    }),
-                                     DelayTime::create(1),
+    this->runAction(Sequence::create(DelayTime::create(1),
                                      CallFunc::create([=](){
         m_pGameUI->showNextLayout();
         m_pGameUI->showResetLayout();
+        AudioHelp::getInstance()->playEffect("vo_pack_pizza.mp3");
     }), NULL));
     
     m_pGuideLayer = GuideLayer::create();
@@ -106,13 +101,20 @@ void DecorateScene::onEnter()
 {
     ExtensionScene::onEnter();
     m_bShowShop = false;
-//    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE);
-    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_DECORATE);
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE_ICECREAM);
+    }
 }
 
 void DecorateScene::onExit()
 {
-//    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE);
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE_ICECREAM);
+    }
     ExtensionScene::onExit();
 }
 #pragma mark - initData
@@ -125,13 +127,6 @@ void DecorateScene::_initData()
     std::memset(m_bGuide, 0, 3);
     std::memset(m_bVOGuide, 0, 4);
     GameDataManager::getInstance()->m_bPacked = false;
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"gummypiece.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"normal_decripe.png");
-#else
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/gummypiece.png");
-    TextureCache::getInstance()->removeTextureForKey(SSCFileUtility::getStoragePath()+"/normal_decripe.png");
-#endif
 }
 
 void DecorateScene::_initDefaultDecorate()
@@ -152,9 +147,9 @@ void DecorateScene::_initDefaultDecorate()
         
         std::string str;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        str = SSCFileUtility::getStoragePath()+"normal_decripe.png";
+        str = FileUtility::getStoragePath()+"normal_decripe.png";
 #else
-        str = SSCFileUtility::getStoragePath()+"/normal_decripe.png";
+        str = FileUtility::getStoragePath()+"/normal_decripe.png";
 #endif
         Sprite*pPizza = Sprite::create(str);
         
@@ -183,9 +178,9 @@ void DecorateScene::_initDefaultDecorate()
         std::string str;
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        str = SSCFileUtility::getStoragePath()+"gummypiece.png";
+        str = FileUtility::getStoragePath()+"gummypiece.png";
 #else
-        str = SSCFileUtility::getStoragePath()+"/gummypiece.png";
+        str = FileUtility::getStoragePath()+"/gummypiece.png";
 #endif
         Sprite*pPizza = Sprite::create(str);
         
@@ -465,9 +460,9 @@ void DecorateScene::_saveBox()
     
     std::string name = StringUtils::format("%ld.png",time);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+ name, false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+ name, false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/"+ name, false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/"+ name, false);
 #endif
     pImage->autorelease();
     GameDataManager::getInstance()->setBoxName(name);
@@ -478,11 +473,10 @@ void DecorateScene::_savePizza(){
 }
 void DecorateScene::_displayPizza()
 {
-    AudioHelp::getInstance()->stopEffect("vo_pack_pizza.mp3");
     AudioHelp::getInstance()->playEffect("vo_nice_design.mp3");
     m_bCanDecorate = false;
     m_pTypeScrollView->runAction(Sequence::create(MoveBy::create(0.5, Vec2(-visibleSize.width/2, 0)),
-                                                  DelayTime::create(1),
+                                                  DelayTime::create(0.5),
                                                   CallFunc::create([=](){
         
 //        m_pGameUI->showEatLayout();
@@ -629,19 +623,18 @@ void DecorateScene::onTypeCallback(int index,DecorateTypeConfigData typeData,boo
             this->addChildToUILayer(m_pDecorationScrollView);
             
             m_pDecorationScrollView->decorationData = data;
-            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(DecorateScene::onDecorationCallback, this);
+            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(DecorateScene::onDecorationCallback, this);
         }else{
             m_pDecorationScrollView->decorationData = data;
         }
         m_pDecorationScrollView->setDirection(ItemScrollView::Direction::eDirectionV);
-        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(DecorateScene::onDecorationCallback, this);
+        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(DecorateScene::onDecorationCallback, this);
         m_pDecorationScrollView->stopAllActions();
         m_pDecorationScrollView->setMargin(10);
         CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, (640-m_pDecorationScrollView->getContentSize().width)*0.5,720+visibleSize.height/2);
-        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView,  120-visibleSize.width/2-20,(640-m_pDecorationScrollView->getContentSize().height)/2-50+30,kBorderLeft);
+        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView,  120-visibleSize.width/2,(640-m_pDecorationScrollView->getContentSize().height)/2-50,kBorderLeft);
         m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(visibleSize.width/2,0)));
         m_pDecorationScrollView->btnPathEX = ostr.str();
-        m_pDecorationScrollView->setScale(0.85);
         
         m_pDecorationScrollView->bgHighlightPath = "content/category/icon/c.png";
         m_pDecorationScrollView->boxPathEX = "content/category/icon/box_2.png";
@@ -694,16 +687,45 @@ void DecorateScene::onDecorateOK()
                                                       EaseBackOut::create(MoveBy::create(1, Vec2(visibleSize.width, 0))), NULL));
     }
 }
-void DecorateScene::onDecorationCallback(int index,int type,DecorateConfigData decData)
+void DecorateScene::onDecorationCallback(int index,DecorateConfigData decData)
 {
-    if (type==1) {
-        if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
-            RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
-            m_pDecorationScrollView->setSelected(false);
-            return;
+//    m_pTypeScrollView->setNormal();
+//    if (m_pDecorationScrollView) {
+//        m_pDecorationScrollView->runAction(Sequence::create(Spawn::create(MoveBy::create(0.5, Vec2(-80, 0)),
+//                                                                          ScaleTo::create(0.5, 0), NULL),
+//                                                            CallFunc::create([=]()
+//                                                                             {
+//                                                                                 m_pDecorationScrollView->removeFromParent();
+//                                                                                 m_pDecorationScrollView = nullptr;
+//                                                                             }), NULL));
+////        m_pDecorationScrollView->removeFromParent();
+////        m_pDecorationScrollView = nullptr;
+//    }
+    
+    if (!gNoneIap) {
+        if (index>=decData.freeCount+decData.beginIndex && !(index<decData.totalCount+decData.beginIndex && index>=decData.holidayIndex && decData.holidayIndex>=0 && decData.holidayCount==0)){
+            if (!m_bShowShop) {
+                m_bShowShop = true;
+//                SceneManager::pushTheScene<ShopScene>();
+            }
+            int type = 0;
+            if(decData.videoCount>0){
+                type = (index)%2;
+            }
+            if (type==0) {
+                ShopLayer* pLayer = ShopLayer::create();
+                this->addChildToUILayer(pLayer);
+                pLayer->setLocalZOrder(100);
+                pLayer->showBannerDismiss();
+                m_pDecorationScrollView->setSelected(false);
+                return;
+            }else if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
+                RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
+                m_pDecorationScrollView->setSelected(false);
+                return;
+            }
         }
     }
-    
     m_bCanTouch = false;
     if (!m_bCanDecorate) {
         return;

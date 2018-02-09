@@ -2,6 +2,7 @@
 #include "ChooseBgScene.h"
 #include "ChooseBackgroudLayer.h"
 #include "SceneManager.h"
+#include "SSCFileUtility.h"
 
 ChooseBgScene::ChooseBgScene()
 {
@@ -51,8 +52,11 @@ bool ChooseBgScene::init()
     m_pCandleLayer->setScale(0.6);
     m_pCandleLayer->setPosition(0, -visibleSize.height*0.1);
     
-    m_pDecoratedCake = Sprite::create(FileUtils::getInstance()->getWritablePath()+"decorate.png");
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    m_pDecoratedCake = Sprite::create(SSCFileUtility::getStoragePath()+"decorate.png");
+#else
+    m_pDecoratedCake = Sprite::create(SSCFileUtility::getStoragePath()+"/decorate.png");
+#endif
     m_pCandleLayer->addChild(m_pDecoratedCake);
     m_pDecoratedCake->setPosition(visibleSize.width/2,visibleSize.height*0.5);
     

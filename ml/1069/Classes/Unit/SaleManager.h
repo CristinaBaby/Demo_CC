@@ -17,7 +17,10 @@ using namespace std;
 class SaleManager : public SingleTon<SaleManager>
 {
 public:
+    SaleManager();
+    ~SaleManager();
     
+    void setup();
     RoleModel* produceGuest();
     RoleModel* getRole(){
         return m_pRole;
@@ -36,7 +39,6 @@ public:
 protected:
     int m_nIndex;
     RoleModel* m_pRole;
-    
     Sprite* m_pDialog;
 };
 

@@ -7,14 +7,13 @@
 //
 
 #include "HomeLayer.h"
-#include "SSCInternalLibManager.h"
+#include "CFSystemFunction.h"
 #include "IAPManager.h"
 #include "Global.h"
 #include "AdsManager.h"
-#include "AdsManager.h"
-//#include "MoreGameLoader.h"
+#include "AdsLoadingLayer.h"
+#include "MoreGameLoader.h"
 #include "SettingLayer.hpp"
-#include "SSCMoreGameButton.h"
 
 enum HomeLayer_Tag{
     eStartBtn_tag,
@@ -147,31 +146,21 @@ bool HomeLayer::initLayer()
     
 
     // add moregame button
-    
-    SSCMoreGameButton* m_moreGameButton = SSCMoreGameButton::create();
-    //    //当首页有banner广告时调用该方法，第二个参数传true，来显示button并设置位置
-    m_moreGameButton->showButton(this,true);
-//    m_moreGameButton->setClickCall(CC_CALLBACK_0(HomeScene::clickedMoreGameButton,this));
-        m_moreGameButton->setClickCall([=](SSCMoreGameButton*){
-            SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
-        });
-    kAdapterScreen->setExactPosition(m_moreGameButton, 20, 90, Vec2(1, 0), kBorderRight, kBorderBottom);
-    
-//    auto pMoreBtn = ToolSprite::create("images/home/btn_more.png");
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    kAdapterScreen->setExactPosition(pMoreBtn, 20 + pMoreBtn->getContentSize().width / 2, 18 + pMoreBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderRight, kBorderBottom);
-//#endif
-//    pMoreBtn->setDelegate(this);
-//    pMoreBtn->setTag(eMoreBtn_tag);
-//    pMoreBtn->setShadeBtn(true);
-//    this->addChild(pMoreBtn, 100);
+    auto pMoreBtn = ToolSprite::create("images/home/btn_more.png");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    kAdapterScreen->setExactPosition(pMoreBtn, 20 + pMoreBtn->getContentSize().width / 2, 18 + pMoreBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderRight, kBorderBottom);
+#endif
+    pMoreBtn->setDelegate(this);
+    pMoreBtn->setTag(eMoreBtn_tag);
+    pMoreBtn->setShadeBtn(true);
+    this->addChild(pMoreBtn, 100);
  
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    kAdapterScreen->setExactPosition(pMoreBtn, 20 + pMoreBtn->getContentSize().width / 2 + 110, 18 + pMoreBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderRight, kBorderBottom);
+    kAdapterScreen->setExactPosition(pMoreBtn, 20 + pMoreBtn->getContentSize().width / 2 + 110, 18 + pMoreBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderRight, kBorderBottom);
     
     // add shop button
     auto pShopBtn = ToolSprite::create("images/home/btn_shop.png");
-    kAdapterScreen->setExactPosition(pShopBtn, 20 + pShopBtn->getContentSize().width / 2, 100 + pShopBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderLeft, kBorderBottom);
+    kAdapterScreen->setExactPosition(pShopBtn, 20 + pShopBtn->getContentSize().width / 2, 15 + pShopBtn->getContentSize().height / 2, Vec2(0.5f, 0.5f), kBorderRight, kBorderBottom);
     pShopBtn->setDelegate(this);
     pShopBtn->setTag(eShopBtn_tag);
     pShopBtn->setShadeBtn(true);
@@ -315,10 +304,15 @@ void HomeLayer::onTouchUpInBoundingBox(ToolSprite* toolSprite,Touch *pTouch)
             
             if(kIAPManager->isShowAds())
             {
-                AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+                AdsLoadingLayer::showLoading<AdsLoadingLayer>(false, nullptr, INT16_MAX);
+                AdsLoadingLayer::loadingDoneCallback = []{
+                    SceneManager::getInstance()->enterMakeConeStep01Scene();
+                };
             }
-            SceneManager::getInstance()->enterMakeConeStep01Scene();
-
+            else
+            {
+                SceneManager::getInstance()->enterMakeConeStep01Scene();
+            }
         }
             break;
             
@@ -327,9 +321,8 @@ void HomeLayer::onTouchUpInBoundingBox(ToolSprite* toolSprite,Touch *pTouch)
             SoundPlayer::getInstance()->playEffect(buttonSound);
             
             m_bIsStartKey = false;
-//            CFSystemFunction cf;
-//            cf.showMoreGame();
-            SSCInternalLibManager::getInstance()->showMoreGames();
+            CFSystemFunction cf;
+            cf.showMoreGame();
         }
             break;
             
@@ -378,10 +371,9 @@ void HomeLayer::onPositiveClick(void* type)
 {
     isReturn = false;
     
-//    CFSystemFunction cf;
-//    
-//    cf.endSession();
-    SSCInternalLibManager::getInstance()->endSession();
+    CFSystemFunction cf;
+    
+    cf.endSession();
     
     Director::getInstance()->end();
 }
@@ -398,8 +390,21 @@ void HomeLayer::onEnter()
     
     AdsManager::getInstance()->removeAds(ADS_TYPE::kTypeBannerAds);
     
-    if (kIAPManager->isShowAds()) {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+    // show newBlast or request Fullscreen ads : cross
+    static bool isFirst = true;
+    
+    if (isFirst) {
+        
+        isFirst = false;
+        
+        CFSystemFunction sys;
+        sys.showNewsBlast(NewsModeLaunch);
+        
+    }else{
+        if (kIAPManager->isShowAds() && g_bIsNeedAds) {
+            AdLoadingLayerBase::showLoading<AdsLoadingLayer>(false);
+        }
+        g_bIsNeedAds = true;
     }
 }
 

@@ -2,6 +2,8 @@
 #include "DecorateScene.h"
 #include "SceneManager.h"
 #include "ShopLayer.h"
+#include "SSCFileUtility.h"
+#include "Analytics.h"
 
 static std::string gPackageName[] = {
     "lemonade",
@@ -92,12 +94,11 @@ void DecorateScene::onEnter()
 {
     ExtensionScene::onEnter();
     m_bShowShop = false;
-    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_DECORATE);
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_DECORATE);
 }
 
 void DecorateScene::onExit()
 {
-    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_DECORATE);
     ExtensionScene::onExit();
 }
 #pragma mark - initData
@@ -118,8 +119,13 @@ void DecorateScene::_initDefaultDecorate()
 //    ******************      cake        **********************
     
     Sprite*pConeBack = Sprite::create("content/category/color/cone.png");
-    
-    Sprite*pConeDec = Sprite::create(FileUtils::getInstance()->getWritablePath()+"cone.png");
+    std::stringstream ostr;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    ostr<<"cone.png";
+#else
+    ostr<<"/cone.png";
+#endif
+    Sprite*pConeDec = Sprite::create(SSCFileUtility::getStoragePath()+ostr.str());
     
     std::stringstream ostrSnow;
     ostrSnow<<"content/make/color/shape"<<GameDataManager::getInstance()->getIceShape()<<"_0.png";
@@ -130,7 +136,12 @@ void DecorateScene::_initDefaultDecorate()
     
     
     if(GameDataManager::getInstance()->m_bColored){
-        Sprite* pColor = Sprite::create(FileUtils::getInstance()->getWritablePath()+"snow.png");
+        Sprite*pColor;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        pColor = Sprite::create(SSCFileUtility::getStoragePath()+"snow.png");
+#else
+        pColor = Sprite::create(SSCFileUtility::getStoragePath()+"/snow.png");
+#endif
         if (pColor) {
 //            pColor->setScale(1.28);
             pDecManager->addDecoration(pColor, eDecorationLayerFood,"",CMVisibleRect::getPositionAdapted(Vec2(320, 520-50)));
@@ -220,8 +231,11 @@ void DecorateScene::onButtonCallback(Button* btn)
         
         Image* pImage = getResultRender()->newImage();
         bool issuccess;
-        issuccess = pImage->saveToFile(FileUtils::getInstance()->getWritablePath()+"decorate.png", false);
-        
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"decorate.png", false);
+#else
+        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/decorate.png", false);
+#endif
         pImage->autorelease();
         log("===save success %d==",issuccess);
         GameDataManager::getInstance()->setStepCount(6);

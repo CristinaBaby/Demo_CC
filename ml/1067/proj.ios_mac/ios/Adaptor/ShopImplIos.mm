@@ -7,11 +7,12 @@
 //
 
 #import "ShopImplIos.h"
-#import <SSCInternalSDKLib/IAPurchase.h>
+#import <SSCInternalSDKLib/SSCInternalSDKLib.h>
 #import "InternetTool.h"
 #include "AppController.h"
 #include "ShopAdapter.h"
 #include "IAPManager.h"
+#include "SSCIAPManager.h"
 
 static ShopImplIos* _sharedShopImplIos = NULL;
 

@@ -12,7 +12,7 @@
 #include <iostream>
 #include <vector>
 #include "cocos2d.h"
-#include "SSCFileUtility.h"
+#include "../utils/FileUtility.h"
 
 #define FAVORITE        "fav"
 #define THUMBNAIL       "thumbnail"

@@ -9,7 +9,8 @@
 #include "BaseLayer.h"
 #include "IAPManager.h"
 #include "AdsManager.h"
-#include "AdsManager.h"
+#include "AdsLoadingLayer.h"
+#include "AdLoadingLayerBase.h"
 
 #define NEXTBTN_TAG 100
 #define MARGIN      18
@@ -234,9 +235,15 @@ void BaseLayer::onPositiveClick(void* type)
         
         if(kIAPManager->isShowAds())
         {
-            AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+            AdsLoadingLayer::showLoading<AdsLoadingLayer>(true, nullptr, INT16_MAX);
+            AdsLoadingLayer::loadingDoneCallback = []{
+                SceneManager::getInstance()->popToRootScene();
+            };
         }
-        SceneManager::getInstance()->popToRootScene();
+        else
+        {
+            SceneManager::getInstance()->popToRootScene();
+        }
     }
 }
 

@@ -7,10 +7,11 @@
 //
 
 #include "DecorationIceCreamLayer.hpp"
-#include "SSCFileUtility.h"
+#include "FileUtility.h"
 #include "IAPManager.h"
 #include "DecorationConeLayer.hpp"
-#include "AdsManager.h"
+#include "AdsLoadingLayer.h"
+#include "AdLoadingLayerBase.h"
 
 #define ORIGIN_POINT2    Vec2(73, 320 + kAdapterScreen->g_oOffset.y)
 #define END_POINT2       Vec2(216, 320 + kAdapterScreen->g_oOffset.y)
@@ -125,7 +126,7 @@ bool DecorationIceCreamLayer::initLayer()
         offset = -130;
     }
     // add wafer
-    string str = SSCFileUtility::getStoragePath() + "cone.png";
+    string str = FileUtility::getStoragePath() + "cone.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
     if (!str.empty() || str != "") {
         m_pWafer = Sprite::create(str);
@@ -140,7 +141,7 @@ bool DecorationIceCreamLayer::initLayer()
         m_pBottomLayer->addChild(m_pSticker, 2);
     }
 
-    string str2 = SSCFileUtility::getStoragePath() + "icecream.png";
+    string str2 = FileUtility::getStoragePath() + "icecream.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str2);
     if (!str2.empty() || str2 != "") {
         auto pIcecream = Sprite::create(str2);
@@ -472,7 +473,7 @@ void DecorationIceCreamLayer::onTouchUpInBoundingBox(ToolSprite* toolSprite,Touc
 void DecorationIceCreamLayer::onNextCallback()
 {
     //////////////////////////////////////////////////////////////////////////
-    string str = SSCFileUtility::getStoragePath() + "food.png";
+    string str = FileUtility::getStoragePath() + "food.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
     
     RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height);
@@ -495,9 +496,15 @@ void DecorationIceCreamLayer::enterNextScene(float ft)
     g_bIsFlag = false;
     if(kIAPManager->isShowAds())
     {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+        AdsLoadingLayer::showLoading<AdsLoadingLayer>(true, nullptr, INT16_MAX);
+        AdsLoadingLayer::loadingDoneCallback = []{
+            SceneManager::getInstance()->enterEatScene();
+        };
     }
-    SceneManager::getInstance()->enterEatScene();
+    else
+    {
+        SceneManager::getInstance()->enterEatScene();
+    }
 }
 void DecorationIceCreamLayer::onNegativeClick(void* type)
 {
@@ -541,7 +548,7 @@ void DecorationIceCreamLayer::onEnter()
         CATEGORY_NAME[1] = "fruit";
         CATEGORY_NAME[2] = "wafer";
         
-        string str = SSCFileUtility::getStoragePath() + "cone.png";
+        string str = FileUtility::getStoragePath() + "cone.png";
         Director::getInstance()->getTextureCache()->removeTextureForKey(str);
         m_pWafer->setTexture(str);
         

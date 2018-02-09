@@ -1,6 +1,8 @@
 
 #include "ColorIceScene.h"
 #include "CCImageColorSpace.h"
+#include "SSCFileUtility.h"
+#include "Analytics.h"
 
 static Vec3 gHSB[10] = {
     Vec3(0, 0, 0),
@@ -176,13 +178,11 @@ bool ColorIceScene::init()
 void ColorIceScene::onEnter()
 {
     ExtensionScene::onEnter();
-    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_FLAVOR);
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_FLAVOR);
 }
 
 void ColorIceScene::onExit()
 {
-    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_FLAVOR);
-    
     ExtensionScene::onExit();
 }
 void ColorIceScene::onShopItemBuy(cocos2d::Ref *pRef)
@@ -235,10 +235,15 @@ void ColorIceScene::onButtonCallback(Button* btn)
         
         
         Image* pImage = getResultRender()->newImage();
+        std::stringstream ostr;
         
         bool issuccess;
-        
-        issuccess = pImage->saveToFile(FileUtils::getInstance()->getWritablePath()+"snow.png", false);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        ostr<<"snow.png";
+#else
+        ostr<<"/snow.png";
+#endif
+        issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+ostr.str(), false);
         pImage->autorelease();
         GameDataManager::getInstance()->m_bColored = true;
         log("===save success %d==",issuccess);

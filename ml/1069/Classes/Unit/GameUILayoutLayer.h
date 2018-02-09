@@ -35,7 +35,6 @@ public:
         eUIButtonTagEat,
         eUIButtonTagSale,
         eUIButtonTagMoreGame,
-        eUIButtonTagPolicy,
         eUIButtonTag,
         eUILabelTagCoint,
         eUISpriteTagCoint,
@@ -102,7 +101,6 @@ protected:
     Button* _createButton(std::string path);
     void _onButtonCallback(Ref* ref,Widget::TouchEventType type);
     void _showHomeButtonAnimation(Button* pButton,float duration = 1,float delay = 0);
-    void clickedMoreGameButton(Ref* ref,Widget::TouchEventType type);
     
 //    首页
     Button* m_pHomeStart;
@@ -111,7 +109,6 @@ protected:
     Button* m_pHomeFav;
     Button* m_pHomeShop;
     Button* m_pHomeRate;
-    Button* m_pHomePolicy;
     
 //    Make
     Button* m_pNext;

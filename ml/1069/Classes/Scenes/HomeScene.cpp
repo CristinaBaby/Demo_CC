@@ -17,12 +17,11 @@ HomeScene::HomeScene()
 {
     m_bShowMoreGame = false;
     m_bCanTouch = false;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(HomeScene));
 }
 
 HomeScene::~HomeScene()
 {
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(HomeScene));
+    
 }
 bool HomeScene::init()
 {
@@ -157,28 +156,17 @@ bool HomeScene::init()
     m_moreGameButton = SSCMoreGameButton::create();
     
     
-   
-    auto pos = Vec2(getContentSize().width - 18 - m_moreGameButton->getButtonSize().width/2,
-                   60+ m_moreGameButton->getButtonSize().height/2);
-    m_moreGameButton->setPosition(pos);
-    this->addChild(m_moreGameButton, 200);
-    
     //当首页有banner广告时调用该方法，第二个参数传true，来显示button并设置位置
-    //m_moreGameButton->showButton(this,true);
-    m_moreGameButton->setClickCall([=](SSCMoreGameButton *){
-        SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
-    });
-
-//    Button* moregameButton = Button::create();
-//    moregameButton->loadTextureNormal("moregames/moregamebutton.png");
-//    moregameButton->setScale(0.5);
-//    moregameButton->addTouchEventListener(CC_CALLBACK_2(HomeScene::clickedMoreGameButton, this));
-//    this->addChild(moregameButton, 113);
-//    CMVisibleRect::setPosition(moregameButton, -20, 50,kBorderRight,kBorderBottom);
-
-    
-    AudioHelp::getInstance()->playBackGroundMusic("background.mp3");
+    m_moreGameButton->showButton(this,true);
+    m_moreGameButton->setClickCall(CC_CALLBACK_0(HomeScene::clickedMoreGameButton,this));
+//    m_moreGameButton->setClickCall([=](){
+//        SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
+//    });
+    AudioHelp::getInstance()->playBackGroundMusic("bg.mp3");
     GameDataManager::getInstance()->m_nDecorateStep= 0;
+    if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
+        AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+    }
     return true;
 }
 
@@ -191,30 +179,17 @@ void HomeScene::onEnter()
 //        AdsManager::getInstance()->removeAds(kTypeBannerAds);
 //        
 //    }
-//    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_HOME);
-    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_HOME);
+    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_HOME);
 }
-void HomeScene::onEnterTransitionDidFinish()
-{
-    ExtensionScene::onEnterTransitionDidFinish();
-    if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
-    }
-}
-
 void HomeScene::onExit()
 {
-//    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_HOME);
+    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_HOME);
     ExtensionScene::onExit();
 }
-
-void HomeScene::clickedMoreGameButton(Ref* ref,Widget::TouchEventType type)
+void HomeScene::clickedMoreGameButton()
 {
-    if (type == Widget::TouchEventType::ENDED) {
-        SSCMoreGameManager::getInstance()->show();
-    }
+    SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
 }
-
 void HomeScene::onButtonCallback(Button* btn)
 {
     ExtensionScene::onButtonCallback(btn);
@@ -234,7 +209,10 @@ void HomeScene::onButtonCallback(Button* btn)
             AudioHelp::getInstance()->playStartEffect();
 //            SceneManager::replaceTheScene<ChoosePackageScene>();
             
-            //m_moreGameButton->removeFromParent();
+            if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
+                AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+            }
+            m_moreGameButton->removeFromParent();
             Button* pShop = m_pGameUI->getButton(GameUILayoutLayer::eUIButtonTagHomeShop);
             pShop->runAction(EaseBackIn::create(MoveBy::create(0.5, Vec2(0, -500))));
             btn->runAction(EaseBackIn::create(MoveBy::create(0.5, Vec2(0, -1000))));
@@ -267,11 +245,6 @@ void HomeScene::onButtonCallback(Button* btn)
 //            st.showMoreGame();
         }
             break;
-        case GameUILayoutLayer::eUIButtonTagPolicy:
-        {
-            Application::getInstance()->openURL("https://www.makerlabs.net/privacy/");
-            break;
-        }
         case GameUILayoutLayer::eUIButtonTagHomeShop:
         {
 //            SceneManager::pushTheScene<ShopScene>();
@@ -279,10 +252,6 @@ void HomeScene::onButtonCallback(Button* btn)
             this->addChildToUILayer(pLayer);
             pLayer->setLocalZOrder(100);
             pLayer->showBannerDismiss(false);
-            m_moreGameButton->setVisible(false);
-            pLayer->shopDismissed = [=](){
-                m_moreGameButton->setVisible(true);
-            };
         }
             break;
             
@@ -291,19 +260,6 @@ void HomeScene::onButtonCallback(Button* btn)
     }
 }
 
-void HomeScene::onPermissionGrantedResult(int requestCode,bool bGranted){
-    if (requestCode == 1) {
-        if (bGranted) {
-            //add your code....
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
-    }else{
-        log("-------->anroid runtime permisson was not granted ,%d,requestcode = %d",bGranted,requestCode);
-    }
-}
 #pragma mark - initData
 void HomeScene::_initData()
 {
@@ -312,19 +268,6 @@ void HomeScene::_initData()
     
     m_nNextSceneTag = GameUIEvent::eSceneTagChoosePackage;
     GameUIEvent::getInstance()->nextSceneTag = GameUIEvent::eSceneTagChoosePackage;
-    
-//#if __cplusplus > 201100L
-//    RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int requestcode,bool bgranted){
-//        onPermissionGrantedResult(requestcode, bgranted);
-//    };
-//#else
-//    RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-//#endif
-//    //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-//    int requestCode = 1;
-//    //调用权限申请的方法,根据需要申请敏感权限
-//    RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kCamera | PERMISSION::kWriteExternalStorage | PERMISSION::kWriteContacts);
-    
 }
 
 void HomeScene::_showLogo()
@@ -332,9 +275,9 @@ void HomeScene::_showLogo()
     m_pLogoClipping->removeAllChildren();
     std::string name;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    name = SSCFileUtility::getStoragePath()+ "logo.png";
+    name = FileUtility::getStoragePath()+ "logo.png";
 #else
-    name = SSCFileUtility::getStoragePath()+ "/logo.png";
+    name = FileUtility::getStoragePath()+ "/logo.png";
 #endif
     Sprite* pSprite = Sprite::create(name);
     if (pSprite) {
@@ -345,7 +288,6 @@ void HomeScene::_showLogo()
 
 void HomeScene::_showDecLogoLayer()
 {
-    m_moreGameButton->setVisible(false);
     m_bCanTouch = false;
     DecorateLogoLayer* pLayer = DecorateLogoLayer::create();
     this->addChildToUILayer(pLayer);
@@ -353,9 +295,9 @@ void HomeScene::_showDecLogoLayer()
     pLayer->onLogoDecoratedCallback = [=](){
         std::string name;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        name = SSCFileUtility::getStoragePath()+ "logo.png";
+        name = FileUtility::getStoragePath()+ "logo.png";
 #else
-        name = SSCFileUtility::getStoragePath()+ "/logo.png";
+        name = FileUtility::getStoragePath()+ "/logo.png";
 #endif
         TextureCache::getInstance()->removeTextureForKey(name);
         Sprite* pSprite = Sprite::create(name);
@@ -373,14 +315,11 @@ void HomeScene::_showDecLogoLayer()
                 pParticle->setPosition(pos);
                 pSprite->removeFromParent();
                 m_bCanTouch = true;
-                
-                m_moreGameButton->setVisible(true);
             }), NULL));
         }else{
             m_bCanTouch = true;
         }
         
-        AudioHelp::getInstance()->playEffect("cheer_star.mp3");
         this->runAction(Repeat::create(Sequence::create(DelayTime::create(0.5),
                                                         CallFunc::create([=](){
             _showParticle();

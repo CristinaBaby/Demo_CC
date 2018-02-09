@@ -11,7 +11,6 @@ GameUILayoutLayer::GameUILayoutLayer()
     m_pHomeFav = nullptr;
     m_pHomeShop = nullptr;
     m_pHomeRate = nullptr;
-    m_pHomePolicy = nullptr;
     
     m_pNext = nullptr;
     m_pBack = nullptr;
@@ -69,14 +68,9 @@ void GameUILayoutLayer::showHomeUILayout(bool animate)
 //        this->addChild(m_pHomeRate);
 //    }
     
-    if (!m_pHomePolicy) {
-        m_pHomePolicy = _createButton("content/start/btn_pp.png");
-        this->addChild(m_pHomePolicy);
-    }
     m_pHomeStart->setTag(GameUILayoutLayer::eUIButtonTagHomeStart);
 //    m_pHomeMore->setTag(GameUILayoutLayer::eUIButtonTagHomeMore);
     m_pHomeShop->setTag(GameUILayoutLayer::eUIButtonTagHomeShop);
-    m_pHomePolicy->setTag(GameUILayoutLayer::eUIButtonTagPolicy);
 //    m_pHomeRate->setTag(GameUILayoutLayer::eUIButtonTagHomeRate);
     
     if (gNoneIap) {
@@ -93,7 +87,6 @@ void GameUILayoutLayer::showHomeUILayout(bool animate)
 //        CMVisibleRect::setPosition(m_pHomeMore, 15, 15,kBorderLeft,kBorderBottom);
         CMVisibleRect::setPosition(m_pHomeShop, 15, 15+100,kBorderLeft,kBorderBottom);
         CMVisibleRect::setPositionAdapted(m_pHomeStart, 480, 240);
-        CMVisibleRect::setPosition(m_pHomePolicy, 5, 10,kBorderLeft,kBorderTop);
 
         m_pHomeStart->setEnabled(false);
 //        m_pHomeMore->setEnabled(false);
@@ -104,13 +97,11 @@ void GameUILayoutLayer::showHomeUILayout(bool animate)
         m_pHomeShop->setOpacity(0);
 //        m_pHomeRate->setOpacity(0);
         m_pHomeStart->setOpacity(0);
-        m_pHomePolicy->setOpacity(0);
 //        _showHomeButtonAnimation(m_pHomeRate,0.5,1.2);
 //        _showHomeButtonAnimation(m_pHomeMore,0.5,0.5);
         if (!gNoneIap) {
             _showHomeButtonAnimation(m_pHomeShop,0.5,0.5);
         }
-        _showHomeButtonAnimation(m_pHomePolicy,0.5,0.5);
         m_pHomeStart->setScale(0.01);
         m_pHomeStart->runAction(Sequence::create(DelayTime::create(0.5),
                                                  Spawn::create(FadeIn::create(0.6),
@@ -370,24 +361,8 @@ void GameUILayoutLayer::showSSCMore()
         moreGameButton->setClickCall([=](SSCMoreGameButton*){
             SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
         });
-        //moreGameButton->enableAudioEffect(true);
         moreGameButton->showButton(this,false);
         CMVisibleRect::setPosition(moreGameButton, 160, 50,kBorderLeft,kBorderTop);
-        
-        
-//        Button* moregameButton = Button::create();
-//        moregameButton->loadTextureNormal("moregames/moregamebutton-small.png");
-//        moregameButton->setScale(0.5);
-//        moregameButton->addTouchEventListener(CC_CALLBACK_2(GameUILayoutLayer::clickedMoreGameButton, this));
-//        this->addChild(moregameButton, 113);
-//        CMVisibleRect::setPosition(moregameButton, 50, -60,kBorderLeft,kBorderTop);
-    }
-}
-
-void GameUILayoutLayer::clickedMoreGameButton(Ref* ref,Widget::TouchEventType type)
-{
-    if (type == Widget::TouchEventType::ENDED) {
-        SSCMoreGameManager::getInstance()->show();
     }
 }
 

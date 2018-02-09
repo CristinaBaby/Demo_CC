@@ -13,12 +13,11 @@ DecorateLogoLayer::DecorateLogoLayer()
     m_pTypeScrollView = nullptr;
     m_pDecorationScrollView = nullptr;
     onLogoDecoratedCallback = nullptr;
-    __NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(DecorateLogoLayer::onShopItemBuy), ItemBuySuccessNotify, NULL);
 }
 
 DecorateLogoLayer::~DecorateLogoLayer()
 {
-    __NotificationCenter::getInstance()->removeAllObservers(this);
+    
 }
 bool DecorateLogoLayer::init()
 {
@@ -32,7 +31,7 @@ bool DecorateLogoLayer::init()
     
     m_pRootNode = Node::create();
     this->addChild(m_pRootNode);
-    m_pRootNode->setPosition(Vec2(0, visibleSize.height+20));
+    m_pRootNode->setPosition(Vec2(0, visibleSize.height));
     m_pRootNode->runAction(EaseBounceOut::create(MoveBy::create(1, Vec2(0, -visibleSize.height))));
     //    bg
     Sprite* pBg = Sprite::create("content/logo_dec/bg-draw.png");
@@ -134,13 +133,6 @@ void DecorateLogoLayer::onExit()
     Layer::onExit();
 }
 
-
-void DecorateLogoLayer::onShopItemBuy(cocos2d::Ref *pRef)
-{
-    m_pDecorationScrollView->decorationData = ConfigManager::getInstance()->getDecorateFile(m_sCurTypeStr);
-    m_pDecorationScrollView->reloadData();
-}
-
 void DecorateLogoLayer::onButtonCallback(Ref* ref,Widget::TouchEventType type)
 {
     if (type==Widget::TouchEventType::ENDED){
@@ -204,9 +196,9 @@ bool DecorateLogoLayer::_saveLogo()
     
     bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+ "logo.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+ "logo.png", false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/logo.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/logo.png", false);
 #endif
 //    pImage->autorelease();
     return issuccess;
@@ -253,16 +245,16 @@ void DecorateLogoLayer::_onTypeCallback(int index,DecorateTypeConfigData typeDat
         ostr<<"content/logo_dec/icon/"<<data.pathName<<"/";
         m_pTypeScrollView->setSelectedAnimate(true);
         if (!m_pDecorationScrollView) {
-            m_pDecorationScrollView = ItemScrollView::createWithSize(Size(580, 100+10),false);
+            m_pDecorationScrollView = ItemScrollView::createWithSize(Size(580, 100),false);
             m_pRootNode->addChild(m_pDecorationScrollView);
             
             m_pDecorationScrollView->decorationData = data;
-            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(DecorateLogoLayer::_onDecorationCallback, this);
+            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(DecorateLogoLayer::_onDecorationCallback, this);
         }else{
             m_pDecorationScrollView->decorationData = data;
         }
         m_pDecorationScrollView->setDirection(ItemScrollView::Direction::eDirectionH);
-        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(DecorateLogoLayer::_onDecorationCallback, this);
+        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(DecorateLogoLayer::_onDecorationCallback, this);
         m_pDecorationScrollView->stopAllActions();
         m_pDecorationScrollView->setMargin(10);
         CMVisibleRect::setPositionAdapted(m_pDecorationScrollView,  200,200);
@@ -284,7 +276,7 @@ void DecorateLogoLayer::_onTypeCallback(int index,DecorateTypeConfigData typeDat
         }else if (typeData.decTypeName=="pen_logo") {
             if (!m_bVOGuide[2]) {
                 m_bVOGuide[2] = true;
-                AudioHelp::getInstance()->playEffect("vo_draw.mp3");
+                AudioHelp::getInstance()->playEffect("vo_draw_box.mp3");
             }
         }else if (typeData.decTypeName=="stickers_logo") {
             if (!m_bVOGuide[3]) {
@@ -307,17 +299,19 @@ void DecorateLogoLayer::_onTypeCallback(int index,DecorateTypeConfigData typeDat
     
 }
 
-void DecorateLogoLayer::_onDecorationCallback(int index,int type,DecorateConfigData decData)
+void DecorateLogoLayer::_onDecorationCallback(int index,DecorateConfigData decData)
 {
-    
-    if (type==1) {
-        if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
-            RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
+    if (!gNoneIap) {
+        if (index>=decData.freeCount+decData.beginIndex && !(index<decData.totalCount+decData.beginIndex && index>=decData.holidayIndex && decData.holidayIndex>=0 && decData.holidayCount==0)){
+
+            ShopLayer* pLayer = ShopLayer::create();
+            m_pRootNode->addChild(pLayer,100);
+            pLayer->setLocalZOrder(100);
+            pLayer->showBannerDismiss();
             m_pDecorationScrollView->setSelected(false);
             return;
         }
     }
-    
     m_nIndex = index;
     m_bCanTouch = false;
     AudioHelp::getInstance()->playSelectedEffect();

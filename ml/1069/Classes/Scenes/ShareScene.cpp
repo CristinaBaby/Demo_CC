@@ -24,13 +24,11 @@ ShareScene::ShareScene()
     m_bBack = false;
     m_bCanEat = false;
     m_pPlate = nullptr;
-    m_nRequest = -1;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(ShareScene));
 }
 
 ShareScene::~ShareScene()
 {
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(ShareScene));
+    
 }
 bool ShareScene::init()
 {
@@ -39,7 +37,6 @@ bool ShareScene::init()
         return false;
     }
     _initData();
-    m_nRequest = -1;
     
     //    bg
     m_nBgIndex = 1;
@@ -63,24 +60,32 @@ void ShareScene::onEnter()
     ExtensionScene::onEnter();
 //    decorate界面有放大缩下功能  避免截屏到放大缩小的ui被截图下来
     
-//    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_EAT);
-    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_EAT);
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_EAT_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_EAT_ICECREAM);
+    }
 }
 
 void ShareScene::onExit()
 {
-//    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_EAT);
+    if (GameDataManager::getInstance()->m_nPackage==0){
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_EAT_SNOWCONE);
+    }else{
+        FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_EAT_ICECREAM);
+    }
     ExtensionScene::onExit();
 }
 void ShareScene::onButtonCallback(Button* btn)
 {
+    ExtensionScene::onButtonCallback(btn);
     int tag = btn->getTag();
     if (GameUILayoutLayer::eUIButtonTagFav==tag) {
 
         
     }else if (GameUILayoutLayer::eUIButtonTagPhoto==tag){
         Image* image = getResultRender()->newImage();
-//        STSystemFunction st;
+        STSystemFunction st;
         btn->setEnabled(false);
         AudioHelp::getInstance()->playCameraEffect();
         this->runAction(Sequence::create(DelayTime::create(1),
@@ -89,8 +94,7 @@ void ShareScene::onButtonCallback(Button* btn)
                                                               btn->setEnabled(true);
                                                           }), NULL));
         
-        m_nRequest = 0;
-        SSCInternalLibManager::getInstance()->saveToAlbum(image, [=](bool ok){
+        st.saveToAlbum(image, [=](bool ok){
             btn->setEnabled(true);
             if (ok) {
                 Dialog* dialog=Dialog::create(Size(504,360), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_SINGLE);
@@ -108,7 +112,7 @@ void ShareScene::onButtonCallback(Button* btn)
         
         
     }else if (GameUILayoutLayer::eUIButtonTagEmail==tag){
-//        STSystemFunction st;
+        STSystemFunction st;
         btn->setEnabled(false);
         this->runAction(Sequence::create(DelayTime::create(1),
                                          CallFunc::create([=]()
@@ -117,18 +121,18 @@ void ShareScene::onButtonCallback(Button* btn)
                                                           }), NULL));
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         Image* pImage = getResultRender()->newImage();
-        pImage->saveToFile(SSCFileUtility::getStoragePath()+"shotscreen.png", false);
+        pImage->saveToFile(FileUtility::getStoragePath()+"shotscreen.png", false);
         pImage->autorelease();
-        SSCInternalLibManager::getInstance()->sendEmailAndFilePic("Sweet Pizza!",
+        st.sendEmailAndFilePic("Sweet Pizza!",
                                "<p>Look at this Sweet Pizza I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.</p>  <p><a href=‘http://itunes.apple.com/app/id1141273700’>http://itunes.apple.com/app/id1141273700</a></p>",
-                               (SSCFileUtility::getStoragePath()+"shotscreen.png").c_str());
+                               (FileUtility::getStoragePath()+"shotscreen.png").c_str());
 #else
         Image* pImage = getResultRender()->newImage();
-        pImage->saveToFile(SSCFileUtility::getStoragePath()+"/shotscreen.png", false);
+        pImage->saveToFile(FileUtility::getStoragePath()+"/shotscreen.png", false);
         pImage->autorelease();
-        SSCInternalLibManager::getInstance()->sendEmailAndFilePic("Sweet Pizza!",
+        st.sendEmailAndFilePic("Sweet Pizza!",
                                "Look at this Sweet Pizza I just made. So yummy， tons of flavors and decorations to have fun. Let's play together.",
-                               (SSCFileUtility::getStoragePath()+"/shotscreen.png").c_str());
+                               (FileUtility::getStoragePath()+"/shotscreen.png").c_str());
 #endif
     }else if (GameUILayoutLayer::eUIButtonTagEatAgain==tag){
         btn->setVisible(false);
@@ -138,10 +142,9 @@ void ShareScene::onButtonCallback(Button* btn)
     }else if (GameUILayoutLayer::eUIButtonTagNext==tag){
         btn->setEnabled(false);
         m_pDecManager->reset();
-        AudioHelp::getInstance()->resetEffect();
         SceneManager::popToRootScene();
         SceneManager::replaceTheScene<ChoosePackageScene>();
-        return;
+        
     }else if (GameUILayoutLayer::eUIButtonTagHome==tag){
         btn->setEnabled(false);
         Dialog* dialog=Dialog::create(Size(504,360), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_NEGATIVE);
@@ -153,7 +156,6 @@ void ShareScene::onButtonCallback(Button* btn)
             btn->setEnabled(true);
             m_pDecManager->reset();
             
-            AudioHelp::getInstance()->resetEffect();
             SceneManager::popToRootScene();
             SceneManager::replaceTheScene<HomeScene>();
             
@@ -163,7 +165,6 @@ void ShareScene::onButtonCallback(Button* btn)
             btn->setEnabled(true);
             
         };
-        return;
     }else if (GameUILayoutLayer::eUIButtonTagBg==tag){
         btn->setEnabled(false);
         m_nBgIndex++;
@@ -196,38 +197,12 @@ void ShareScene::onButtonCallback(Button* btn)
 
         
     }
-    ExtensionScene::onButtonCallback(btn);
-}
-void ShareScene::onPermissionGrantedResult(int requestCode,bool bGranted){
-    if (requestCode == 1) {
-        if (bGranted) {
-            //add your code....
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
-    }else{
-        log("-------->anroid runtime permisson was not granted ,%d,requestcode = %d",bGranted,requestCode);
-    }
 }
 #pragma mark - initData
 void ShareScene::_initData()
 {
     m_nPackage = GameDataManager::getInstance()->m_nPackage;
     setExPath("content/dec/");
-#if __cplusplus > 201100L
-    RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int requestcode,bool bgranted){
-        onPermissionGrantedResult(requestcode, bgranted);
-    };
-#else
-    RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
-    //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-    int requestCode = 1;
-    //调用权限申请的方法,根据需要申请敏感权限
-//    RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kCamera | PERMISSION::kWriteExternalStorage | PERMISSION::kWriteContacts);
-     RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode,PERMISSION::kWriteExternalStorage);
 }
 void ShareScene::_showEatScene()
 {
@@ -259,9 +234,9 @@ void ShareScene::_showEatScene()
         std::string name = GameDataManager::getInstance()->getBoxName();
         std::string path = "";
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        path = SSCFileUtility::getStoragePath()+ name;
+        path = FileUtility::getStoragePath()+ name;
 #else
-        path = SSCFileUtility::getStoragePath()+"/"+ name;
+        path = FileUtility::getStoragePath()+"/"+ name;
 #endif
         Sprite* pBox = Sprite::create(path);
         if (pBox) {

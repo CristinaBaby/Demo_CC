@@ -4,9 +4,9 @@
 
 
 #include "ExtensionScene.h"
-#include "RuntimePermissionManager.h"
+#include "SSCMoreGameButton.h"
 
-class HomeScene : public ExtensionScene,public RuntimePermissionDelegate
+class HomeScene : public ExtensionScene
 {
 public:
     HomeScene();
@@ -15,26 +15,18 @@ public:
     MY_SCENE(HomeScene);
     CREATE_FUNC(HomeScene);
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(HomeScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(HomeScene));}
-    
-    
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
-    
     virtual bool init();
     virtual void onEnter();
-    void onEnterTransitionDidFinish();
     virtual void onExit();
     virtual void onButtonCallback(Button* btn);
     virtual void onKeyBackClicked();
-    void clickedMoreGameButton(Ref* ref,Widget::TouchEventType type);
-    SSCMoreGameButton* m_moreGameButton = nullptr;
+    void clickedMoreGameButton();
 protected:
     virtual void _initData();
     void _showParticle();
     void _showLogo();
     void _showDecLogoLayer();
-    
+    SSCMoreGameButton* m_moreGameButton;
     
     ClippingNode* m_pLogoClipping;
     Vector<Sprite*> m_VectorKid;

@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import <SSCAppRootControllerLib/AppRootController.h>
+#import "AppRootController.h"
 
 @class RootViewController;
 

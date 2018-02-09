@@ -76,7 +76,7 @@ bool ShopLayer::init()
     pRootNode->addChild(pRestoreBtn);
     CMVisibleRect::setPosition(pRestoreBtn, pShopLayer->getChildByName("restore")->getPosition());
     
-    Button* pAdsBtn = Button::create(localPath("ads.png"));
+    Button* pAdsBtn = Button::create(localPath("noads.png"));
     pAdsBtn->addTouchEventListener([=](Ref* ref,Widget::TouchEventType type){
         if (type==Widget::TouchEventType::ENDED) {
             pAdsBtn->setEnabled(false);
@@ -87,13 +87,6 @@ bool ShopLayer::init()
     pRootNode->addChild(pAdsBtn);
     CMVisibleRect::setPosition(pAdsBtn, pShopLayer->getChildByName("ads")->getPosition());
     
-    pAdsBtn->setScale(0.3);
-    pAdsBtn->setVisible(false);
-    pAdsBtn->runAction(Sequence::create(DelayTime::create(1),
-                                      CallFunc::create([=](){
-        pAdsBtn->setVisible(true);
-    }),
-                                      ScaleTo::create(0.3, 1), NULL));
     
     int count = ConfigManager::getInstance()->getIapDataVector().size();
     for (int i = 0; i<count-1; i++) {

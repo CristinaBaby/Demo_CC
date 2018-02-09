@@ -20,8 +20,6 @@ bool ExtensionScene::init()
     if (!Layer::init()) {
         return false;
     }
-    registerEffectScene();
-    
     m_pBGLayer = Layer::create();
     m_pBGLayer->setZOrder(0);
     this->addChild(m_pBGLayer);
@@ -60,7 +58,6 @@ void ExtensionScene::onEnter()
 
 void ExtensionScene::onExit()
 {
-    removeEffectScene();
     KeypadDispatchCenter::getInstance()->removeDelegate(this);
     Layer::onExit();
 }
@@ -120,10 +117,15 @@ void ExtensionScene::onKeyBackClicked() {
     dialog->setPosition(Director::getInstance()->getVisibleOrigin());
     dialog->onPositiveClick = [=](void*){
         AudioHelp::getInstance()->stopLoopEffect();
-//        if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
-//            AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
-//        }
-        SceneManager::popToRootScene();
-        SceneManager::replaceTheScene<HomeScene>();
+        if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
+            AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+            AdLoadingLayerBase::s_currentInstance->loadingDoneCallback = [=](){
+                SceneManager::popToRootScene();
+                SceneManager::replaceTheScene<HomeScene>();
+            };
+        }else{
+            SceneManager::popToRootScene();
+            SceneManager::replaceTheScene<HomeScene>();
+        }
     };
 }

@@ -24,7 +24,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "9E39F69A684729C06E9E4EB4060BED188B5C8748" : "mlabs1067-snowcone\/cocos2dx\/cocos2d\/",
     "90E61F0BF39BA0CF0C0334B139ED21750E143985" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/IAPuchase\/",
-    "B442883E97A97A1451F7CABA59BE559274ADC44D" : "mlabs1067-cocos2dx-cpp\/Classes\/3rdparty_depends\/more_games-public\/",
+    "B442883E97A97A1451F7CABA59BE559274ADC44D" : "mlabs1067-snowcone\/Classes\/Depends\/moregame\/",
     "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/StudioResource\/",
     "638FBC0848579984B266E97A7D7A0CF3652FB837" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/AnalyticsSDK\/",
     "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/Newsblast\/",
@@ -35,7 +35,7 @@
     "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/AboutPage\/",
     "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/Component\/",
     "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "mlabs1067-snowcone\/Classes\/codebase\/core\/platform\/ads\/",
-    "96DD41DBDC3F862974C6444B5C2173052969002E" : "mlabs1067-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/internal_sdk-public-lib-ios\/",
+    "96DD41DBDC3F862974C6444B5C2173052969002E" : "mlabs1067-snowcone\/proj.ios_mac\/ios\/Depends\/internalSDK\/",
     "150AE378085949F5992A9A5EDD6241AD8D0DC53C" : "mlabs1067-snowcone\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MLABS1067",

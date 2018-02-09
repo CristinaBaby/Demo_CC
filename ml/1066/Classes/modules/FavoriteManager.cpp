@@ -29,11 +29,11 @@ void FavoriteManager::saveToFavorite(RenderTexture* render, function<void(bool)>
 {
     Director::getInstance()->getRenderer()->render();
     
-    SSCFileUtility::createDirectory((SSCFileUtility::getStoragePath() +"/"+ projDir).c_str());
+    FileUtility::createDirectory((FileUtility::getStoragePath() +"/"+ projDir).c_str());
     
-    SSCFileUtility::createDirectory((SSCFileUtility::getStoragePath() +"/"+ projDir +"/"+ FAVORITE).c_str());
+    FileUtility::createDirectory((FileUtility::getStoragePath() +"/"+ projDir +"/"+ FAVORITE).c_str());
     
-    SSCFileUtility::createDirectory((SSCFileUtility::getStoragePath() +"/"+ projDir +"/"+ FAVORITE + "/" + THUMBNAIL).c_str());
+    FileUtility::createDirectory((FileUtility::getStoragePath() +"/"+ projDir +"/"+ FAVORITE + "/" + THUMBNAIL).c_str());
     
     struct timeval tv;
     
@@ -105,11 +105,11 @@ void FavoriteManager::saveToFavorite(RenderTexture* render, function<void(bool)>
 
 void FavoriteManager::obtainFavoritePaths(vector<string>& favVec, vector<string>& thumbVec, string projDir)
 {
-    string favPath = SSCFileUtility::getStoragePath() +"/"+ projDir +"/"+FAVORITE;
+    string favPath = FileUtility::getStoragePath() +"/"+ projDir +"/"+FAVORITE;
     
     this->getFilesPathByDir(favPath, favVec);
     
-    string thumbPath = SSCFileUtility::getStoragePath() +"/"+ projDir +"/"+FAVORITE + "/" + THUMBNAIL;
+    string thumbPath = FileUtility::getStoragePath() +"/"+ projDir +"/"+FAVORITE + "/" + THUMBNAIL;
     
     this->getFilesPathByDir(thumbPath, thumbVec);
 }
@@ -119,7 +119,7 @@ void FavoriteManager::getFilesPathByDir(const string& path,vector<string>& v)
     DIR *dir;
     dirent *dir_info;
     char file_path[PATH_MAX];
-    if(SSCFileUtility::is_dir(path.c_str()))
+    if(FileUtility::is_dir(path.c_str()))
     {
         if((dir = opendir(path.c_str())) == NULL)
         {
@@ -128,16 +128,16 @@ void FavoriteManager::getFilesPathByDir(const string& path,vector<string>& v)
         {
             while((dir_info = readdir(dir)) != NULL)
             {
-                SSCFileUtility::get_file_path(path.c_str(), dir_info->d_name, file_path);
+                FileUtility::get_file_path(path.c_str(), dir_info->d_name, file_path);
                 
                 if(strcmp(dir_info->d_name, ".") == 0 || strcmp(dir_info->d_name, "..") == 0)
                     continue;
                 
-                if(SSCFileUtility::is_dir(file_path))
+                if(FileUtility::is_dir(file_path))
                 {
                     
                 }
-                else if(SSCFileUtility::is_file(file_path))
+                else if(FileUtility::is_file(file_path))
                 {
                     string filePath(file_path);
                     
@@ -154,5 +154,5 @@ void FavoriteManager::getFilesPathByDir(const string& path,vector<string>& v)
 
 void FavoriteManager::deleteFile(const string& path)
 {
-    SSCFileUtility::removeDir(path);
+    FileUtility::removeDir(path);
 }

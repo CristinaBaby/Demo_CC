@@ -2,7 +2,7 @@
 #define __HEADS_HH__
 #include "Global.h"
 //#include "Utils.h"
-#include "SSCFileUtility.h"
+#include "FileUtility.h"
 #include "CMVisibleRect.h"
 #include "CocosHelper.h"
 #include "AnimationHelp.h"
@@ -16,8 +16,7 @@
 #include "NotificationDef.h"
 //
 
-//#include "STSystemFunction.h"
-#include "SSCInternalLibManager.h"
+#include "STSystemFunction.h"
 #include "AlumnAdapter.h"
 #include "ShopAdapter.h"
 #include "IAPManager.h"
@@ -39,7 +38,7 @@
 #include "FlowPageView.h"
 
 #include "AdsManager.h"
-//#include "AdsLoadingScene.h"
+#include "AdsLoadingScene.h"
 #include "ProgressBar.h"
 #include "GameUIEvent.h"
 #include "TipLayer.h"
@@ -56,7 +55,4 @@
 #include "CircleMove.h"
 #include "RoleModel.h"
 #include "RewardManager.h"
-
-#include "Analytics.h"
-#include "SSCInternalLibManager.h"
 #endif

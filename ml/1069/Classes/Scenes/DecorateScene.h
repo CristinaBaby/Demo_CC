@@ -22,15 +22,12 @@ public:
     virtual void onEnter();
     virtual void onExit();
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(DecorateScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(DecorateScene));}
-    
     virtual void onButtonCallback(Button* btn);
     RenderTexture* getResultRender();
     
     void onTypeCallback(int index,DecorateTypeConfigData,bool selected);
     void onDecorateOK();
-    void onDecorationCallback(int index,int type,DecorateConfigData Data);
+    void onDecorationCallback(int index,DecorateConfigData Data);
     virtual void onShopItemBuy(cocos2d::Ref *pRef);
     
     void TouchBegan(Touch *pTouch, Event *pEvent);

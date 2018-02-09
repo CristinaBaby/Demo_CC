@@ -8,7 +8,7 @@
 
 #include "ChooseLayer.hpp"
 #include "DecorationIceCreamLayer.hpp"
-#include "SSCFileUtility.h"
+#include "FileUtility.h"
 #include "IAPManager.h"
 
 #define HOME_BTN_TAG 10
@@ -85,7 +85,7 @@ bool ChooseLayer::initLayer()
     this->addChild(m_pShadeLayer, 500);
     
     // add wafer
-    string str = SSCFileUtility::getStoragePath() + "cone.png";
+    string str = FileUtility::getStoragePath() + "cone.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
     if (!str.empty() || str != "") {
         m_pWafer = Sprite::create(str);
@@ -508,7 +508,7 @@ void ChooseLayer::onTouchUpInBoundingBox(ToolSprite* toolSprite,Touch *pTouch)
 void ChooseLayer::onNextCallback()
 {
     //////////////////////////////////////////////////////////////////////////
-    string str = SSCFileUtility::getStoragePath() + "icecream.png";
+    string str = FileUtility::getStoragePath() + "icecream.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
     
     RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height);

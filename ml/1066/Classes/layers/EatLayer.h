@@ -31,7 +31,6 @@ public:
     void initLayer();
     void initBackground();
     
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
 public:
     virtual void onTouchUpInBoundingBox(ToolSprite* toolSprite,Touch *pTouch);
     

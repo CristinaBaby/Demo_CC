@@ -31,7 +31,7 @@ void IAPManager::initIAP(const string& csvFile)
         m_vProducts.clear();
     }
     
-    SSCCSVParse* parse = SSCCSVParse::create(csvFile.c_str());
+    CSVParse* parse = CSVParse::create(csvFile.c_str());
     if (parse)
     {
         this->csvParse(parse);
@@ -125,7 +125,7 @@ bool IAPManager::isPackagePurchased(const string& iapId)
     return userDefault->getBoolForKey(iapId.c_str(),false);
 }
 
-void IAPManager::csvParse(SSCCSVParse* prase)
+void IAPManager::csvParse(CSVParse* prase)
 {
     int rows = prase->getRows();
     for (int i = 1; i < rows; i++)
@@ -368,4 +368,3 @@ void IAPManager::setPackageState(int index,bool b)
     userDefault->setBoolForKey(m_vProducts.at(index)->m_sProductId.c_str(),b);
     
 }
-

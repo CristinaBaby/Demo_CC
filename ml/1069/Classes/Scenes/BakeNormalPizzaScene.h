@@ -16,9 +16,6 @@ public:
     
     virtual bool init();
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(BakeNormalPizzaScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(BakeNormalPizzaScene));}
-    
     void dragNodeTouchBegin(DragNode* pDragNode,Point worldPoint);
     void dragNodeTouchMoved(DragNode* pDragNode,Point worldPoint);
     void dragNodeTouchEnded(DragNode* pDragNode,Point worldPoint);

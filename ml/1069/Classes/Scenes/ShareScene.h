@@ -6,9 +6,8 @@
 #include "ExtensionScene.h"
 #include "EatLayer.h"
 #include "ChooseBackgroudLayer.h"
-#include "RuntimePermissionManager.h"
 
-class ShareScene : public ExtensionScene,public RuntimePermissionDelegate
+class ShareScene : public ExtensionScene
 {
 public:
     ShareScene();
@@ -17,12 +16,9 @@ public:
     MY_SCENE(ShareScene);
     CREATE_FUNC(ShareScene);
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(ShareScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(ShareScene));}
     virtual bool init();
     virtual void onEnter();
     void onExit();
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
     virtual void onNotificationCallback(Ref* ref){};
     virtual void onButtonCallback(Button* btn);
     virtual void onKeyBackClicked();
@@ -33,8 +29,6 @@ public:
     void onBgCallback(int index);
 protected:
     virtual void _initData();
-    void _savePhoto();
-    void _sendEmail();
     void _showEatScene();
     
     RenderTexture* getResultRender();
@@ -52,7 +46,6 @@ protected:
     
     bool m_bBack;
     int m_nBgIndex;
-    int m_nRequest;
 };
 
 #endif

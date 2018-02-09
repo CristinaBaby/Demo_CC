@@ -216,54 +216,15 @@ void AudioHelp::playLoopEffect(const string &effect) {
 
 void AudioHelp::playEffect(std::string name)
 {
-    int index = _playEffect(name);
-    auto it = m_EffectMap.find(name);
-    log("=%s==%s==%d",__func__,name.c_str(),index);
-    if (it!=m_EffectMap.end()){
-        it->second = Value(index);
-    }else{
-        m_EffectMap.insert(ValueMap::value_type(name,Value(index)));
-    }
-    it = m_EffectMap.find(name);
-    log("===%s==",it->second.asString().c_str());
-    m_SceneVector.push_back(Value(name));
+    _playEffect(name);
 }
 
-void AudioHelp::stopEffect(std::string name)
-{
-    auto it = m_EffectMap.find(name);
-    if (it!=m_EffectMap.end()) {
-        int effectID = it->second.asInt();
-        log("=%s==%s==%d",__func__,name.c_str(),effectID);
-        if (effectID) {
-            SimpleAudioEngine::getInstance()->stopEffect(effectID);
-            effectID = 0;
-            it->second = Value(0);
-        }
-    }
-}
 void AudioHelp::stopLoopEffect()
 {
     if (loopID) {
         SimpleAudioEngine::getInstance()->stopEffect(loopID);
         loopID = 0;
     }
-}
-
-void AudioHelp::registerEffectScene(std::string name)
-{
-    log("===%s",name.c_str());
-    if (m_SceneVector.size()>0) {
-        m_PreSceneVector.clear();
-        m_PreSceneVector.operator=(m_SceneVector);
-    }
-    m_SceneVector.clear();
-}
-void AudioHelp::removeEffectScene(std::string name)
-{
-    for_each(m_PreSceneVector.begin(), m_PreSceneVector.end(), [=](Value data){
-        stopEffect(data.asString());
-    });
 }
 #pragma mark 项目需要音效
 

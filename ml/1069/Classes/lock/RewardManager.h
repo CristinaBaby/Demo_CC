@@ -76,14 +76,14 @@ public:
     std::function<void()> showRewardFalseCall = nullptr;
     std::function<void()> showRewardLoadingCall = nullptr;
     std::function<void()> removeRewardLoadingCall = nullptr;
-    
+
     static bool s_showFullAds;
 private:
     void removeLoadingSchedule(float dt);
     
     virtual void onAdsCollapsed(ADS_TYPE adType) override;
     virtual void onAdsExpanded(ADS_TYPE adType) override;;
-    
+
     virtual void onAdsRewarded(std::string, int, bool) override;
     
     virtual void onAdsLoadFailed(std::string error, ADS_TYPE adType) override;

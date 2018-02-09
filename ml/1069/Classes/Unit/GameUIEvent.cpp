@@ -21,21 +21,12 @@ void GameUIEvent::onButtonCallback(int tag )
         AudioHelp::getInstance()->playPreviousEffect();
         SceneManager::popScene();
     }else if (GameUILayoutLayer::eUIButtonTagHomeRate==tag){
-//        STSystemFunction sf;
-        SSCInternalLibManager::getInstance()->rateUs();
+        STSystemFunction sf;
+        sf.rateUs();
     }else if (GameUILayoutLayer::eUIButtonTagMoreGame==tag){
         SSCMoreGameManager::getInstance()->show(MGAT_EXPAND);
     }else if (GameUILayoutLayer::eUIButtonTagHome==tag){
-        Dialog* dialog=Dialog::create(Size(504,360), (void*)&MENU_TYPE_1, Dialog::DIALOG_TYPE_NEGATIVE);
-        dialog->setContentText("Do you want to start over with a new food?");
-        Director::getInstance()->getRunningScene()->addChild(dialog, 9999, 9999);
-        dialog->setPosition(Director::getInstance()->getVisibleOrigin());
-        dialog->onPositiveClick = [=](void*){
-            AudioHelp::getInstance()->resetEffect();
-            SceneManager::popToRootScene();
-            SceneManager::replaceTheScene<HomeScene>();
-            
-        };
+        SceneManager::replaceTheScene<HomeScene>();
     }else if (GameUILayoutLayer::eUIButtonTagFav==tag){
         
     }else if (GameUILayoutLayer::eUIButtonTagNext==tag) {
@@ -50,7 +41,14 @@ void GameUIEvent::onButtonCallback(int tag )
                 break;
             case GameUIEvent::eSceneTagShare:
             {
-                SceneManager::pushTheScene<ShareScene>();
+                if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
+                    AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+                    AdLoadingLayerBase::s_currentInstance->loadingDoneCallback = [=](){
+                        SceneManager::pushTheScene<ShareScene>();
+                    };
+                }else{
+                    SceneManager::pushTheScene<ShareScene>();
+                }
             }
                 break;
             case GameUIEvent::eSceneTagChoosePackage:

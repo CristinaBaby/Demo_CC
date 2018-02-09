@@ -21,8 +21,8 @@ void GameUIEvent::onButtonCallback(int tag )
         AudioHelp::getInstance()->playPreviousEffect();
         SceneManager::popScene();
     }else if (GameUILayoutLayer::eUIButtonTagHomeRate==tag){
-        STSystemFunction sf;
-        sf.rateUs();
+//        STSystemFunction sf;
+        SSCInternalLibManager::getInstance()->rateUs();
     }else if (GameUILayoutLayer::eUIButtonTagFav==tag){
         
     }else if (GameUILayoutLayer::eUIButtonTagNext==tag) {
@@ -38,9 +38,13 @@ void GameUIEvent::onButtonCallback(int tag )
             case GameUIEvent::eSceneTagShare:
             {
                 if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
-                    AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+                    AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+                    AdLoadingLayerBase::s_currentInstance->loadingDoneCallback = [=](){
+                        SceneManager::pushTheScene<ShareScene>();
+                    };
+                }else{
+                    SceneManager::pushTheScene<ShareScene>();
                 }
-                SceneManager::pushTheScene<ShareScene>();
             }
                 break;
             case GameUIEvent::eSceneTagChooseBg:

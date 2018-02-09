@@ -26,7 +26,7 @@ public:
     
     void onTypeCallback(int index,DecorateTypeConfigData,bool selected);
     void onDecorateOK();
-    void onDecorationCallback(int index,int type,DecorateConfigData decData);
+    void onDecorationCallback(int index,DecorateConfigData Data);
     virtual void onShopItemBuy(cocos2d::Ref *pRef);
 protected:
     virtual void _initData();

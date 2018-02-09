@@ -28,11 +28,10 @@ public:
     
     std::function<void()> onLogoDecoratedCallback;
     void onButtonCallback(Ref*,Widget::TouchEventType type);
-    virtual void onShopItemBuy(cocos2d::Ref *pRef);
 protected:
     void _showDecorationBanner();
     void _onTypeCallback(int index,DecorateTypeConfigData,bool selected);
-    void _onDecorationCallback(int index,int type,DecorateConfigData decData);
+    void _onDecorationCallback(int index,DecorateConfigData Data);
     
     void _reset();
     bool _saveLogo();

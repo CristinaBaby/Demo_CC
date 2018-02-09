@@ -20,18 +20,13 @@ MakeNormalPizzaScene::MakeNormalPizzaScene()
     m_bGraterReady = false;
     m_nCheeseCount = 0;
     m_bCanTouch = false;
-    m_pDecoration = nullptr;
     m_pDecorationRipe = nullptr;
     m_pDecorationScrollView = nullptr;
-    
-    hasPermission = false;
-//    AudioHelp::getInstance()->registerEffectScene(ClassString(MakeNormalPizzaScene));
 }
 
 MakeNormalPizzaScene::~MakeNormalPizzaScene()
 {
     CC_SAFE_RELEASE(m_pDecorationRipe);
-//    AudioHelp::getInstance()->removeEffectScene(ClassString(MakeNormalPizzaScene));
 }
 bool MakeNormalPizzaScene::init()
 {
@@ -54,56 +49,38 @@ bool MakeNormalPizzaScene::init()
     m_pGuideLayer = GuideLayer::create();
     this->addChildToUILayer(m_pGuideLayer);
     m_pGuideLayer->setLocalZOrder(10);
-    if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
-    }
-    
+    this->runAction(Sequence::create(DelayTime::create(1),
+                                     CallFunc::create([=](){
+        if (!UserDefault::getInstance() -> getBoolForKey("removeAds")) {
+            AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+        }
+    }), NULL));
     m_pGameUI->showNormalLayout();
-    AudioHelp::getInstance()->playBackGroundMusic("make_bg.mp3");
     return true;
 }
 
 void MakeNormalPizzaScene::onEnter()
 {
     ExtensionScene::onEnter();
-//    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_MAKE_NORMAL);
-    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_MAKE_NORMAL);
 }
 
 void MakeNormalPizzaScene::onExit()
 {
-//    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_MAKE_NORMAL);
     ExtensionScene::onExit();
 }
 
 void MakeNormalPizzaScene::onShopItemBuy(cocos2d::Ref *pRef)
 {
-    m_pDecorationScrollView->decorationData = ConfigManager::getInstance()->getDecorateFile(m_sCurTypeStr);
-    m_pDecorationScrollView->reloadData();
+    
 }
 
 void MakeNormalPizzaScene::onButtonCallback(Button* btn)
 {
     int tag = btn->getTag();
+    btn->setTouchEnabled(false);
     if (GameUILayoutLayer::eUIButtonTagNext==tag){
-//        btn->setTouchEnabled(false);
-//        m_pGameUI->hideNext();
-//        _finishDecorate();
-
-        m_btn = btn;
-#if __cplusplus > 201100L
-        RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int           requestcode,bool bgranted){
-            onPermissionGrantedResult(requestcode, bgranted);
-        };
-#else
-        RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
-        
-        //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-        int requestCode = 1;
-        //调用权限申请的方法,根据需要申请敏感权限
-        RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
-        
+        m_pGameUI->hideNext();
+        _finishDecorate();
         return;
     }
     ExtensionScene::onButtonCallback(btn);
@@ -206,30 +183,7 @@ void MakeNormalPizzaScene::dragNodeTouchMoved(DragNode* pDragNode,Point worldPoi
         Rect rect = pDragNode->getBoundingBox();
         if (rect.containsPoint(m_pGrater->getPosition())) {
             if (m_bGraterReady) {
-//                _sliceCheese();
-                
-                if(hasPermission) {
-                    _sliceCheese();
-                } else {
-#if __cplusplus > 201100L
-                    RuntimePermissionManager::getInstance()->onPermissionGrantedResult = [&](int           requestcode,bool bgranted){
-                        onPermissionGrantedResult(requestcode, bgranted);
-                    };
-#else
-                    RuntimePermissionManager::getInstance()->mRuntimePermissionDelegate = this;
-#endif
-                    
-                    //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-                    int requestCode = 2;
-                    //调用权限申请的方法,根据需要申请敏感权限
-                    RuntimePermissionManager::getInstance()->requestRuntimePermissions(requestCode, PERMISSION::kWriteExternalStorage);
-                }
-                
-                
-
-                
-                
-                
+                _sliceCheese();
             }else{
                 m_bGraterReady = true;
                 Vec2 location = m_pPan->getPosition();
@@ -238,7 +192,6 @@ void MakeNormalPizzaScene::dragNodeTouchMoved(DragNode* pDragNode,Point worldPoi
                                                                             NULL)));
             }
         }
-        
     }
 }
 
@@ -247,11 +200,6 @@ void MakeNormalPizzaScene::dragNodeTouchEnded(DragNode* pDragNode,Point worldPoi
     m_pGuideLayer->removeGuide();
     AudioHelp::getInstance()->stopLoopEffect();
     pDragNode->stopAllActions();
-    //用sholve的时候 不能执行m_pDoughGrid 不然会有意想不到的情况  不晓得啥原因
-    if (pDragNode==m_pSholve){
-        _getSholvePizza();
-        return;
-    }
     if (m_pDoughGrid) {
         m_pDoughGrid->stopAllActions();
     }
@@ -311,15 +259,6 @@ void MakeNormalPizzaScene::dragNodeClicked(DragNode* pDragNode,Point worldPoint)
         m_pDoughGrid->stopAllActions();
     }else if (m_pDragDough==pDragNode) {
         m_pDragDough->runAction(EaseBackOut::create(ScaleTo::create(0.3, 0.7)));
-    }
-    if (pDragNode==m_pWhrisk) {
-        Sprite *stick = (Sprite*)pDragNode->getChildByName("stick");
-        if (stick) {
-            stick->stopAllActions();
-        }
-        m_pWhrisk->stopAllActions();
-        m_pMixture->stopAllActions();
-        m_pMixture->setRotation(0);
     }
 
 }
@@ -736,13 +675,16 @@ void MakeNormalPizzaScene::_showDecorations()
     m_pDecoration = Node::create();
     this->addChildToContentLayer(m_pDecoration);
     m_pDecoration->setPosition(m_pPan->getPosition());
+//    Sprite* pTencil = Sprite::create(localPath("make/pan.png"));
+//    m_pDecoration->setStencil(pTencil);
+//    m_pDecoration->setAlphaThreshold(0.5);
     
     m_pDecorationRipe = Node::create();
     m_pDecorationRipe->retain();
     
     m_pTypeScrollView = DecTypeScrollView::createWithSize(Size(240,480));
     this->addChildToUILayer(m_pTypeScrollView);
-    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  -10-visibleSize.width/2,(640-m_pTypeScrollView->getContentSize().height)/2-50+30,kBorderLeft);
+    CMVisibleRect::setPositionAdapted(m_pTypeScrollView,  0-visibleSize.width/2,(640-430)/2-50,kBorderLeft);
     m_pTypeScrollView->onItemCellSelected = CC_CALLBACK_3(MakeNormalPizzaScene::_onTypeCallback, this);
     m_pTypeScrollView->btnPathEX = "content/make/normal/";
     m_pTypeScrollView->boxPathEX = localPath("box.png");
@@ -764,7 +706,6 @@ void MakeNormalPizzaScene::_showDecorations()
     m_pTypeScrollView->setMargin(-20);
     m_pTypeScrollView->setSelectedAnimate(true);
     m_pTypeScrollView->loadType(ConfigManager::getInstance()->getDecorateType("normalIngrident"));
-    m_pTypeScrollView->setScale(0.8);
     
     m_pTouchLayer = TouchLayer::create();
     this->addChildToUILayer(m_pTouchLayer);
@@ -1031,7 +972,7 @@ void MakeNormalPizzaScene::_mixBatter()
                                                                     MoveBy::create(0.01, Vec2(0.1, 1)),
                                                                     NULL)));
         Rect rect = m_pBowl->getBoundingBox();
-        Rect limitRect = Rect(rect.origin.x+190+40, rect.origin.y+250+40, rect.size.width-200-80, rect.size.height*0.4-40);
+        Rect limitRect = Rect(rect.origin.x+190, rect.origin.y+250, rect.size.width-200, rect.size.height*0.4);
         m_pWhrisk->setLimitRect(limitRect);
         m_pWhrisk->setOrgPositionDefault();
         m_pWhrisk->setTouchEnabled(false);
@@ -1142,20 +1083,15 @@ void MakeNormalPizzaScene::_brushOil()
         Vec2 endPos = m_pOilBrush->getWorldSpaceActionPoint();
         Vec2 startPos = Vec2(m_pOilBrush->getOffset(), endPos);
         m_pOilScribble->paint(startPos, endPos);
+        int percent = 100-m_pOilScribble->getCanvas()->getPercentageTransparent();
         Sprite* pBrushOil = (Sprite*)m_pSauceSpoon->getChildByName("brush_oil");
-        static int moveCount = 0;
-        moveCount++;
-        if (moveCount%20==0) {
-            int percent = 100-m_pOilScribble->getCanvas()->getPercentageTransparent();
-            if (pBrushOil) {
-                pBrushOil->setOpacity(225-200.0*percent/m_nSaucePercent);
-            }
-            if (100.0*percent/m_nOilPercent>=96) {
-                moveCount = 0;
-                m_pOilScribble->paint(localPath("make/oil2.png"));
-                m_pOilBrush->runAction(RotateBy::create(0.5, 100));
-                _finishBrushOil();
-            }
+        if (pBrushOil) {
+            pBrushOil->setOpacity(225-200.0*percent/m_nSaucePercent);
+        }
+        if (100.0*percent/m_nOilPercent>=96) {
+            m_pOilScribble->paint(localPath("make/oil2.png"));
+            m_pOilBrush->runAction(RotateBy::create(0.5, 100));
+            _finishBrushOil();
         }
     }else{
         m_bOilReady = true;
@@ -1175,20 +1111,15 @@ void MakeNormalPizzaScene::_brushSauce()
         Vec2 endPos = m_pSauceSpoon->getWorldSpaceActionPoint();
         Vec2 startPos = Vec2(m_pSauceSpoon->getOffset(), endPos);
         m_pSauceScribble->paint(startPos, endPos);
+        int percent = 100-m_pSauceScribble->getCanvas()->getPercentageTransparent();
         Sprite* pSpoonSauce = (Sprite*)m_pSauceSpoon->getChildByName("spoon_sauce");
-        static int moveCount = 0;
-        moveCount++;
-        if (moveCount%20==0) {
-            int percent = 100-m_pSauceScribble->getCanvas()->getPercentageTransparent();
-            if (pSpoonSauce) {
-                pSpoonSauce->setOpacity(225-200.0*percent/m_nSaucePercent);
-            }
-            if (100.0*percent/m_nSaucePercent>=96) {
-                moveCount = 0;
-                m_pSauceScribble->paint(localPath("make/sauce2.png"));
-                m_pSauceSpoon->runAction(RotateBy::create(0.5, 90));
-                _finishBrushSauce();
-            }
+        if (pSpoonSauce) {
+            pSpoonSauce->setOpacity(225-200.0*percent/m_nSaucePercent);
+        }
+        if (100.0*percent/m_nSaucePercent>=96) {
+            m_pSauceScribble->paint(localPath("make/sauce2.png"));
+            m_pSauceSpoon->runAction(RotateBy::create(0.5, 90));
+            _finishBrushSauce();
         }
     }else{
         m_bSauceReady = true;
@@ -1247,10 +1178,8 @@ void MakeNormalPizzaScene::_sliceCheese()
             m_pCheese->setVisible(false);
         }
         if (mixtureStep>=3){
-            log("======================== _sliceCheese");
-            AudioHelp::getInstance()->stopLoopEffect();
             _finishCheeseSlice();
-            
+            AudioHelp::getInstance()->stopLoopEffect();
         }
     }
 }
@@ -1271,23 +1200,21 @@ void MakeNormalPizzaScene::_onTypeCallback(int index,DecorateTypeConfigData type
             this->addChildToUILayer(m_pDecorationScrollView);
             
             m_pDecorationScrollView->decorationData = data;
-            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(MakeNormalPizzaScene::_onDecorationCallback, this);
+            m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(MakeNormalPizzaScene::_onDecorationCallback, this);
         }else{
             m_pDecorationScrollView->decorationData = data;
         }
         m_pDecorationScrollView->boxPathEX = localPath("frame.png");
         m_pDecorationScrollView->setDirection(ItemScrollView::Direction::eDirectionV);
-        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_3(MakeNormalPizzaScene::_onDecorationCallback, this);
+        m_pDecorationScrollView->onItemCellSelected = CC_CALLBACK_2(MakeNormalPizzaScene::_onDecorationCallback, this);
         m_pDecorationScrollView->stopAllActions();
         m_pDecorationScrollView->setMargin(10);
         //        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, (640-m_pDecorationScrollView->getContentSize().width)*0.5,60-visibleSize.height/2);
         //        m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(0, visibleSize.height/2)));
         m_pDecorationScrollView->setScale(0);
-        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, 160-150-30,(640-425)/2-50+30,kBorderLeft);
-        m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(150,0)));
-//        m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(150, 0)));
-        m_pDecorationScrollView->runAction(ScaleTo::create(0.2, 0.85));
-//        m_pDecorationScrollView->setScale(0.85);
+        CMVisibleRect::setPositionAdapted(m_pDecorationScrollView, 160-150,(640-425)/2-50);
+        m_pDecorationScrollView->runAction(MoveBy::create(0.5, Vec2(150, 0)));
+        m_pDecorationScrollView->runAction(ScaleTo::create(0.2, 1));
         
         m_pDecorationScrollView->btnPathEX = ostr.str();
         
@@ -1309,17 +1236,28 @@ void MakeNormalPizzaScene::_onTypeCallback(int index,DecorateTypeConfigData type
 
 }
 
-void MakeNormalPizzaScene::_onDecorationCallback(int index,int type,DecorateConfigData decData)
+void MakeNormalPizzaScene::_onDecorationCallback(int index,DecorateConfigData decData)
 {
-    
-    if (type==1) {
-        if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
-            RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
-            m_pDecorationScrollView->setSelected(false);
-            return;
+    if (!gNoneIap) {
+        if (index>=decData.freeCount+decData.beginIndex && !(index<decData.totalCount+decData.beginIndex && index>=decData.holidayIndex && decData.holidayIndex>=0 && decData.holidayCount==0)){
+            int type = 0;
+            if(decData.videoCount>0){
+                type = (index)%2;
+            }
+            if (type==0) {
+                ShopLayer* pLayer = ShopLayer::create();
+                this->addChildToUILayer(pLayer);
+                pLayer->setLocalZOrder(100);
+                pLayer->showBannerDismiss();
+                m_pDecorationScrollView->setSelected(false);
+                return;
+            }else if(!ConfigManager::getInstance()->getVideoUnLocked(decData.decTypeName, index)){
+                RewardManager::getInstance()->showRewardAds(decData.decTypeName, index);
+                m_pDecorationScrollView->setSelected(false);
+                return;
+            }
         }
     }
-    
     AudioHelp::getInstance()->playSelectedEffect();
     std::stringstream ostr;
     ostr<<"content/category/"<<decData.pathName<<"/"<<index<<".png";
@@ -1391,13 +1329,12 @@ RenderTexture* MakeNormalPizzaScene::_getDecorationResultRender()
 void MakeNormalPizzaScene::_getSholvePizza()
 {
     m_pSholve->setTouchEnabled(false);
-    
     Vec2 pos = m_pSholve->convertToNodeSpace(m_pSholve->getWorldSpaceActionPoint());
     m_pPan->setVisible(false);
     m_pDoughGrid->setVisible(false);
     m_pOilScribble->setVisible(false);
     m_pSauceScribble->setVisible(false);
-
+    
     m_pFinishPizza = Node::create();
     m_pSholve->addChild(m_pFinishPizza);
     m_pFinishPizza->setPosition(pos);
@@ -1410,37 +1347,24 @@ void MakeNormalPizzaScene::_getSholvePizza()
     
     Sprite*pOil = Sprite::create(localPath("make/oil2.png"));
     m_pFinishPizza->addChild(pOil);
-
+    
     
     Sprite*pSauce = Sprite::create(localPath("make/sauce2.png"));
 //    pSauce->setAnchorPoint(Vec2::ZERO);
     m_pFinishPizza->addChild(pSauce);
     
+    m_pCheeseSlice->retain();
+    m_pCheeseSlice->removeFromParent();
+    m_pFinishPizza->addChild(m_pCheeseSlice);
+    m_pCheeseSlice->release();
     
-    if (m_pCheeseSlice){
-        m_pCheeseSlice->retain();
-        m_pCheeseSlice->removeFromParent();
-        m_pFinishPizza->addChild(m_pCheeseSlice);
-        m_pCheeseSlice->release();
-        m_pCheeseSlice->setPosition(Vec2::ZERO);
-        
-    }
+    m_pDecoration->retain();
+    m_pDecoration->removeFromParent();
+    m_pFinishPizza->addChild(m_pDecoration);
+    m_pDecoration->release();
     
-    if (m_pDecoration) {
-//        m_pDecoration->retain();
-        m_pDecoration->removeFromParent();
-//        m_pFinishPizza->addChild(m_pDecoration);
-//        m_pDecoration->release();
-//        m_pDecoration->setPosition(Vec2::ZERO);
-        Sprite* pDec;
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        pDec = Sprite::create(SSCFileUtility::getStoragePath()+"normal_dec.png");
-#else
-        pDec = Sprite::create(SSCFileUtility::getStoragePath()+"/normal_dec.png");
-#endif
-        m_pFinishPizza->addChild(pDec);
-    }
-    
+    m_pCheeseSlice->setPosition(Vec2::ZERO);
+    m_pDecoration->setPosition(Vec2::ZERO);
     _finishAll();
 }
 
@@ -1550,11 +1474,10 @@ void MakeNormalPizzaScene::_finishCheeseSlice()
                                           MoveBy::create(0.5, Vec2(visibleSize.width, 0)),
                                           CallFunc::create([=](){
         m_pGrater->removeFromParent();
-        m_pGrater = nullptr;
     }), NULL));
-    log("======================== _finishCheeseSlice");
+    
     _savePizza();
-    log("======================== _savePizza");
+    
     auto action = Sequence::create(DelayTime::create(1.5),
                                    MoveBy::create(0.5, Vec2(350, 0)), NULL);
     m_pPan->runAction(action);
@@ -1591,8 +1514,6 @@ void MakeNormalPizzaScene::_finishDecorate()
     m_pSauceScribble->runAction(action->clone());
     m_pCheeseSlice->runAction(action->clone());
     m_pDecoration->runAction(action->clone());
-    _savePizzaDecoration();
-    _savePizzaDecorationRipe();
     this->runAction(Sequence::create(DelayTime::create(2),
                                      CallFunc::create([=](){
         _showSholve();
@@ -1601,6 +1522,8 @@ void MakeNormalPizzaScene::_finishDecorate()
 
 void MakeNormalPizzaScene::_finishAll()
 {
+    _savePizzaDecoration();
+    _savePizzaDecorationRipe();
     m_pSholve->runAction(Sequence::create(Spawn::create(RotateBy::create(0.5, 45),
                                                         MoveBy::create(0.5, Vec2(0, -200)), NULL),
                                           CallFunc::create([=](){
@@ -1611,21 +1534,18 @@ void MakeNormalPizzaScene::_finishAll()
 
 void MakeNormalPizzaScene::_savePizza()
 {
-    
-    
     Size mixtureSize = m_pPan->getContentSize();
     RenderTexture* render = RenderTexture::create(mixtureSize.width, mixtureSize.height,Texture2D::PixelFormat::RGBA8888,
                                                   GL_DEPTH24_STENCIL8_OES);//针对clippingNode 设置了深度
-    if (m_pCheeseSlice) {
-        Vec2 posCheese = m_pCheeseSlice->getPosition();
-        m_pCheeseSlice->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
-        
-        render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
-        m_pCheeseSlice->visit();
-        render->end();
-        m_pCheeseSlice->setPosition(posCheese);
-    }
+    Vec2 posCheese = m_pPan->getPosition();
+    m_pCheeseSlice->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
     
+    render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    m_pCheeseSlice->visit();
+    render->end();
+    m_pCheeseSlice->setPosition(posCheese);
+    
+    m_pContentLayer->setPosition(Vec2(0, 0));
     Director::getInstance()->getRenderer()->render();
     
     __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_BACKGROUND);
@@ -1635,9 +1555,9 @@ void MakeNormalPizzaScene::_savePizza()
     
     bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"normal_cheese.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"normal_cheese.png", false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/normal_cheese.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/normal_cheese.png", false);
 #endif
     pImage->autorelease();
 
@@ -1648,16 +1568,14 @@ void MakeNormalPizzaScene::_savePizzaDecoration()
     Size mixtureSize = m_pPan->getContentSize();
     RenderTexture* render = RenderTexture::create(mixtureSize.width, mixtureSize.height,Texture2D::PixelFormat::RGBA8888,
                                                   GL_DEPTH24_STENCIL8_OES);//针对clippingNode 设置了深度
-    if (m_pDecoration){
-        Vec2 pos = m_pDecoration->getPosition();
-        m_pDecoration->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
-        
-        render->begin();
-        m_pDecoration->visit();
-        render->end();
-        
-        m_pDecoration->setPosition(pos);
-    }
+    Vec2 pos = m_pDecoration->getPosition();
+    m_pDecoration->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
+    
+    render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    m_pDecoration->visit();
+    render->end();
+    
+    m_pDecoration->setPosition(pos);
     Director::getInstance()->getRenderer()->render();
     
     __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_BACKGROUND);
@@ -1667,9 +1585,9 @@ void MakeNormalPizzaScene::_savePizzaDecoration()
     
     bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"normal_dec.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"normal_dec.png", false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/normal_dec.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/normal_dec.png", false);
 #endif
     pImage->autorelease();
 }
@@ -1679,15 +1597,13 @@ void MakeNormalPizzaScene::_savePizzaDecorationRipe()
     Size mixtureSize = m_pPan->getContentSize();
     RenderTexture* render = RenderTexture::create(mixtureSize.width, mixtureSize.height,Texture2D::PixelFormat::RGBA8888,
                                                   GL_DEPTH24_STENCIL8_OES);//针对clippingNode 设置了深度
-    if (m_pDecorationRipe) {
-        Vec2 pos = m_pDecorationRipe->getPosition();
-        m_pDecorationRipe->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
-        
-        render->begin();
-        m_pDecorationRipe->visit();
-        render->end();
-        m_pDecorationRipe->setPosition(pos);
-    }
+    Vec2 pos = m_pDecorationRipe->getPosition();
+    m_pDecorationRipe->setPosition(Vec2(mixtureSize.width/2, mixtureSize.height/2));
+    
+    render->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    m_pDecorationRipe->visit();
+    render->end();
+    m_pDecorationRipe->setPosition(pos);
     Director::getInstance()->getRenderer()->render();
     
     __NotificationCenter::getInstance()->removeObserver(render, EVENT_COME_TO_BACKGROUND);
@@ -1697,65 +1613,9 @@ void MakeNormalPizzaScene::_savePizzaDecorationRipe()
     
     bool issuccess;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"normal_decripe.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"normal_decripe.png", false);
 #else
-    issuccess = pImage->saveToFile(SSCFileUtility::getStoragePath()+"/normal_decripe.png", false);
+    issuccess = pImage->saveToFile(FileUtility::getStoragePath()+"/normal_decripe.png", false);
 #endif
     pImage->autorelease();
-}
-
-void MakeNormalPizzaScene::saveImage2(){
-//    Rect rect = _pDragNode->getBoundingBox();
-//    if (rect.containsPoint(m_pGrater->getPosition())) {
-//        if (m_bGraterReady) {
-//            _sliceCheese();
-//        }else{
-//            m_bGraterReady = true;
-//            Vec2 location = m_pPan->getPosition();
-//            Vec2 pos = Vec2(location.x, location.y+80);
-//            m_pGrater->runAction(RepeatForever::create(Sequence::create(CircleMove::create(20, pos, 150, 360*6),
-//                                                                        NULL)));
-//        }
-//    }
-    _sliceCheese();
-    
-    
-}
-
-void MakeNormalPizzaScene::saveImage1(){
-    
-    m_btn->setTouchEnabled(false);
-    _finishDecorate();
-    return;
-    
-}
-
-
-void MakeNormalPizzaScene::onPermissionGrantedResult(int requestCode,bool bGranted){
-    if (requestCode == 1) {
-        if (bGranted) {
-            this->runAction(Sequence::create(DelayTime::create(0.0f),
-                                             CallFunc::create([=] {
-                saveImage1();
-            }),NULL))    ;
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
-    }
-    if (requestCode == 2) {
-        
-        if (bGranted) {
-            this->runAction(Sequence::create(DelayTime::create(0.0f),
-                                             CallFunc::create([=] {
-                hasPermission = true;
-                saveImage2();
-            }),NULL))    ;
-            log("-------->anroid runtime permisson was granted,requestcode = %d",requestCode);
-        }else{
-            //add your code....
-            log("-------->anroid runtime permisson was not  granted,requestcode = %d",requestCode);
-        }
-    }
 }

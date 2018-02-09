@@ -5,7 +5,8 @@
 #include "AdsManager.h"
 #include "IAPManager.h"
 #include "SoundPlayer.h"
-#include "AdsManager.h"
+#include "AdsLoadingLayer.h"
+#include "AdLoadingLayerBase.h"
 
 USING_NS_CC;
 
@@ -94,7 +95,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     FileUtils::getInstance()->setSearchPaths(searchPath);
     
-//    AdsManager::getInstance()->preloadAllAds();
+    AdsManager::getInstance()->preloadAllAds();
     
     
     // run
@@ -120,6 +121,6 @@ void AppDelegate::applicationWillEnterForeground() {
     
     if (kIAPManager->isShowAds())
     {
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+        AdLoadingLayerBase::showLoading<AdsLoadingLayer>(false, nullptr, INT16_MAX);
     }
 }

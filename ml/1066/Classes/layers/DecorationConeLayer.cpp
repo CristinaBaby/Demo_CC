@@ -7,7 +7,7 @@
 //
 
 #include "DecorationConeLayer.hpp"
-#include "SSCFileUtility.h"
+#include "FileUtility.h"
 #include "IAPManager.h"
 
 #define ORIGIN_POINT    Vec2(73, 320 + kAdapterScreen->g_oOffset.y)
@@ -387,7 +387,7 @@ void DecorationConeLayer::onNextCallback()
         m_pSyrup->removeAllChildrenWithCleanup(true);
     }
     //////////////////////////////////////////////////////////////////////////
-    string str = SSCFileUtility::getStoragePath() + "cone.png";
+    string str = FileUtility::getStoragePath() + "cone.png";
     Director::getInstance()->getTextureCache()->removeTextureForKey(str);
     
     RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height);

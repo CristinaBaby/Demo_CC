@@ -1,2 +1,0 @@
-include ':Snowcone'
-project(':Snowcone').projectDir = new File(settingsDir, 'app')

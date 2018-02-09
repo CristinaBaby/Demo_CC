@@ -22,8 +22,6 @@ public:
     virtual void onEnter();
     virtual void onExit();
     
-    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(MakeNormalPizzaScene));}
-    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(MakeNormalPizzaScene));}
     
     virtual void onShopItemBuy(cocos2d::Ref *pRef);
     virtual void onButtonCallback(Button* btn);
@@ -80,7 +78,7 @@ protected:
     void _brushSauce();
     void _sliceCheese();
     void _onTypeCallback(int index,DecorateTypeConfigData,bool selected);
-    void _onDecorationCallback(int index,int type,DecorateConfigData decData);
+    void _onDecorationCallback(int index,DecorateConfigData Data);
     void _playEffectNice(float dt = 0.0f);
     RenderTexture* _getDecorationResultRender();
     void _getSholvePizza();
@@ -163,17 +161,6 @@ protected:
 //    **********put bake unit
     DragNode* m_pSholve;
     Node* m_pFinishPizza;
-    
-    
-private:
-    
-    bool hasPermission;
-    DragNode* _pDragNode;
-    Button* m_btn;
-    void saveImage1();
-    void saveImage2();
-    void onPermissionGrantedResult(int requestCode,bool bGranted);
-
 };
 
 #endif

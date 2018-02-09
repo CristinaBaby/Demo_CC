@@ -2,8 +2,7 @@
 #include "HelloWorldScene.h"
 #include "SceneManager.h"
 #include "Heads.h"
-#include "RuntimePermissionManager.h"
-#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
@@ -83,11 +82,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    // run
 //    director->runWithScene(scene);
     
-    
-    //调用申请权限接口的标识，会在你的回调方法中用到，可以是任何值
-    int requestCode = 1;
-    //调用权限申请的方法,根据需要申请敏感权限
-    
     CMVisibleRect::setupVisibleRect(960, 640);
     visibleSize = Director::getInstance()->getVisibleSize();
     
@@ -115,11 +109,11 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-    
+    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     if (!UserDefault::getInstance() -> getBoolForKey("removeAds")){
-        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeInterstitialAds);
+        if (Director::getInstance()->getRunningScene()) {
+            AdLoadingLayerBase::showLoading<AdsLoadingScene>(true);
+        }
+//        AdsManager::getInstance()->showAds(ADS_TYPE::kTypeRewardedAds);
     }
-
-
 }

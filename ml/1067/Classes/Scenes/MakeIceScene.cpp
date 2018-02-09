@@ -1,5 +1,6 @@
 
 #include "MakeIceScene.h"
+#include "Analytics.h"
 
 static Vec2 gWaterPos[][6] ={
     {
@@ -81,7 +82,10 @@ bool MakeIceScene::init()
 void MakeIceScene::onEnter()
 {
     ExtensionScene::onEnter();
-    FlurryEventManager::getInstance()->logCurrentModuleEnterEvent(Flurry_EVENT_ICEMAKE);
+    
+    Analytics::getInstance()->sendScreenEvent("food0.0_snowcone_icemaking");
+    
+    Analytics::getInstance()->sendScreenEvent(Flurry_EVENT_ICEMAKE);
 //    Scene* scene = (Scene*)this->getParent();
 //    
 //    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
@@ -90,8 +94,6 @@ void MakeIceScene::onEnter()
 
 void MakeIceScene::onExit()
 {
-    FlurryEventManager::getInstance()->logCurrentModuleExitEvent(Flurry_EVENT_ICEMAKE);
-    
     ExtensionScene::onExit();
 }
 

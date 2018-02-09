@@ -86,10 +86,7 @@ void SetPriceLayer::showPriceTag()
         m_pText->setInputMode(cocos2d::ui::EditBox::InputMode::DECIMAL);
         //    m_pText->setInputFlag(cocos2d::ui::EditBox::InputFlag::INTIAL_CAPS_ALL_CHARACTERS);
         m_pText->setReturnType(EditBox::KeyboardReturnType::DONE);
-        
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         m_pText->setDelegate(this);
-#endif
         m_pBg->addChild(m_pText);
         m_pText->setPosition(Vec2(230, 0)+m_pBg->getContentSize()*0.5);
         

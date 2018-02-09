@@ -12,6 +12,7 @@ GameUILayoutLayer::GameUILayoutLayer()
     m_pHomeShop = nullptr;
     m_pHomeRate = nullptr;
     m_pHomePolicy = nullptr;
+
     
     m_pNext = nullptr;
     m_pBack = nullptr;
@@ -44,10 +45,10 @@ bool GameUILayoutLayer::init()
 
 void GameUILayoutLayer::showHomeUILayout(bool animate)
 {
-//    if (!m_pHomeMore) {
-//        m_pHomeMore = _createButton("content/start/btn_more.png");
-//        this->addChild(m_pHomeMore);
-//    }
+    if (!m_pHomeMore) {
+        m_pHomeMore = _createButton("content/start/btn_more.png");
+        this->addChild(m_pHomeMore);
+    }
     if (!m_pHomeShop) {
         m_pHomeShop = _createButton("content/start/btn_shop.png");
         this->addChild(m_pHomeShop);
@@ -65,9 +66,8 @@ void GameUILayoutLayer::showHomeUILayout(bool animate)
         m_pHomePolicy = _createButton("content/start/btn_pp.png");
         this->addChild(m_pHomePolicy);
     }
-    
     m_pHomeStart->setTag(GameUILayoutLayer::eUIButtonTagHomeStart);
-//    m_pHomeMore->setTag(GameUILayoutLayer::eUIButtonTagHomeMore);
+    m_pHomeMore->setTag(GameUILayoutLayer::eUIButtonTagHomeMore);
     m_pHomeShop->setTag(GameUILayoutLayer::eUIButtonTagHomeShop);
     //    m_pHomeRate->setTag(GameUILayoutLayer::eUIButtonTagHomeRate);
     m_pHomePolicy->setTag(GameUILayoutLayer::eUIButtonTagPolicy);
@@ -78,28 +78,28 @@ void GameUILayoutLayer::showHomeUILayout(bool animate)
     }
     if (!animate) {
 //        CMVisibleRect::setPosition(m_pHomeRate, 15, 15,kBorderLeft,kBorderTop);
-//        CMVisibleRect::setPosition(m_pHomeMore, 15, 15,kBorderRight,kBorderBottom);
+        CMVisibleRect::setPosition(m_pHomeMore, 15, 15,kBorderRight,kBorderBottom);
         CMVisibleRect::setPosition(m_pHomeShop, 165, 15,kBorderRight,kBorderBottom);
         CMVisibleRect::setPositionAdapted(m_pHomeStart, 320, 400);
     }else{
-        CMVisibleRect::setPosition(m_pHomePolicy, 5, 5,kBorderLeft,kBorderTop);
 //        CMVisibleRect::setPosition(m_pHomeRate, 15, 15,kBorderLeft,kBorderTop);
-//        CMVisibleRect::setPosition(m_pHomeMore, 15, 15,kBorderLeft,kBorderBottom);
+        CMVisibleRect::setPosition(m_pHomeMore, 15, 15,kBorderLeft,kBorderBottom);
         CMVisibleRect::setPosition(m_pHomeShop, 15, 15,kBorderRight,kBorderBottom);
         CMVisibleRect::setPositionAdapted(m_pHomeStart, 320, 240);
+        CMVisibleRect::setPosition(m_pHomePolicy, 5, 5,kBorderLeft,kBorderTop);
 
         m_pHomeStart->setEnabled(false);
-//        m_pHomeMore->setEnabled(false);
+        m_pHomeMore->setEnabled(false);
         m_pHomeShop->setEnabled(false);
 //        m_pHomeRate->setEnabled(false);
         
-//        m_pHomeMore->setOpacity(0);
+        m_pHomeMore->setOpacity(0);
         m_pHomeShop->setOpacity(0);
 //        m_pHomeRate->setOpacity(0);
         m_pHomeStart->setOpacity(0);
         m_pHomePolicy->setOpacity(0);
 //        _showHomeButtonAnimation(m_pHomeRate,0.5,1.2);
-//        _showHomeButtonAnimation(m_pHomeMore,0.5,0.5);
+        _showHomeButtonAnimation(m_pHomeMore,0.5,0.5);
         _showHomeButtonAnimation(m_pHomePolicy,0.5,0.5);
         if (!gNoneIap) {
             _showHomeButtonAnimation(m_pHomeShop,0.5,0.5);
@@ -251,14 +251,14 @@ void GameUILayoutLayer::showShareUILayout(bool animate)
 //        m_pFav = _createButton("content/common/button/btn_fav.png");
 //        this->addChild(m_pFav);
 //    }
-//    if (!m_pPhoto) {
-//        m_pPhoto = _createButton("content/common/button/btn_photo.png");
-//        this->addChild(m_pPhoto);
-//    }
-//    if (!m_pEmail) {
-//        m_pEmail = _createButton("content/common/button/btn_email.png");
-//        this->addChild(m_pEmail);
-//    }
+    if (!m_pPhoto) {
+        m_pPhoto = _createButton("content/common/button/btn_photo.png");
+        this->addChild(m_pPhoto);
+    }
+    if (!m_pEmail) {
+        m_pEmail = _createButton("content/common/button/btn_email.png");
+        this->addChild(m_pEmail);
+    }
     if (!m_pHome) {
         m_pHome = _createButton("content/common/button/btn_home.png");
         this->addChild(m_pHome);
@@ -269,14 +269,14 @@ void GameUILayoutLayer::showShareUILayout(bool animate)
     }
 //
 ////    CMVisibleRect::setPositionAdapted(m_pFav, 900, 480,kBorderRight,kBorderTop);
-//    CMVisibleRect::setPosition(m_pPhoto, 10, 120,kBorderLeft,kBorderTop);
-//    CMVisibleRect::setPosition(m_pEmail, 10, 10,kBorderLeft,kBorderTop);
+    CMVisibleRect::setPosition(m_pPhoto, 10, 120,kBorderLeft,kBorderTop);
+    CMVisibleRect::setPosition(m_pEmail, 10, 10,kBorderLeft,kBorderTop);
     CMVisibleRect::setPosition(m_pHome, 10, 10,kBorderRight,kBorderTop);
     CMVisibleRect::setPosition(m_pBg, 10, 120,kBorderRight,kBorderTop);
 //
 ////    m_pFav->setTag(GameUILayoutLayer::eUIButtonTagFav);
-//    m_pPhoto->setTag(GameUILayoutLayer::eUIButtonTagPhoto);
-//    m_pEmail->setTag(GameUILayoutLayer::eUIButtonTagEmail);
+    m_pPhoto->setTag(GameUILayoutLayer::eUIButtonTagPhoto);
+    m_pEmail->setTag(GameUILayoutLayer::eUIButtonTagEmail);
     m_pHome->setTag(GameUILayoutLayer::eUIButtonTagHome);
     m_pBg->setTag(GameUILayoutLayer::eUIButtonTagBg);
     

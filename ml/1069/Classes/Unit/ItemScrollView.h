@@ -16,8 +16,7 @@ public:
     bool init(const std::string bgPath,const std::string bgHighlight,const std::string frontHighlight,const std::string btn,const std::string lock,int lockType);
     
     void setSelected(bool selected);
-    int lockType; //0 lock 1 reward
-    int decType;
+    
     std::function<void(ItemCell*)> onItemCellSelected;
 private:
     Sprite* m_pBg;
@@ -68,7 +67,7 @@ public:
             });
         }
     }
-    std::function<void(int index,int type,DecorateConfigData Data)> onItemCellSelected;
+    std::function<void(int index,DecorateConfigData Data)> onItemCellSelected;
     std::function<void()> onOKClicked;
     
     void setMargin(float margin){
@@ -83,12 +82,10 @@ public:
             m_pScrollView->setDirection(dir==Direction::eDirectionH?cocos2d::ui::ScrollView::Direction::HORIZONTAL:cocos2d::ui::ScrollView::Direction::VERTICAL);
         }
     };
-    //    void setUseTableScrollView(bool use){
-    //        m_bUseTableView = use;
-    //    }
-    void reloadData(bool second = true);
-    
-    void insertOthers(DecorateConfigData decData,bool second = true,bool front = false);
+//    void setUseTableScrollView(bool use){
+//        m_bUseTableView = use;
+//    }
+    void reloadData();
     
     void scrollToNext();
     
@@ -97,7 +94,7 @@ public:
     int levelFreeCount;
     int lockFreeCount;
     int getPercent();
-    
+
     void setSelected(bool selected = true){
         if(m_pPreCell){
             m_pPreCell->setSelected(selected);
@@ -120,7 +117,6 @@ public:
     
     TableViewCell* m_pCurCell;
 protected:
-    void _relayout();
     void _itemSelected(ItemCell*);
     void _onButtonCallback(Ref *ref,Widget::TouchEventType);
 protected:
@@ -133,8 +129,6 @@ protected:
     Sprite* m_pBoard;
     float m_nMargin;
     ItemCell* m_pPreCell;
-    std::vector<DecorateConfigData> insertDecData;
-    std::vector<ItemCell*> m_ItemVector;
 };
 
 #endif
