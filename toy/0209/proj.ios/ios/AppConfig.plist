@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>1065728624</string>
+	<key>Banner</key>
+	<dict>
+		<key>iPhone</key>
+		<string>d151d6dba75c4840b28ac5d6e1ff7878</string>
+		<key>iPad</key>
+		<string>cb6a17e63f26453aad9cd12d8d29fbba</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>iPhone</key>
+		<string>175db994d88941729057d7ba7762d26e</string>
+		<key>iPad</key>
+		<string>39505a17e7d44c9ca2394dd765b49540</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>appId</key>
+		<string>56664ef6f789820970e80f09</string>
+		<key>appSignature</key>
+		<string>8347100083b6ee133a6b880b5c20c28530ae225f</string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>APPID</key>
+		<string></string>
+		<key>SecurityToken</key>
+		<string></string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Flurry</key>
+	<string>6V678MWY3CMYR4KH6FQG</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+	<key>GoogleAnalytics</key>
+	<string></string>
+	<key>ServerBaseUrl</key>
+	<string>https://services.toyboxmediainc.com</string>
+</dict>
+</plist>
