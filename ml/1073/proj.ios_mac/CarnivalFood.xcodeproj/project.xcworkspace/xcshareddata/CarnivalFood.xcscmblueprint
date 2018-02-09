@@ -1,0 +1,79 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "043C89053A901AAAD0A20B2F5F8754E136D01B59",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B442883E97A97A1451F7CABA59BE559274ADC44D" : 0,
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : 0,
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : 0,
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : 0,
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : 0,
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : 0,
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : 0,
+    "043C89053A901AAAD0A20B2F5F8754E136D01B59" : 0,
+    "96DD41DBDC3F862974C6444B5C2173052969002E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9B8BA907-BC65-4693-999D-16C79D78F401",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B442883E97A97A1451F7CABA59BE559274ADC44D" : "mlabs1073-cocos2dx-cpp\/Classes\/3rdparty_depends\/more_games-public\/",
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : "mlabs1073-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/sdk_support-public-lib-ios\/",
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "mlabs1073-cocos2dx-cpp\/Classes\/3rdparty_depends\/cross_platform_api-public\/",
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : "mlabs1073-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/ads_sdk-public-lib-ios\/",
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : "mlabs1073-cocos2dx-cpp\/cocos2dx\/cocos2d\/",
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : "mlabs1073-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/analytics_sdk-public-lib-ios\/",
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : "mlabs1073-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/cocos2d-x-static-library-ios\/",
+    "043C89053A901AAAD0A20B2F5F8754E136D01B59" : "mlabs1073-cocos2dx-cpp\/",
+    "96DD41DBDC3F862974C6444B5C2173052969002E" : "mlabs1073-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/internal_sdk-public-lib-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CarnivalFood",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios_mac\/CarnivalFood.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:cd-project-food\/mlabs1073-cocos2dx-cpp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "043C89053A901AAAD0A20B2F5F8754E136D01B59"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-static-library-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "492FCDDAD8F052C654B769FA7288A0F47A748EC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/analytics_sdk-public-lib-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "638FBC0848579984B266E97A7D7A0CF3652FB837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/sdk_support-public-lib-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BDB94148B981373EFB98A1B10FF7C7131214D9B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/internal_sdk-public-lib-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "96DD41DBDC3F862974C6444B5C2173052969002E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-src.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E39F69A684729C06E9E4EB4060BED188B5C8748"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/more_games-public.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B442883E97A97A1451F7CABA59BE559274ADC44D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/cross_platform_api-public.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1C11DC94C71352CDE91122570000DA6D7315D2B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/ads_sdk-public-lib-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21"
+    }
+  ]
+}

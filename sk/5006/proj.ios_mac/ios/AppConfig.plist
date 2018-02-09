@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>1188566416</string>
+	<key>Banner</key>
+	<dict>
+		<key>Phone</key>
+		<string>/50170743/SHAKE5006iOS-Phone-Banner</string>
+		<key>Pad</key>
+		<string>/50170743/SHAKE5006iOS-Tablet-Banner</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>Phone</key>
+		<string>/50170743/SHAKE5006iOS-Phone-Interstitial</string>
+		<key>Pad</key>
+		<string>/50170743/SHAKE5006iOS-Tablet-Interstitial</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>AppID</key>
+		<string>586f0d74f6cd45730f158841</string>
+		<key>Signature</key>
+		<string>14d7a9cc096401120b67f4621ddbd02118ed4b30</string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>AppID</key>
+		<string>app0b3473fe61b540aab6</string>
+		<key>ZoneID-Phone</key>
+		<string>vz0d16e8fca4284e4985</string>
+		<key>ZoneID-Pad</key>
+		<string>vz33ffd0ee14bf44cda2</string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Analytics</key>
+	<dict>
+		<key>Platform1</key>
+		<string>3YHNRR25W8QSCF6CZDDJ</string>
+		<key>Platform2</key>
+		<string>UA-71834901-5</string>
+		<key>Platform3</key>
+		<string>08m9d6gbojhf5xd2-eg5dqayz9gcnfyss</string>
+		<key>Platform4</key>
+		<string></string>
+	</dict>
+	<key>ServerBaseUrl</key>
+	<string>https://services.shakeitmedia.com</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+</dict>
+</plist>

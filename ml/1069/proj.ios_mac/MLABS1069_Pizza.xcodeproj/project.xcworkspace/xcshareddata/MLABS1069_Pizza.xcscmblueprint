@@ -1,0 +1,163 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E7418A2D2B039D1F4B8CAC242B07168BB014146E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "96DD41DBDC3F862974C6444B5C2173052969002E" : 0,
+    "954BEA439AA220A5C99EA0C7E5C4936602765038" : 0,
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : 0,
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : 0,
+    "E053E0180B9ECE986AC441C2351A18171F0573C7" : 0,
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : 0,
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : 0,
+    "4292F9D6735E4EFE796ECBE8A15782B06057FD30" : 0,
+    "03476FE7973FD3CED93C84F896FDA5CE23059B3B" : 0,
+    "DF4FECEBB1EE5B93182E178F4CD1A4F0ADB79C26" : 0,
+    "B51FDC6B3D9950D818DBF659D167E537317A13D4" : 0,
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : 0,
+    "E7418A2D2B039D1F4B8CAC242B07168BB014146E" : 0,
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : 0,
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : 0,
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : 0,
+    "B442883E97A97A1451F7CABA59BE559274ADC44D" : 0,
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : 0,
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : 0,
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : 0,
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DFF254B3-1DD2-493C-9E4A-CF8E390F34E8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "96DD41DBDC3F862974C6444B5C2173052969002E" : "mlabs1069-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/internal_sdk-public-lib-ios\/",
+    "954BEA439AA220A5C99EA0C7E5C4936602765038" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adsdk\/ThirdAdsAdk\/inMobi\/",
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/iap\/",
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : "mlabs1069-mypizzashop\/Classes\/codebase\/core\/",
+    "E053E0180B9ECE986AC441C2351A18171F0573C7" : "mlabs1069-mypizzashop\/",
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : "mlabs1069-cocos2dx-cpp\/Classes\/3rdparty_depends\/adsloading\/",
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : "mlabs1069-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/cocos2d-x-static-library\/",
+    "4292F9D6735E4EFE796ECBE8A15782B06057FD30" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adsdk\/ThirdAdsAdk\/mMedia\/",
+    "03476FE7973FD3CED93C84F896FDA5CE23059B3B" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adsdk\/ThirdAdsAdk\/admob\/",
+    "DF4FECEBB1EE5B93182E178F4CD1A4F0ADB79C26" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adsdk\/ThirdAdsAdk\/fyber\/",
+    "B51FDC6B3D9950D818DBF659D167E537317A13D4" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adsdk\/ThirdAdsAdk\/mopub\/",
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "mlabs1069-cocos2dx-cpp\/Classes\/3rdparty_depends\/crossplatform\/",
+    "E7418A2D2B039D1F4B8CAC242B07168BB014146E" : "mlabs1069-cocos2dx-cpp\/",
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : "mlabs1069-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/ads_sdk-public-lib-ios\/",
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : "mlabs1069-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/analytics_sdk-public-lib-ios\/",
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : "mlabs1069-cocos2dx-cpp\/proj.ios_mac\/ios\/depends\/sdk_support-public-lib-ios\/",
+    "B442883E97A97A1451F7CABA59BE559274ADC44D" : "mlabs1069-cocos2dx-cpp\/Classes\/3rdparty_depends\/moregamebutton\/",
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : "mlabs1069-cocos2dx-cpp\/cocos2dx\/cocos2d\/",
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/newsblast\/",
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adboutPageResources\/",
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : "mlabs1069-mypizzashop\/proj.ios_mac\/ios\/Depends\/adboutPage\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MLABS1069_Pizza",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios_mac\/MLABS1069_Pizza.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/admob-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03476FE7973FD3CED93C84F896FDA5CE23059B3B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/about-page-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/core.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2FCA009A322DF3894933EEFB6168D4993CE0467D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/mmedia-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4292F9D6735E4EFE796ECBE8A15782B06057FD30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-static-library-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "492FCDDAD8F052C654B769FA7288A0F47A748EC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/analyticssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "638FBC0848579984B266E97A7D7A0CF3652FB837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/component-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BDB94148B981373EFB98A1B10FF7C7131214D9B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/iapurchase-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E61F0BF39BA0CF0C0334B139ED21750E143985"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/ad3_2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91DA4268EEEA93C49F1039246B92AD9495B50BE3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/inmobi-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "954BEA439AA220A5C99EA0C7E5C4936602765038"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/internal_sdk-public-lib-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "96DD41DBDC3F862974C6444B5C2173052969002E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-src.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E39F69A684729C06E9E4EB4060BED188B5C8748"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:3rd-party\/more_games-public.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B442883E97A97A1451F7CABA59BE559274ADC44D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/mopub-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B51FDC6B3D9950D818DBF659D167E537317A13D4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/studio-resources.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE023096A3C75FFEB90283AF8C580D023C65E5FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/crossplatformapi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1C11DC94C71352CDE91122570000DA6D7315D2B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/fyber-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF4FECEBB1EE5B93182E178F4CD1A4F0ADB79C26"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/mlabs1069-mypizzashop.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E053E0180B9ECE986AC441C2351A18171F0573C7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.stm.com:cd-project-food\/mlabs1069-cocos2dx-cpp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E7418A2D2B039D1F4B8CAC242B07168BB014146E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/adssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/newsblast-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2CABC49E4024A438D784FD5F1E133CFDA656BEF"
+    }
+  ]
+}

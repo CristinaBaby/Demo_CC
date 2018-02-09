@@ -1,0 +1,42 @@
+{
+ "client": [
+  {
+   "services": {
+    "appinvite_service": {
+     "status": 1, 
+     "other_platform_oauth_client": []
+    }, 
+    "analytics_service": {
+     "status": 1
+    }, 
+    "ads_service": {
+     "status": 2
+    }
+   }, 
+   "oauth_client": [
+    {
+     "client_type": 3, 
+     "client_id": "926829573577-bd004td3g8sva1nn1n7081pa3go1b5sd.apps.googleusercontent.com"
+    }
+   ], 
+   "api_key": [
+    {
+     "current_key": "AIzaSyCr3DtnyFB5B4Jg7RMH7TgWzZeGB3pqfX8"
+    }
+   ], 
+   "client_info": {
+    "mobilesdk_app_id": "1:926829573577:android:73132c5fd846cfd5", 
+    "android_client_info": {
+     "package_name": "net.makerlabs.android_kidsicecreammaker"
+    }
+   }
+  }
+ ], 
+ "configuration_version": "1", 
+ "project_info": {
+  "storage_bucket": "cd-firebase.appspot.com", 
+  "project_id": "cd-firebase", 
+  "firebase_url": "https://cd-firebase.firebaseio.com", 
+  "project_number": "926829573577"
+ }
+}

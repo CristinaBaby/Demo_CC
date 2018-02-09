@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>682415372</string>
+	<key>Banner</key>
+	<dict>
+		<key>Phone</key>
+		<string>/50170743/MLABS022iOS-Phone-Banner</string>
+		<key>Pad</key>
+		<string>/50170743/MLABS022iOS-Tablet-Banner</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>Phone</key>
+		<string>/50170743/MLABS022iOS-Phone-Interstitial</string>
+		<key>Pad</key>
+		<string>/50170743/MLABS022iOS-Tablet-Interstitial</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>AppID</key>
+		<string></string>
+		<key>Signature</key>
+		<string></string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>AppID</key>
+		<string>appe26e46ca45b34bc98e</string>
+		<key>ZoneID-Phone</key>
+		<string>vz5cf2d7c5b115448ebf</string>
+		<key>ZoneID-Pad</key>
+		<string>vz7a9a0db505cb4a75b9</string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Analytics</key>
+	<dict>
+		<key>Platform1</key>
+		<string>KGKP4B3XKMPR357KN9DC</string>
+		<key>Platform2</key>
+		<string>UA-77948577-14</string>
+		<key>Platform3</key>
+		<string></string>
+		<key>Platform4</key>
+		<string></string>
+	</dict>
+	<key>ServerBaseUrl</key>
+	<string>https://services.blackbeltclown.com</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+</dict>
+</plist>

@@ -1,0 +1,2 @@
+include ':MLABS1065'
+project(':MLABS1065').projectDir = new File(settingsDir, 'app')

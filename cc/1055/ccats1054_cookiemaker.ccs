@@ -1,0 +1,331 @@
+<Solution>
+  <PropertyGroup Name="ccats1054_cookiemaker" Version="2.3.3.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="Make1">
+          <Image Name="bg.jpg" />
+          <Image Name="bowl.png" />
+          <Image Name="bowl_butter0.png" />
+          <Image Name="bowl_butter1.png" />
+          <Image Name="bowl_butter2.png" />
+          <Image Name="bowl_butter3.png" />
+          <Image Name="bowl_flour.png" />
+          <Image Name="bowl_salt.png" />
+          <Image Name="bowl_sugar.png" />
+          <Image Name="bowl_water.png" />
+          <Image Name="butter0.png" />
+          <Image Name="butter1.png" />
+          <Image Name="butter2.png" />
+          <Image Name="butter3.png" />
+          <Image Name="butter4.png" />
+          <Image Name="butter_shadow.png" />
+          <Image Name="flour0.png" />
+          <Image Name="flour1.png" />
+          <Image Name="flour_shadow.png" />
+          <Image Name="ingredients.png" />
+          <Image Name="mix_shadow.png" />
+          <Image Name="salt0.png" />
+          <Image Name="salt1.png" />
+          <Image Name="spoon0.png" />
+          <Image Name="spoon1.png" />
+          <Image Name="sugar0.png" />
+          <Image Name="sugar1.png" />
+          <Image Name="sugar_shadow.png" />
+          <Image Name="water0.png" />
+          <Image Name="water1.png" />
+          <Image Name="water_shadow.png" />
+        </Folder>
+        <Project Name="MakeStep2.csd" Type="Scene" />
+        <Project Name="MakeStep3.csd" Type="Scene" />
+        <Folder Name="Make2">
+          <Image Name="bowl.png" />
+          <Image Name="caramel0.png" />
+          <Image Name="caramel1.png" />
+          <Image Name="chocolatechips0.png" />
+          <Image Name="chocolatechips1.png" />
+          <Image Name="gee0.png" />
+          <Image Name="gee1.png" />
+          <Image Name="ingredients.png" />
+          <Image Name="vanilla0.png" />
+          <Image Name="vanilla1.png" />
+          <Image Name="gum3.png" />
+          <Image Name="brownsugar0.png" />
+          <Image Name="brownsugar1.png" />
+          <Image Name="peanutbutter0.png" />
+          <Image Name="peanutbutter1.png" />
+        </Folder>
+        <Project Name="MakeStep4.csd" Type="Scene" />
+        <Folder Name="Make3">
+          <Image Name="bowl.png" />
+          <Image Name="ingredients.png" />
+          <Image Name="spoon0.png" />
+          <Image Name="spoon1.png" />
+          <Image Name="mix1.png" />
+          <Image Name="mix2.png" />
+          <Image Name="timebar0.png" />
+          <Image Name="timebar1.png" />
+        </Folder>
+        <Project Name="MakeStep5.csd" Type="Scene" />
+        <Folder Name="Make4">
+          <Image Name="bowl.png" />
+          <Image Name="ingredients.png" />
+          <Image Name="paste0.png" />
+          <Image Name="paste1.png" />
+          <Image Name="plate.png" />
+          <Image Name="scooper0.png" />
+          <Image Name="scooper1.png" />
+          <Image Name="bg.jpg" />
+          <Image Name="bowl_chocolatechip.png" />
+          <Image Name="bowl_peanutbutter.png" />
+          <Image Name="plate_chocolatechip0.png" />
+          <Image Name="plate_chocolatechip1.png" />
+          <Image Name="plate_peanutbutter0.png" />
+          <Image Name="plate_peanutbutter1.png" />
+          <Image Name="scooper1_chocolatechip.png" />
+          <Image Name="scooper1_peanutbutter.png" />
+          <Image Name="scooper2_chocolatechip.png" />
+          <Image Name="scooper2_peanutbutter.png" />
+          <Image Name="scooper3.png" />
+          <Image Name="scooper_shadow.png" />
+        </Folder>
+        <Folder Name="Make5">
+          <Image Name="light_green.png" />
+          <Image Name="light_red.png" />
+          <Image Name="oven.png" />
+          <Image Name="oven_close.png" />
+          <Image Name="oven_open.png" />
+          <Image Name="bg.jpg" />
+          <Image Name="oven_cookie0.png" />
+          <Image Name="oven_cookie1.png" />
+          <Image Name="oven_cookie2.png" />
+          <Image Name="oven_fire0.png" />
+          <Image Name="oven_fire1.png" />
+          <Image Name="plate.png" />
+          <Image Name="plate_chocolatechip.png" />
+          <Image Name="plate_peanutbutter.png" />
+        </Folder>
+        <Project Name="MakeStep6.csd" Type="Scene" />
+        <Project Name="MakeStep1.csd" Type="Scene" />
+        <Folder Name="MakeOtherCsb">
+          <Project Name="MakeOtherStep1.csd" Type="Scene" />
+          <Project Name="MakeOtherStep2.csd" Type="Scene" />
+          <Project Name="MakeOtherStep4.csd" Type="Scene" />
+          <Project Name="MoldChoose.csd" Type="Scene" />
+        </Folder>
+        <Folder Name="particle">
+          <PlistParticleFile Name="FullScreenStar.plist" />
+          <PlistParticleFile Name="chooseFood.plist" />
+          <PlistParticleFile Name="decorateParticle.plist" />
+          <PlistParticleFile Name="heartParitcle.plist" />
+          <PlistParticleFile Name="knifeParticl.plist" />
+          <PlistParticleFile Name="milkParticle.plist" />
+          <PlistParticleFile Name="milkParticle2.plist" />
+          <PlistParticleFile Name="pourChocolate.plist" />
+          <PlistParticleFile Name="pourChocolate2.plist" />
+          <PlistParticleFile Name="pourFlour.plist" />
+          <PlistParticleFile Name="pourFruitTart.plist" />
+          <PlistParticleFile Name="pourMartha.plist" />
+          <PlistParticleFile Name="shopParticle.plist" />
+          <PlistParticleFile Name="starFall.plist" />
+          <PlistParticleFile Name="starForever.plist" />
+          <PlistParticleFile Name="start_1.plist" />
+          <PlistParticleFile Name="sugarParticle.plist" />
+          <PlistParticleFile Name="sugarParticle1.plist" />
+          <PlistParticleFile Name="water.plist" />
+          <PlistParticleFile Name="fallFruit.plist" />
+          <PlistParticleFile Name="fallFruit_chocolate.plist" />
+        </Folder>
+        <Folder Name="MakeOther1">
+          <Image Name="paste_chocolate4.png" />
+          <Image Name="paste_mint4.png" />
+          <Image Name="paste_strawberry4.png" />
+          <Image Name="paste_vanilla4.png" />
+          <Image Name="choosemold-bg.png" />
+          <Image Name="mold-btn-up.png" />
+          <Image Name="mold-btn.png" />
+          <Image Name="mold-cat-up.png" />
+          <Image Name="mold-cat.png" />
+          <Image Name="mold-heart-up.png" />
+          <Image Name="mold-heart.png" />
+          <Image Name="mold-pe-star.png" />
+          <Image Name="mold-pe-up.png" />
+          <Image Name="mold-pe.png" />
+          <Image Name="mold-round-up.png" />
+          <Image Name="mold-round.png" />
+          <Image Name="mold-star.png" />
+          <Image Name="mold-tree-up.png" />
+          <Image Name="mold-tree.png" />
+        </Folder>
+        <Project Name="MakeStepDec.csd" Type="Scene" />
+        <Folder Name="MakeDec">
+          <Image Name="bg.jpg" />
+          <Image Name="cookie_chocolatechip.png" />
+          <Image Name="cookie_peanutbutter.png" />
+          <Image Name="plate.png" />
+        </Folder>
+        <Project Name="MakeStepEat.csd" Type="Scene" />
+        <Folder Name="MakeEat">
+          <Image Name="bg.jpg" />
+          <Image Name="eatballoon0.png" />
+          <Image Name="eatballoon1.png" />
+          <Image Name="eatballoon2.png" />
+        </Folder>
+        <Folder Name="MakeOther">
+          <Image Name="bowl_chocolate.png" />
+          <Image Name="bowl_mint.png" />
+          <Image Name="bowl_strawberry.png" />
+          <Image Name="bowl_vanilla.png" />
+          <Image Name="chocolate0.png" />
+          <Image Name="chocolate1.png" />
+          <Image Name="chocolate_shadow.png" />
+          <Image Name="flour_shadow.png" />
+          <Image Name="mint0.png" />
+          <Image Name="mint1.png" />
+          <Image Name="mint_shadow.png" />
+          <Image Name="mix_shadow.png" />
+          <Image Name="strawberry0.png" />
+          <Image Name="strawberry1.png" />
+          <Image Name="strawberry_shadow.png" />
+          <Image Name="vanilla0.png" />
+          <Image Name="vanilla1.png" />
+        </Folder>
+        <Project Name="RewardScene.csd" Type="Scene" />
+        <Folder Name="UI">
+          <Folder Name="album">
+            <Image Name="close-btn.png" />
+            <Image Name="download-btn.png" />
+            <Image Name="mail-btn.png" />
+            <Image Name="photo.png" />
+          </Folder>
+          <Folder Name="decorate">
+            <Image Name="decorate.png" />
+            <Image Name="lock.png" />
+            <Image Name="next-btn.png" />
+            <Image Name="reset-btn.png" />
+            <Image Name="dec-bg-up.png" />
+            <Image Name="dec-bg.png" />
+            <Image Name="fruit-btn.png" />
+            <Image Name="icing-btn.png" />
+            <Image Name="jpeg.jpg" />
+            <Image Name="nothing-btn.png" />
+            <Image Name="plate-btn.png" />
+            <Image Name="sprinkle-btn.png" />
+          </Folder>
+          <Folder Name="font">
+            <TTF Name="Chewy.ttf" />
+          </Folder>
+          <Folder Name="home">
+            <Image Name="more-btn.png" />
+            <Image Name="play-btn.png" />
+            <Image Name="rateus-btn.png" />
+            <Image Name="shop-btn.png" />
+          </Folder>
+          <Folder Name="popup">
+            <Image Name="backhome.png" />
+            <Image Name="no-btn.png" />
+            <Image Name="ok-btn.png" />
+            <Image Name="popup-bg.png" />
+            <File Name="Thumbs.db" />
+            <Image Name="unlock-all-tips.png" />
+            <Image Name="unlock-all.png" />
+            <Image Name="unlock-original-tips.png" />
+            <Image Name="unlock-original.png" />
+            <Image Name="unlock-tips-bg.png" />
+            <Image Name="yes-btn.png" />
+          </Folder>
+          <Folder Name="public">
+            <Image Name="back.png" />
+            <Image Name="close-btn.png" />
+            <Image Name="home-btn.png" />
+            <Image Name="next-btn.png" />
+            <Image Name="photo.png" />
+            <Image Name="reset-btn.png" />
+          </Folder>
+          <Folder Name="rewards">
+            <Image Name="2flavor.png" />
+            <Image Name="Allmold-shadow.png" />
+            <Image Name="Allmold.png" />
+            <Image Name="box-1.png" />
+            <Image Name="box-2.png" />
+            <Image Name="box-3.png" />
+            <Image Name="box-shadow.png" />
+            <Image Name="box.png" />
+            <Image Name="decoration-shadow.png" />
+            <Image Name="decoration.png" />
+            <Image Name="heartmold-shadow.png" />
+            <Image Name="heartmold.png" />
+            <Image Name="light-2.png" />
+            <Image Name="light.png" />
+            <Image Name="newflavor.png" />
+            <Image Name="rewards-bg.png" />
+            <Image Name="rewards-next-btn.png" />
+            <Image Name="rewards-reeat-btn.png" />
+            <Image Name="rewards.png" />
+            <Image Name="rolling-shadow.png" />
+            <Image Name="rolling.png" />
+            <Image Name="scoop-shadow.png" />
+            <Image Name="scoop.png" />
+            <Image Name="stirrer-shadow.png" />
+            <Image Name="stirrer.png" />
+            <Image Name="make-btn.png" />
+            <Image Name="eatagain_btn.png" />
+            <Image Name="gotnow-btn.png" />
+            <Image Name="rewards_qiqiu.png" />
+          </Folder>
+          <Folder Name="show">
+            <Image Name="show-bg.png" />
+            <Image Name="show-btn.png" />
+            <Image Name="show-cat.png" />
+            <Image Name="show-chocolate.png" />
+            <Image Name="show-ganmian.png" />
+            <Image Name="show-heart.png" />
+            <Image Name="show-jiaoban.png" />
+            <Image Name="show-orginal.png" />
+            <Image Name="show-peanut.png" />
+            <Image Name="show-ren.png" />
+            <Image Name="show-star.png" />
+            <Image Name="show-zhuangshi.png" />
+            <Image Name="tree.png" />
+            <Image Name="waqiu.png" />
+          </Folder>
+          <Folder Name="story">
+            <Image Name="story-bg.png" />
+          </Folder>
+          <Folder Name="tap">
+            <Image Name="back.png" />
+            <Image Name="eatagain-btn.png" />
+            <Image Name="home-btn.png" />
+            <Image Name="photo.png" />
+            <Image Name="tapeat.png" />
+          </Folder>
+          <Folder Name="tips">
+            <Image Name="arrows.png" />
+            <Image Name="click.png" />
+            <Image Name="cut.png" />
+            <Image Name="delicious.png" />
+            <Image Name="down.png" />
+            <Image Name="finger.png" />
+            <Image Name="great.png" />
+            <Image Name="jiantou.png" />
+            <Image Name="light.png" />
+            <Image Name="scoop.png" />
+            <Image Name="welldone.png" />
+            <Image Name="xuanzhuan.png" />
+          </Folder>
+        </Folder>
+        <Project Name="SeclecScene.csd" Type="Scene" />
+        <Folder Name="Seclet">
+          <Image Name="bg.jpg" />
+          <Image Name="chocolate.png" />
+          <Image Name="chocolatechip.png" />
+          <Image Name="mint.png" />
+          <Image Name="original.png" />
+          <Image Name="peanutbutter.png" />
+          <Image Name="strawberry.png" />
+        </Folder>
+        <Project Name="albumLayer.csd" Type="Scene" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

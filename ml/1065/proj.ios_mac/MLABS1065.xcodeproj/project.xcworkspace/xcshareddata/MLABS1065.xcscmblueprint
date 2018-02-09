@@ -1,0 +1,107 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D8369A4C2363F44FC1AEEA305EB9B706E865F132",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : 0,
+    "D8369A4C2363F44FC1AEEA305EB9B706E865F132" : 0,
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : 0,
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : 0,
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : 0,
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : 0,
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : 0,
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : 0,
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : 0,
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : 0,
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : 0,
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : 0,
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "77F8C097-1A42-4CC9-A7AD-8AC375419BE4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : "mlabs1065-cakemaster\/cocos2dx\/cocos2d\/",
+    "D8369A4C2363F44FC1AEEA305EB9B706E865F132" : "mlabs1065-cakemaster\/",
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/StudioResource\/",
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/AnalyticsSDK\/",
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/Newsblast\/",
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : "mlabs1065-cakemaster\/Classes\/codebase\/core\/",
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : "mlabs1065-cakemaster\/Classes\/Ad3.2\/",
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/AdsSDK\/",
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/cocos2dxLib\/",
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/AboutPage\/",
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/Component\/",
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "mlabs1065-cakemaster\/Classes\/codebase\/core\/platform\/ads\/",
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : "mlabs1065-cakemaster\/proj.ios_mac\/ios\/Depends\/IAPuchase\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MLABS1065",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios_mac\/MLABS1065.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/about-page-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/core.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2FCA009A322DF3894933EEFB6168D4993CE0467D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-static-library-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "492FCDDAD8F052C654B769FA7288A0F47A748EC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/analyticssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "638FBC0848579984B266E97A7D7A0CF3652FB837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/component-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BDB94148B981373EFB98A1B10FF7C7131214D9B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/iapurchase-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E61F0BF39BA0CF0C0334B139ED21750E143985"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/ad3_2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91DA4268EEEA93C49F1039246B92AD9495B50BE3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-src.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E39F69A684729C06E9E4EB4060BED188B5C8748"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/studio-resources.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE023096A3C75FFEB90283AF8C580D023C65E5FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/crossplatformapi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1C11DC94C71352CDE91122570000DA6D7315D2B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/stash.stm.com\/scm\/cmk\/mlabs1065-cakemaster.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D8369A4C2363F44FC1AEEA305EB9B706E865F132"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/adssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/newsblast-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2CABC49E4024A438D784FD5F1E133CFDA656BEF"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        multiDexEnabled true
+        android.enforceUniquePackageName=false
+        ndk {
+            // 设置支持的 SO 库构架，注意这里要根据你的实际情况来设置
+            abiFilters "armeabi", "armeabi-v7a"
+        }
+    }
+
+    sourceSets.main {
+        java.srcDir "src"
+        res.srcDir "res"
+        jniLibs.srcDir "libs"
+        manifest.srcFile "AndroidManifest.xml"
+        assets.srcDir "assets"
+    }
+
+    signingConfigs {
+
+        release {
+            if (project.hasProperty("RELEASE_STORE_FILE")) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (project.hasProperty("RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    productFlavors {
+
+        GOOGLEPLAY {
+            applicationId "net.makerlabs.android_slushymaker"
+            versionCode 12
+            versionName "1.2"
+            manifestPlaceholders =
+                    [platformcode: "32",
+
+                     Flurry_Key: "N7TS8WTDN9CT7ZDJ2QJ3",
+                     GA_Key: "UA-77948577-14",
+                     Quantcast_API_Key:"",
+                    //MoPub ads ID
+                     Phone_Banner: "/50170743/MLABS022GP-Phone-Banner",
+                     Phone_Interstitial: "/50170743/MLABS022GP-Phone-Interstitial",
+
+                     Pad_Banner: "/50170743/MLABS022GP-Tablet-Banner",
+                     Pad_Interstitial: "/50170743/MLABS022GP-Tablet-Interstitial",
+
+
+                     Rewarded_AppID: "app7950806ea8ea42b1b0",
+                     Phone_Rewarded_Zoneid: "vz3dfc82c71ceb42b6ab",
+                     Tablet_Rewarded_Zoneid: "vz52d945e4c6fb490cbf"
+                    ]
+        }
+
+//        AMAZON {
+//            applicationId "com.blackbeltclown.android_makerslushy"
+//            versionCode 31299
+//            versionName "3.1.2.1"
+//            manifestPlaceholders =
+//                    [platformcode: "33",
+//
+//                     Flurry_Key: "P6MC5DRY99H3GVRJHWWR",
+//                     GA_Key: "UA-77948577-14",
+//                     Quantcast_API_Key:"08m9d6gbojhf5xd2-nws12yvvgweknj4x",
+//                     //MoPub ads ID
+//                     Phone_Banner: "/50170743/MLABS022Amazon-Phone-Banner",
+//                     Phone_Interstitial: "",
+//
+//                     Pad_Banner: "/50170743/MLABS022Amazon-Tablet-Banner",
+//                     Pad_Interstitial: "",
+//
+//                     Crosspromotion_AppID: "580d844204b016424105c2f1",
+//                     Crosspromotion_Signature: "0310d1d3a142e1924411db4b625ff2a4890162ba",
+//
+//                     Rewarded_AppID: "appe58cc8797f594c798c",
+//                     Rewarded_Signature: "vzdf252bba00874b8d98"
+//                    ]
+//        }
+
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'  //this way we can find the .aar file in libs folder
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        //Adcolony sdk v3.0+ 的maven 仓库地址
+        maven { url 'https://adcolony.bintray.com/AdColony' }
+    }
+}
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.google.gms:google-services:3.0.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+dependencies {
+
+    //解决Android 64k问题所必须的包
+
+    //特别注意：下面的公共库默认全部屏蔽，Android端具体需要添加哪些公共库以最新的
+    //公共库关联脚本文档为准：ssh://git@stash.stm.com:7999/cmt/gitsubmodule.git 【android-studio-xxx分支】
+    //请特别注意三方库的几种关联方式：
+    //1.由公司提供的jar包，从stash上检在libs目录下后，可以在Module Setting->dependencies里直接添加file dependency,找到对应目录的jar包进行添加；
+    //2.由公司提供的aar包，从stash上检在libs目录下后，按屏蔽的代码格式添加aar包；
+    //3.由中央仓库提供的三方包，原则上应该在Module Setting->dependencies里选libaray dependency,然后选择对应包，但是由于此种情况下选择的包和
+    //当前项目的buildTool版本相关，实际在使用过程中我们需要到的包版本可能不一样,
+    //所以进行手动写代码添加.如下方屏蔽代码的最后一排添加googleServices包的脚本代码
+    //对于第三种包，具体应该使用哪个版本，用哪种方式添加，以公共库关联脚本文档为准！
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'com.google.android.gms:play-services-ads:10.2.0'
+    compile 'com.google.android.gms:play-services-analytics:10.2.0'
+    compile 'com.google.android.gms:play-services-gcm:10.2.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+
+    compile(name: 'lib_ads/AudienceNetwork-v4.12.0', ext: 'aar')
+    compile(name: 'lib_ads/ads_sdk', ext: 'aar')
+    compile(name: 'lib_analytics/analyticscenter', ext: 'aar')
+    compile(name: 'lib_internal/internallibrary', ext: 'aar')
+    compile(name: 'lib_sdk_support/sdk_support', ext: 'aar')
+    compile fileTree(dir: 'libs/lib_cocos2dx', include: ['*.jar'])
+
+    //Adcolony sdk v3.0+
+    compile 'com.adcolony:sdk:3.1.0'
+}
+
+// Add this at the bottom of build.gradle file
+apply plugin: 'com.google.gms.google-services'

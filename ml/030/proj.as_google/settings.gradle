@@ -1,0 +1,2 @@
+include ':MLABS1030G_IceCream'
+project(':MLABS1030G_IceCream').projectDir = new File(settingsDir, 'app')

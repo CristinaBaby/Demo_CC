@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>1102657098</string>
+	<key>Banner</key>
+	<dict>
+		<key>Phone</key>
+		<string>/202162408/CCATS1055ios-Phone-Banner</string>
+		<key>Pad</key>
+		<string>/202162408/CCATS1055ios-Tablet-Banner</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>Phone</key>
+		<string>/202162408/CCATS1055ios-Phone-Interstitial</string>
+		<key>Pad</key>
+		<string>/202162408/CCATS1055ios-Tablet-Interstitial</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>AppID</key>
+		<string>57198e5b04b0163150022ad8</string>
+		<key>Signature</key>
+		<string>4a9be5e674e31ce76518812ec6972af79a03b3a7</string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>AppID</key>
+		<string></string>
+		<key>Signature</key>
+		<string></string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>Phone</key>
+		<string></string>
+		<key>Pad</key>
+		<string></string>
+	</dict>
+	<key>Analytics</key>
+	<dict>
+		<key>Platform1</key>
+		<string>7D7W4BPYFC7S34JPMZ59</string>
+		<key>Platform2</key>
+		<string>UA-71826241-17</string>
+		<key>Platform3</key>
+		<string></string>
+		<key>Platform4</key>
+		<string>08m9d6gbojhf5xd2-c8hvttxfmm9dk71m</string>
+	</dict>
+	<key>ServerBaseUrl</key>
+	<string>https://services.crazycatsmedia.com</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+</dict>
+</plist>

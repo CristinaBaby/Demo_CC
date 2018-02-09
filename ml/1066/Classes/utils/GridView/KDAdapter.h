@@ -1,0 +1,46 @@
+//
+//  KSAdapter.h
+//  KidsFrameWorkTest
+//
+//  Created by zhangguangzong1 on 2/24/14.
+//
+//
+
+#ifndef __KidsFrameWorkTest__KSAdapter__
+#define __KidsFrameWorkTest__KSAdapter__
+
+#include <iostream>
+#include "cocos2d.h"
+
+USING_NS_CC;
+
+class KDAdapter : public Ref{
+    
+public:
+    /**
+     * @brief
+     */
+    virtual int getCount() = 0;
+    
+    /**
+     * @brief
+     */
+    virtual bool isEmpty() = 0;
+    
+    /**
+     * @brief
+     */
+    virtual float getItemWidth() = 0;
+    
+    /**
+     * @brief
+     */
+    virtual float getItemHeight() = 0;
+    virtual float getTotalHeight(int count = 0) = 0;
+    
+    /**
+     * @brief
+     */
+    virtual MenuItem* getView(int position,MenuItem* cacheView,Node* parent) = 0;
+};
+#endif /* defined(__KidsFrameWorkTest__KSAdapter__) */

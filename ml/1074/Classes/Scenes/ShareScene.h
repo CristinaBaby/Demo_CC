@@ -1,0 +1,85 @@
+
+#ifndef __ShareScene__
+#define __ShareScene__
+
+
+#include "ExtensionScene.h"
+#include "EatLayer.h"
+#include "RuntimePermissionManager.h"
+#include "ProgressMIC.h"
+
+class ShareScene : public ExtensionScene,public RuntimePermissionDelegate
+{
+public:
+    enum{
+        eRequesetTagPhoto,
+        eRequesetTagEmail,
+        eRequesetTagAudio,
+    };
+    ShareScene();
+    ~ShareScene();
+    
+    MY_SCENE(ShareScene);
+    CREATE_FUNC(ShareScene);
+    
+    void registerEffectScene(){AudioHelp::getInstance()->registerEffectScene(ClassString(ShareScene));}
+    void removeEffectScene(){AudioHelp::getInstance()->removeEffectScene(ClassString(ShareScene));}
+    virtual bool init();
+    virtual void onEnter();
+    void onExit();
+    void onPermissionGrantedResult(int requestCode,bool bGranted);
+    virtual void onNotificationCallback(Ref* ref){};
+    virtual void onButtonCallback(Button* btn);
+    virtual void onKeyBackClicked();
+    
+    void dragNodeTouchBegin(DragNode* pDragNode,Point worldPoint);
+    void dragNodeTouchMoved(DragNode* pDragNode,Point worldPoint);
+    void dragNodeTouchEnded(DragNode* pDragNode,Point worldPoint);
+    void dragNodeClicked(DragNode* pDragNode,Point worldPoint);
+    
+    
+    void onEatBeinCallback(Vec2 location,bool drinkable);
+    void onEatEndCallback(Vec2 location);
+    void onEatMoveCallback(Vec2 location);
+    
+    void onBgCallback(int index);
+    
+    virtual void update(float dt);
+protected:
+    virtual void _initData();
+    void _showEatScene();
+    void _savePhoto();
+    void _sendEmail();
+    void _audioRecord();
+    
+    void _dieoutCandle();
+    void _showDonut(bool animate);
+    RenderTexture* getResultRender();
+    
+    int m_nPackage;
+    EatLayer* m_pEatLayer;
+    Layer* m_pDecoLayer;
+    DecorateManager* m_pDecManager;
+    Sprite* m_pBg;
+    Sprite* m_pTable;
+    Sprite* m_pShed;
+    Sprite* m_pTip;
+    
+    Sprite* m_pPlate;
+    
+    ProgressMIC* m_pProgress;
+    MakeEatLayer* m_pEatLayerTop;
+    MakeEatLayer* m_pEatLayerDown;
+    
+    bool m_bCanEat;
+    
+    bool m_bBack;
+    int m_nBgIndex;
+//    bool m_bRequestEmail;
+    int m_nRequestTag;
+    
+    Vec2 m_CandyBeginPos;
+    std::vector<Node*> m_Candles;
+};
+
+#endif

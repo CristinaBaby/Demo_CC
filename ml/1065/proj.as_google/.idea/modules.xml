@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/MLABS1065.iml" filepath="$PROJECT_DIR$/app/MLABS1065.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proj.as_google.iml" filepath="$PROJECT_DIR$/proj.as_google.iml" />
+    </modules>
+  </component>
+</project>
