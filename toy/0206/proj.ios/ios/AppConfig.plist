@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>1049233256</string>
+	<key>Banner</key>
+	<dict>
+		<key>iPhone</key>
+		<string>b783ecd30963479e80af69fe1783e31d</string>
+		<key>iPad</key>
+		<string>ffec11f4074d46b98b9160726b67caa6</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>iPhone</key>
+		<string>30b9129c9f0d43098176c96eb44bc249</string>
+		<key>iPad</key>
+		<string>3f57c30175d04f8dacd71ce05d556014</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>iPhone</key>
+		<string>e33f6d541db046ac8139d4369870a5a3</string>
+		<key>iPad</key>
+		<string>8d795985750748239140c78c1a06d80f</string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>APPID</key>
+		<string></string>
+		<key>SecurityToken</key>
+		<string></string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Flurry</key>
+	<string>TJDQXJDMV9W79KWT4HFG</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+</dict>
+</plist>

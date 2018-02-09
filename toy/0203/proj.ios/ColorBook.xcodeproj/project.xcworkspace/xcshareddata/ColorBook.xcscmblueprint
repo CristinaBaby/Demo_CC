@@ -1,0 +1,93 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DF5A242F59BC70CDEF29F38720266EED981263BC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : 0,
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : 0,
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : 0,
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : 0,
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : 0,
+    "DF5A242F59BC70CDEF29F38720266EED981263BC" : 0,
+    "7B1AD7A6AC75305948254895CE0F763EC666DAD9" : 0,
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : 0,
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : 0,
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : 0,
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B29AC358-7A3E-44FE-A4F4-054B65DBAED5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/adsdk\/",
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/adboutPage\/",
+    "91DA4268EEEA93C49F1039246B92AD9495B50BE3" : "toybm0203-kidscolorbooksoldier\/Classes\/ad3_2\/",
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "toybm0203-kidscolorbooksoldier\/Classes\/crossplatformapi\/",
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/adboutPageResources\/",
+    "DF5A242F59BC70CDEF29F38720266EED981263BC" : "toybm0203-kidscolorbooksoldier\/",
+    "7B1AD7A6AC75305948254895CE0F763EC666DAD9" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/rateustool\/",
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/analytics\/",
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/iap\/",
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/cocos2dxStatic\/",
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : "toybm0203-kidscolorbooksoldier\/proj.ios\/ios\/Depends\/newsblast\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ColorBook",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios\/ColorBook.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/about-page-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-static-library-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "492FCDDAD8F052C654B769FA7288A0F47A748EC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/analyticssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "638FBC0848579984B266E97A7D7A0CF3652FB837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/rateustool-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7B1AD7A6AC75305948254895CE0F763EC666DAD9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/iapurchase-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E61F0BF39BA0CF0C0334B139ED21750E143985"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/ad3_2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91DA4268EEEA93C49F1039246B92AD9495B50BE3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/studio-resources.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE023096A3C75FFEB90283AF8C580D023C65E5FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/crossplatformapi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1C11DC94C71352CDE91122570000DA6D7315D2B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/toybm0203-kidscolorbooksoldier.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF5A242F59BC70CDEF29F38720266EED981263BC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/adssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/newsblast-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2CABC49E4024A438D784FD5F1E133CFDA656BEF"
+    }
+  ]
+}
