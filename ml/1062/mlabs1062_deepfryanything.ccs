@@ -1,0 +1,585 @@
+<Solution>
+  <PropertyGroup Name="mlabs1062_deepfryanything" Version="2.3.2.3" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="png">
+          <Folder Name="1">
+            <Image Name="bg.jpg" />
+            <Image Name="menu.png" />
+            <Image Name="menu1.png" />
+            <Image Name="menu_bacon.png" />
+            <Image Name="menu_Calamari.png" />
+            <Image Name="menu_Cod-Fillet.png" />
+            <Image Name="menu_mozzarella-cheese-sticks.png" />
+            <Image Name="menu_onion-flower.png" />
+            <Image Name="menu_popcorn-chicken.png" />
+            <Image Name="menu_Potato-Wedges.png" />
+            <Image Name="menu_Shrimp.png" />
+            <Image Name="menu_Wings.png" />
+            <Image Name="menu_chicken-drumstick.png" />
+            <Image Name="menu_food-menu.png" />
+            <Image Name="menu_maker-labs.png" />
+          </Folder>
+          <Folder Name="2">
+            <Image Name="bg.jpg" />
+            <Image Name="bowl.png" />
+            <Image Name="bowl_Bread-crumbs.png" />
+            <Image Name="bowl_chili-powder.png" />
+            <Image Name="bowl_cover.png" />
+            <Image Name="bowl_egg0.png" />
+            <Image Name="bowl_egg1.png" />
+            <Image Name="bowl_egg2.png" />
+            <Image Name="bowl_egg3.png" />
+            <Image Name="bowl_flour.png" />
+            <Image Name="bowl_stir0.png" />
+            <Image Name="bowl_stir1.png" />
+            <Image Name="bowl_stir2.png" />
+            <Image Name="bowl_stir3.png" />
+            <Image Name="bowl_sugar.png" />
+            <Image Name="Bread-crumbs.png" />
+            <Image Name="Bread-crumbs_shadow.png" />
+            <Image Name="flour.png" />
+            <Image Name="flour_shadow.png" />
+            <Image Name="milk.png" />
+            <Image Name="plate.png" />
+            <Image Name="salt.png" />
+            <Image Name="salt_shadow.png" />
+            <Image Name="seasoning-bowl.png" />
+            <Image Name="seasoning-bowl_chili-powder.png" />
+            <Image Name="seasoning-bowl_cover.png" />
+            <Image Name="seasoning-bowl_egg0.png" />
+            <Image Name="seasoning-bowl_egg1.png" />
+            <Image Name="seasoning-bowl_shadow.png" />
+            <Image Name="seasoning-bowl_sugar.png" />
+            <Image Name="shed.png" />
+            <Image Name="stickers0.png" />
+            <Image Name="stickers1.png" />
+            <Image Name="tablecloth.png" />
+            <Image Name="spoon1.png" />
+            <Folder Name="food">
+              <Image Name="bacon0.png" />
+              <Image Name="bacon1.png" />
+              <Image Name="bacon2.png" />
+              <Image Name="calamari0.png" />
+              <Image Name="calamari1.png" />
+              <Image Name="calamari2.png" />
+              <Image Name="calamari3.png" />
+              <Image Name="chicken-drumstick0.png" />
+              <Image Name="chicken-drumstick1.png" />
+              <Image Name="chicken-drumstick2.png" />
+              <Image Name="cod-fillet0.png" />
+              <Image Name="cod-fillet1.png" />
+              <Image Name="cod-fillet2.png" />
+              <Image Name="mozzarella-cheese-sticks0.png" />
+              <Image Name="mozzarella-cheese-sticks1.png" />
+              <Image Name="mozzarella-cheese-sticks2.png" />
+              <Image Name="mozzarella-cheese-sticks3.png" />
+              <Image Name="mozzarella-cheese-sticks4.png" />
+              <Image Name="onion-flower.png" />
+              <Image Name="popcorn-chicken0.png" />
+              <Image Name="popcorn-chicken1.png" />
+              <Image Name="popcorn-chicken2.png" />
+              <Image Name="popcorn-chicken3.png" />
+              <Image Name="popcorn-chicken4.png" />
+              <Image Name="popcorn-chicken5.png" />
+              <Image Name="potato-wedges0.png" />
+              <Image Name="potato-wedges1.png" />
+              <Image Name="potato-wedges2.png" />
+              <Image Name="potato-wedges3.png" />
+              <Image Name="potato-wedges4.png" />
+              <Image Name="shrimp0.png" />
+              <Image Name="shrimp1.png" />
+              <Image Name="shrimp2.png" />
+              <Image Name="shrimp3.png" />
+              <Image Name="wings0.png" />
+              <Image Name="wings1.png" />
+              <Image Name="wings2.png" />
+            </Folder>
+            <Folder Name="food1">
+              <Image Name="bacon0.png" />
+              <Image Name="bacon1.png" />
+              <Image Name="calamari0.png" />
+              <Image Name="calamari1.png" />
+              <Image Name="chicken-drumstick0.png" />
+              <Image Name="chicken-drumstick1.png" />
+              <Image Name="cod-fillet0.png" />
+              <Image Name="cod-fillet1.png" />
+              <Image Name="mozzarella-cheese-sticks1.png" />
+              <Image Name="onion-flower0.png" />
+              <Image Name="onion-flower1.png" />
+              <Image Name="popcorn-chicken0.png" />
+              <Image Name="popcorn-chicken1.png" />
+              <Image Name="potato-wedges0.png" />
+              <Image Name="potato-wedges1.png" />
+              <Image Name="shrimp0.png" />
+              <Image Name="shrimp1.png" />
+              <Image Name="wings0.png" />
+              <Image Name="wings1.png" />
+              <Image Name="mozzarella-cheese-sticks0.png" />
+            </Folder>
+            <Image Name="bowl_milk.png" />
+            <Image Name="plate1.png" />
+            <Image Name="spoon0.png" />
+            <Folder Name="milkFall">
+              <Image Name="milk0.png" />
+              <Image Name="milk0_0.png" />
+              <Image Name="milk1.png" />
+              <Image Name="milk1_1.png" />
+              <Image Name="milk2.png" />
+              <Image Name="milk2_2.png" />
+              <Image Name="milk3.png" />
+            </Folder>
+            <Image Name="bowl_stiregg0.png" />
+            <Image Name="bowl_stiregg1.png" />
+            <Image Name="bowl_stiregg2.png" />
+            <Image Name="bowl_stiregg3.png" />
+            <Image Name="spoon2_1.png" />
+            <Image Name="spoon2_2.png" />
+            <Image Name="spoon2.png" />
+          </Folder>
+          <Folder Name="3">
+            <Image Name="bg.jpg" />
+            <Image Name="plate0.png" />
+            <Image Name="plate1.png" />
+            <Folder Name="food">
+              <Image Name="bacon0.png" />
+              <Image Name="calamari0.png" />
+              <Image Name="chicken-drumstick0.png" />
+              <Image Name="cod-fillet0.png" />
+              <Image Name="mozzarella-cheese-sticks.png" />
+              <Image Name="onion-flower0.png" />
+              <Image Name="onion-flower1.png" />
+              <Image Name="popcorn-chicken0.png" />
+              <Image Name="potato-wedges0.png" />
+              <Image Name="shrimp0.png" />
+              <Image Name="wings0.png" />
+              <Image Name="frame0.png" />
+              <Image Name="frame1.png" />
+              <Image Name="lamp0.png" />
+              <Image Name="lamp1.png" />
+              <Image Name="mozzarella-cheese-sticks0.png" />
+              <Image Name="oil.png" />
+              <Image Name="pan0.png" />
+              <Image Name="pan1.png" />
+              <Image Name="switch0.png" />
+              <Image Name="switch1.png" />
+            </Folder>
+            <Image Name="plate2.png" />
+          </Folder>
+          <Folder Name="4">
+            <Image Name="bg.jpg" />
+            <Image Name="plate0.png" />
+            <Folder Name="food">
+              <Image Name="bacon0.png" />
+              <Image Name="calamari0.png" />
+              <Image Name="chicken-drumstick0.png" />
+              <Image Name="cod-fillet0.png" />
+              <Image Name="frame0.png" />
+              <Image Name="frame1.png" />
+              <Image Name="oil.png" />
+              <Image Name="onion-flower0.png" />
+              <Image Name="pan0.png" />
+              <Image Name="pan1.png" />
+              <Image Name="popcorn-chicken0.png" />
+              <Image Name="potato-wedges0.png" />
+              <Image Name="shrimp0.png" />
+              <Image Name="switch0.png" />
+              <Image Name="switch1.png" />
+              <Image Name="wings0.png" />
+              <Image Name="mozzarella-cheese-sticks0.png" />
+            </Folder>
+            <Image Name="oil0.png" />
+            <Image Name="oil1.png" />
+          </Folder>
+          <Folder Name="5">
+            <Image Name="bg.jpg" />
+            <Image Name="mat.png" />
+            <Image Name="plate0.png" />
+            <Image Name="bacon0.png" />
+            <Image Name="calamari0.png" />
+            <Image Name="chicken-drumstick0.png" />
+            <Image Name="cod-fillet0.png" />
+            <Image Name="mozzarella-cheese-sticks0.png" />
+            <Image Name="onion-flower0.png" />
+            <Image Name="popcorn-chicken0.png" />
+            <Image Name="potato-wedges0.png" />
+            <Image Name="shrimp0.png" />
+            <Image Name="tablecloth.png" />
+            <Image Name="wings0.png" />
+            <Image Name="drink_down.png" />
+            <Image Name="drink_up.png" />
+            <Image Name="sauce_down.png" />
+            <Image Name="sauce_up.png" />
+            <Image Name="side-dish_plate.png" />
+          </Folder>
+          <Folder Name="0">
+            <Image Name="bg.jpg" />
+            <Image Name="food0.png" />
+            <Image Name="food1.png" />
+            <Image Name="food2.png" />
+            <Image Name="logo.png" />
+            <Image Name="table.png" />
+            <Image Name="bg_h.jpg" />
+            <Image Name="lamp0.png" />
+            <Image Name="lamp1.png" />
+            <Image Name="lamp0_h.png" />
+            <Image Name="lamp1_h.png" />
+          </Folder>
+          <Folder Name="shop">
+            <Image Name="all-decorations.png" />
+            <Image Name="all-foods.png" />
+            <Image Name="bg.jpg" />
+            <Image Name="fireworks0.png" />
+            <Image Name="fireworks1.png" />
+            <Image Name="fireworks2.png" />
+            <Image Name="fireworks3.png" />
+            <Image Name="fireworks4.png" />
+            <Image Name="fireworks5.png" />
+            <Image Name="no-ads0.png" />
+            <Image Name="no-ads1.png" />
+            <Image Name="restore.png" />
+            <Image Name="shop.png" />
+            <Image Name="unlock-all.png" />
+            <Image Name="back.png" />
+          </Folder>
+          <Folder Name="fryFail">
+            <Image Name="bacon1.png" />
+            <Image Name="Black-particles.png" />
+            <Image Name="calamari1.png" />
+            <Image Name="chicken-drumstick1.png" />
+            <Image Name="cod-fillet1.png" />
+            <Image Name="mozzarella-cheese-sticks1.png" />
+            <Image Name="onion-flower1.png" />
+            <Image Name="popcorn-chicken1.png" />
+            <Image Name="potato-wedges1.png" />
+            <Image Name="shrimp1.png" />
+            <Image Name="smoke.png" />
+            <Image Name="wings1.png" />
+          </Folder>
+          <Folder Name="loading">
+            <Image Name="loading.jpg" />
+          </Folder>
+        </Folder>
+        <Project Name="ChooseLayer.csd" Type="Scene" />
+        <Project Name="MakeStep1.csd" Type="Scene" />
+        <Folder Name="foodInPlate">
+          <Project Name="wings.csd" Type="Node" />
+          <Project Name="bacon.csd" Type="Node" />
+          <Project Name="calamari.csd" Type="Node" />
+          <Project Name="chicken-drumstick.csd" Type="Node" />
+          <Project Name="cod-fillet.csd" Type="Node" />
+          <Project Name="mozzarella-cheese-sticks.csd" Type="Node" />
+          <Project Name="popcorn-chicken.csd" Type="Node" />
+          <Project Name="onion-flower.csd" Type="Node" />
+          <Project Name="shrimp.csd" Type="Node" />
+          <Project Name="potato-wedges.csd" Type="Node" />
+        </Folder>
+        <Project Name="CoatedPowder.csd" Type="Scene" />
+        <Project Name="MakePowder.csd" Type="Scene" />
+        <Folder Name="coatefood">
+          <Project Name="wings.csd" Type="Node" />
+          <Project Name="bacon.csd" Type="Node" />
+          <Project Name="calamari.csd" Type="Node" />
+          <Project Name="chicken-drumstick.csd" Type="Node" />
+          <Project Name="cod-fillet.csd" Type="Node" />
+          <Project Name="mozzarella-cheese-sticks.csd" Type="Node" />
+          <Project Name="onion-flower.csd" Type="Node" />
+          <Project Name="popcorn-chicken.csd" Type="Node" />
+          <Project Name="potato-wedges.csd" Type="Node" />
+          <Project Name="shrimp.csd" Type="Node" />
+        </Folder>
+        <Project Name="FryFood.csd" Type="Scene" />
+        <Folder Name="FryFood">
+          <Project Name="potato-wedges.csd" Type="Node" />
+          <Project Name="bacon.csd" Type="Node" />
+          <Project Name="calamari.csd" Type="Node" />
+          <Project Name="chicken-drumstick.csd" Type="Node" />
+          <Project Name="cod-fillet.csd" Type="Node" />
+          <Project Name="mozzarella-cheese-sticks.csd" Type="Node" />
+          <Project Name="onion-flower.csd" Type="Node" />
+          <Project Name="wings.csd" Type="Node" />
+          <Project Name="popcorn-chicken.csd" Type="Node" />
+          <Project Name="shrimp.csd" Type="Node" />
+        </Folder>
+        <Project Name="DecorationLayer.csd" Type="Scene" />
+        <Folder Name="ui">
+          <Folder Name="pubilc">
+            <Image Name="album_btn_album.png" />
+            <Image Name="btn-back.png" />
+            <Image Name="btn-game.png" />
+            <Image Name="btn-play.png" />
+            <Image Name="btn-shop.png" />
+            <Image Name="close.png" />
+            <Image Name="draw-xuanzhong.png" />
+            <Image Name="finger1-bg.png" />
+            <Image Name="finger1.png" />
+            <Image Name="finger2-bg.png" />
+            <Image Name="finger2.png" />
+            <Image Name="home.png" />
+            <Image Name="next.png" />
+            <Image Name="no.png" />
+            <Image Name="ok.png" />
+            <Image Name="photo.png" />
+            <Image Name="reset.png" />
+            <Image Name="tips.png" />
+            <Image Name="xuanzhong.png" />
+            <Image Name="yes.png" />
+          </Folder>
+          <Folder Name="decoration">
+            <Folder Name="btn">
+              <Image Name="btn_drink.png" />
+              <Image Name="btn_drink_h.png" />
+              <Image Name="btn_plate.png" />
+              <Image Name="btn_plate_h.png" />
+              <Image Name="btn_sauce.png" />
+              <Image Name="btn_sauce_h.png" />
+              <Image Name="btn_side-dish.png" />
+              <Image Name="btn_side-dish_h.png" />
+            </Folder>
+            <Image Name="banner_btn.png" />
+            <Image Name="banner_dec.png" />
+          </Folder>
+          <Folder Name="studio_fonts">
+            <TTF Name="LuckiestGuy.ttf" />
+          </Folder>
+          <Folder Name="eat">
+            <Image Name="eat-btn.png" />
+            <Image Name="eat.png" />
+          </Folder>
+          <Folder Name="button">
+            <Image Name="album_bg.png" />
+            <Image Name="album_btn_album.png" />
+            <Image Name="album_btn_close.png" />
+            <Image Name="album_btn_email.png" />
+            <Image Name="btn_back.png" />
+            <Image Name="btn_fav.png" />
+            <Image Name="btn_home.png" />
+            <Image Name="btn_next.png" />
+            <Image Name="btn_reset.png" />
+            <Image Name="btn_share.png" />
+            <Image Name="eat_mask.png" />
+            <Image Name="eat_mask1.png" />
+            <Image Name="home_btn_fav.png" />
+            <Image Name="home_btn_more.png" />
+            <Image Name="home_btn_play.png" />
+            <Image Name="home_btn_rate.png" />
+            <Image Name="home_btn_set.png" />
+            <Image Name="home_btn_shop.png" />
+            <Image Name="photo.png" />
+            <Image Name="scribble.png" />
+          </Folder>
+          <Image Name="home_btn_fav.png" />
+          <Image Name="home_btn_more.png" />
+          <Image Name="home_btn_play.png" />
+          <Image Name="home_btn_rate.png" />
+          <Image Name="home_btn_set.png" />
+          <Image Name="home_btn_shop.png" />
+          <Folder Name="dialog">
+            <Image Name="popup_bg.png" />
+            <Image Name="popup_btn_no.png" />
+            <Image Name="popup_btn_ok.png" />
+            <Image Name="popup_btn_yes.png" />
+            <Image Name="popup_txt1.png" />
+            <Image Name="popup_txt2.png" />
+          </Folder>
+          <Image Name="choose-your-food.png" />
+        </Folder>
+        <Project Name="pop_yesno.csd" Type="Scene" />
+        <Project Name="pop_ok.csd" Type="Scene" />
+        <Project Name="EatLayer.csd" Type="Scene" />
+        <Folder Name="AfterdipEgg">
+          <Project Name="wings.csd" Type="Node" />
+          <Project Name="shrimp.csd" Type="Node" />
+          <Project Name="potato-wedges.csd" Type="Node" />
+          <Project Name="popcorn-chicken.csd" Type="Node" />
+          <Project Name="onion-flower.csd" Type="Node" />
+          <Project Name="mozzarella-cheese-sticks.csd" Type="Node" />
+          <Project Name="cod-fillet.csd" Type="Node" />
+          <Project Name="chicken-drumstick.csd" Type="Node" />
+          <Project Name="calamari.csd" Type="Node" />
+          <Project Name="bacon.csd" Type="Node" />
+        </Folder>
+        <Folder Name="particles">
+          <PlistParticleFile Name="milkParticle.plist" />
+          <PlistParticleFile Name="saltParticle.plist" />
+          <PlistParticleFile Name="sugarParticle.plist" />
+          <PlistParticleFile Name="pourFlour.plist" />
+          <PlistParticleFile Name="crumbs.plist" />
+          <PlistParticleFile Name="chili.plist" />
+          <PlistParticleFile Name="washEnd.plist" />
+          <PlistParticleFile Name="start_1.plist" />
+          <PlistParticleFile Name="powerStar.plist" />
+          <PlistParticleFile Name="decorateParticle.plist" />
+          <PlistParticleFile Name="bubble.plist" />
+          <PlistParticleFile Name="smoke.plist" />
+          <PlistParticleFile Name="goodParticle.plist" />
+          <PlistParticleFile Name="shopFall.plist" />
+          <PlistParticleFile Name="eggParticle.plist" />
+        </Folder>
+        <Folder Name="category">
+          <Folder Name="drink">
+            <Image Name="drink0.png" />
+            <Image Name="drink1.png" />
+            <Image Name="drink10.png" />
+            <Image Name="drink11.png" />
+            <Image Name="drink12.png" />
+            <Image Name="drink13.png" />
+            <Image Name="drink14.png" />
+            <Image Name="drink15.png" />
+            <Image Name="drink16.png" />
+            <Image Name="drink17.png" />
+            <Image Name="drink18.png" />
+            <Image Name="drink19.png" />
+            <Image Name="drink2.png" />
+            <Image Name="drink3.png" />
+            <Image Name="drink4.png" />
+            <Image Name="drink5.png" />
+            <Image Name="drink6.png" />
+            <Image Name="drink7.png" />
+            <Image Name="drink8.png" />
+            <Image Name="drink9.png" />
+          </Folder>
+          <Folder Name="plate">
+            <Image Name="plate0.png" />
+            <Image Name="plate1.png" />
+            <Image Name="plate10.png" />
+            <Image Name="plate11.png" />
+            <Image Name="plate12.png" />
+            <Image Name="plate13.png" />
+            <Image Name="plate14.png" />
+            <Image Name="plate15.png" />
+            <Image Name="plate16.png" />
+            <Image Name="plate17.png" />
+            <Image Name="plate18.png" />
+            <Image Name="plate19.png" />
+            <Image Name="plate2.png" />
+            <Image Name="plate3.png" />
+            <Image Name="plate4.png" />
+            <Image Name="plate5.png" />
+            <Image Name="plate6.png" />
+            <Image Name="plate7.png" />
+            <Image Name="plate8.png" />
+            <Image Name="plate9.png" />
+          </Folder>
+          <Folder Name="sauce">
+            <Image Name="sauce0.png" />
+            <Image Name="sauce1.png" />
+            <Image Name="sauce10.png" />
+            <Image Name="sauce11.png" />
+            <Image Name="sauce12.png" />
+            <Image Name="sauce13.png" />
+            <Image Name="sauce14.png" />
+            <Image Name="sauce15.png" />
+            <Image Name="sauce16.png" />
+            <Image Name="sauce17.png" />
+            <Image Name="sauce18.png" />
+            <Image Name="sauce19.png" />
+            <Image Name="sauce2.png" />
+            <Image Name="sauce3.png" />
+            <Image Name="sauce4.png" />
+            <Image Name="sauce5.png" />
+            <Image Name="sauce6.png" />
+            <Image Name="sauce7.png" />
+            <Image Name="sauce8.png" />
+            <Image Name="sauce9.png" />
+          </Folder>
+          <Folder Name="side-dish">
+            <Image Name="side-dish0.png" />
+            <Image Name="side-dish1.png" />
+            <Image Name="side-dish10.png" />
+            <Image Name="side-dish11.png" />
+            <Image Name="side-dish12.png" />
+            <Image Name="side-dish13.png" />
+            <Image Name="side-dish14.png" />
+            <Image Name="side-dish15.png" />
+            <Image Name="side-dish16.png" />
+            <Image Name="side-dish17.png" />
+            <Image Name="side-dish18.png" />
+            <Image Name="side-dish19.png" />
+            <Image Name="side-dish2.png" />
+            <Image Name="side-dish3.png" />
+            <Image Name="side-dish4.png" />
+            <Image Name="side-dish5.png" />
+            <Image Name="side-dish6.png" />
+            <Image Name="side-dish7.png" />
+            <Image Name="side-dish8.png" />
+            <Image Name="side-dish9.png" />
+          </Folder>
+        </Folder>
+        <Project Name="HomLayer.csd" Type="Scene" />
+        <Project Name="albumLayer.csd" Type="Scene" />
+        <Project Name="ShopLayer.csd" Type="Scene" />
+        <Project Name="loading.csd" Type="Scene" />
+        <Folder Name="sound">
+          <Folder Name="general">
+            <Audio Name="add salt.mp3" />
+            <Audio Name="add water.mp3" />
+            <Audio Name="add_powder.mp3" />
+            <Audio Name="button_general.mp3" />
+            <Audio Name="button_play.mp3" />
+            <Audio Name="camera.mp3" />
+            <Audio Name="crack egg.mp3" />
+            <Audio Name="cut donut particle.mp3" />
+            <Audio Name="cut tool fall.mp3" />
+            <Audio Name="cut.mp3" />
+            <Audio Name="dough_mix.mp3" />
+            <Audio Name="fireworks.mp3" />
+            <Audio Name="fry donut.mp3" />
+            <Audio Name="fry failed.mp3" />
+            <Audio Name="fry_ok.mp3" />
+            <Audio Name="ingredients_fly_in.mp3" />
+            <Audio Name="ingredients_out.mp3" />
+            <Audio Name="pop_up_close.mp3" />
+            <Audio Name="pop_up_open.mp3" />
+            <Audio Name="roll the dough.mp3" />
+            <Audio Name="stir.mp3" />
+          </Folder>
+          <Folder Name="other">
+            <Audio Name="category_selection_1.mp3" />
+            <Audio Name="draw_success.mp3" />
+            <Audio Name="eat.mp3" />
+            <Audio Name="loading_1.mp3" />
+            <Audio Name="loading_2.mp3" />
+            <Audio Name="loading_3.mp3" />
+            <Audio Name="mini game_miss.mp3" />
+            <Audio Name="pen_drawing.mp3" />
+            <Audio Name="pen_drawing1.mp3" />
+            <Audio Name="star_1.mp3" />
+            <Audio Name="star_2.mp3" />
+            <Audio Name="star_3.mp3" />
+            <Audio Name="success.mp3" />
+          </Folder>
+          <Folder Name="Sound">
+            <Audio Name="ahaa.mp3" />
+            <Audio Name="amazing.mp3" />
+            <Audio Name="awesome.mp3" />
+            <Audio Name="cheer_star.mp3" />
+            <Audio Name="cool.mp3" />
+            <Audio Name="go.mp3" />
+            <Audio Name="kitchen_tools.mp3" />
+            <Audio Name="loading_donuts.mp3" />
+            <Audio Name="play button_jump.mp3" />
+            <Audio Name="play button_spin magnify.mp3" />
+            <Audio Name="price tag_back.mp3" />
+            <Audio Name="prize_crown.mp3" />
+            <Audio Name="reset.mp3" />
+          </Folder>
+          <Audio Name="dough_mix.mp3" />
+        </Folder>
+        <Folder Name="coateEndPos">
+          <Project Name="bacon.csd" Type="Node" />
+          <Project Name="calamari.csd" Type="Node" />
+          <Project Name="chicken-drumstick.csd" Type="Node" />
+          <Project Name="cod-fillet.csd" Type="Node" />
+          <Project Name="mozzarella-cheese-sticks.csd" Type="Node" />
+          <Project Name="onion-flower.csd" Type="Node" />
+          <Project Name="popcorn-chicken.csd" Type="Node" />
+          <Project Name="potato-wedges.csd" Type="Node" />
+          <Project Name="shrimp.csd" Type="Node" />
+          <Project Name="wings.csd" Type="Node" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

@@ -1,0 +1,135 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "993FC76C27C37903EDA3EE015D7369BB67BFEA9E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : 0,
+    "A5D379406C349CD46132D38BFDC6987D8E4E9B4A" : 0,
+    "3A7A121F11AA7CD39ED4FF2D8DD3556886753249" : 0,
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : 0,
+    "504C6152202A972B80D8564D02E30567706FD863" : 0,
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : 0,
+    "B225A5ADC0ABF999847B594ABC9DFBDBC5A4EB5F" : 0,
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : 0,
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : 0,
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : 0,
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : 0,
+    "57747ABBCAD59D173537E2C9E7F4700369767A3D" : 0,
+    "993FC76C27C37903EDA3EE015D7369BB67BFEA9E" : 0,
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : 0,
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : 0,
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : 0,
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "79BE8BDF-9D0B-479C-A04D-5B732A9DBE5F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9E39F69A684729C06E9E4EB4060BED188B5C8748" : "mlabs1060MyDonutShop\/cocos2dx\/cocos2d\/",
+    "A5D379406C349CD46132D38BFDC6987D8E4E9B4A" : "mlabs1060MyDonutShop\/Classes\/codebase\/component\/scenecontroller\/",
+    "3A7A121F11AA7CD39ED4FF2D8DD3556886753249" : "mlabs1060MyDonutShop\/Classes\/codebase\/component\/iap\/",
+    "BE023096A3C75FFEB90283AF8C580D023C65E5FC" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/adboutPageResources\/",
+    "504C6152202A972B80D8564D02E30567706FD863" : "mlabs1060MyDonutShop\/Classes\/codebase\/component\/scribble\/",
+    "638FBC0848579984B266E97A7D7A0CF3652FB837" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/analytics\/",
+    "B225A5ADC0ABF999847B594ABC9DFBDBC5A4EB5F" : "mlabs1060MyDonutShop\/Classes\/codebase\/component\/flurryevent\/",
+    "2FCA009A322DF3894933EEFB6168D4993CE0467D" : "mlabs1060MyDonutShop\/Classes\/codebase\/core\/",
+    "492FCDDAD8F052C654B769FA7288A0F47A748EC0" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/cocos2dxStatic\/",
+    "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/adsdk\/",
+    "F2CABC49E4024A438D784FD5F1E133CFDA656BEF" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/newsblast\/",
+    "57747ABBCAD59D173537E2C9E7F4700369767A3D" : "mlabs1060MyDonutShop\/Classes\/codebase\/component\/writeNode\/",
+    "993FC76C27C37903EDA3EE015D7369BB67BFEA9E" : "mlabs1060MyDonutShop\/",
+    "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/adboutPage\/",
+    "8BDB94148B981373EFB98A1B10FF7C7131214D9B" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/component_ios\/",
+    "C1C11DC94C71352CDE91122570000DA6D7315D2B" : "mlabs1060MyDonutShop\/Classes\/codebase\/core\/platform\/ads\/",
+    "90E61F0BF39BA0CF0C0334B139ED21750E143985" : "mlabs1060MyDonutShop\/proj.ios_mac\/ios\/Depends\/iap\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MyDonutShop",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios_mac\/MyDonutShop.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/about-page-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "08D05AEEB6F5D13C9B4B83FFCFD9899EF57EB7E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/core.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2FCA009A322DF3894933EEFB6168D4993CE0467D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/iap.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3A7A121F11AA7CD39ED4FF2D8DD3556886753249"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-static-library-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "492FCDDAD8F052C654B769FA7288A0F47A748EC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/scribble.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "504C6152202A972B80D8564D02E30567706FD863"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/write.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "57747ABBCAD59D173537E2C9E7F4700369767A3D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/analyticssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "638FBC0848579984B266E97A7D7A0CF3652FB837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/component-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8BDB94148B981373EFB98A1B10FF7C7131214D9B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/iapurchase-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E61F0BF39BA0CF0C0334B139ED21750E143985"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/mlabs1060-mlabs1060g-mydonutshop.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "993FC76C27C37903EDA3EE015D7369BB67BFEA9E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmf\/cocos2d-x-src.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E39F69A684729C06E9E4EB4060BED188B5C8748"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cml\/scenecontroller.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A5D379406C349CD46132D38BFDC6987D8E4E9B4A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmk\/flurryeventmanager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B225A5ADC0ABF999847B594ABC9DFBDBC5A4EB5F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/studio-resources.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE023096A3C75FFEB90283AF8C580D023C65E5FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/crossplatformapi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1C11DC94C71352CDE91122570000DA6D7315D2B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/adssdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBEA048628EDEFF0D650CB20D5E06EAD014F6E21"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/stash.stm.com:7999\/cmc\/newsblast-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2CABC49E4024A438D784FD5F1E133CFDA656BEF"
+    }
+  ]
+}

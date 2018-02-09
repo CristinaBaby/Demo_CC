@@ -1,0 +1,44 @@
+<UserData Version="2.3.2.3">
+  <Properties>
+    <Item Key="CocosRecentOperation">
+      <Value ctype="CocosRecentOperation">
+        <LastPublishType Value="Resource" />
+        <IsLastPublish Value="True" />
+        <LastRunType Value="Mac" />
+      </Value>
+    </Item>
+    <Item Key="PackageParamsKey">
+      <Value ctype="PackageParams">
+        <LuaIsEncrypt Value="False" />
+        <LuaEncryptKey Value="" />
+        <LuaEncryptSign Value="" />
+        <Android_PackageName Value="org.cocos.mlabs1062deepfryanything" />
+        <AndroidkeyStore Value="" />
+        <AndroidVersion Value="" />
+        <iOS_Target Value="mlabs1062_deepfryanything iOS" />
+        <iOS_BundleID Value="iPhone Developer: Dev SKA (3J92VZT269)" />
+        <Platform Value="None" />
+        <RunPlatform Value="None" />
+        <FrameworkVersion Value="" />
+        <IsDebugKeystore Value="True" />
+        <KeystorePassword Value="" />
+        <KeystoreAliasName Value="" />
+        <KeystoreAliasPassword Value="" />
+        <EnableSourceMap Value="False" />
+        <EnableHTML5Advanced Value="False" />
+      </Value>
+    </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="DecorationLayer.csd" />
+          <FilePathData Path="FryFood/chicken-drumstick.csd" />
+          <FilePathData Path="FryFood/cod-fillet.csd" />
+          <FilePathData Path="ChooseLayer.csd" />
+          <FilePathData Path="albumLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="albumLayer.csd" />
+      </Value>
+    </Item>
+  </Properties>
+</UserData>

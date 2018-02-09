@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleId</key>
+	<string>1068846834</string>
+	<key>Banner</key>
+	<dict>
+		<key>iPhone</key>
+		<string>a1706902eee943b4854a80991f3da770</string>
+		<key>iPad</key>
+		<string>e0d0eb7e09dc479aa2873cc2704145d8</string>
+	</dict>
+	<key>Rect</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Interstitial</key>
+	<dict>
+		<key>iPhone</key>
+		<string>05244de0087146f7b7c8d120070bd226</string>
+		<key>iPad</key>
+		<string>7140fe182cce4050bf5ef1620b118e29</string>
+	</dict>
+	<key>Crosspromo</key>
+	<dict>
+		<key>appId</key>
+		<string>5693648ba8b63c7e0d59ac1a</string>
+		<key>appSignature</key>
+		<string>772c8615254f1276d8ea1d80d9a41cf62322d31a</string>
+	</dict>
+	<key>Rewarded</key>
+	<dict>
+		<key>APPID</key>
+		<string></string>
+		<key>SecurityToken</key>
+		<string></string>
+	</dict>
+	<key>Native</key>
+	<dict>
+		<key>iPhone</key>
+		<string></string>
+		<key>iPad</key>
+		<string></string>
+	</dict>
+	<key>Flurry</key>
+	<string>KGKWQYPDGJ69F4Z6MWSK</string>
+	<key>PrivacyPageUrl</key>
+	<string></string>
+	<key>GoogleAnalytics</key>
+	<string>UA-71726265-13</string>
+	<key>ServerBaseUrl</key>
+	<string>https://services.blackbeltclown.com</string>
+</dict>
+</plist>

@@ -1,0 +1,965 @@
+<Solution>
+  <PropertyGroup Name="mlabs1060MyDonutShop" Version="2.3.2.3" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="png">
+          <Folder Name="10">
+            <Image Name="bg.jpg" />
+            <Image Name="shed.png" />
+            <Image Name="table.png" />
+            <Image Name="price0.png" />
+            <Image Name="price1.png" />
+            <Image Name="stands.png" />
+            <Image Name="bg1.jpg" />
+            <Image Name="shed_1.png" />
+            <Image Name="shed_2.png" />
+          </Folder>
+          <Folder Name="11">
+            <Image Name="label.png" />
+            <Image Name="my0.png" />
+            <Image Name="my1.png" />
+            <Image Name="Shut-down.png" />
+          </Folder>
+          <Folder Name="4">
+            <Image Name="bg.jpg" />
+            <Image Name="donuts.png" />
+            <Image Name="conveyor-belt.png" />
+            <Image Name="conveyor-belt_0.png" />
+            <Image Name="conveyor-belt_1.png" />
+            <Image Name="conveyor-belt_2.png" />
+            <Image Name="conveyor-belt_3.png" />
+            <Image Name="conveyor-belt1.png" />
+          </Folder>
+          <Folder Name="5">
+            <Image Name="bg.jpg" />
+            <Image Name="ok0.png" />
+            <Image Name="ok1.png" />
+            <Image Name="plate0.png" />
+            <Image Name="plate1.png" />
+            <Image Name="bubble.png" />
+            <Image Name="donuts0.png" />
+            <Image Name="donuts1.png" />
+            <Image Name="donuts2.png" />
+            <Image Name="donuts3.png" />
+            <Image Name="donuts4.png" />
+            <Image Name="donuts5.png" />
+            <Image Name="oil-bath.png" />
+          </Folder>
+          <Folder Name="6">
+            <Image Name="bg.jpg" />
+            <Image Name="donuts.png" />
+            <Image Name="tablecloth.png" />
+          </Folder>
+          <Folder Name="7">
+            <Image Name="bg.jpg" />
+            <Image Name="donuts.png" />
+            <Image Name="table.png" />
+          </Folder>
+          <Folder Name="8">
+            <Image Name="bg.jpg" />
+            <Image Name="ui0.png" />
+            <Image Name="ui1.png" />
+            <Image Name="ui2.png" />
+            <Image Name="vote0.png" />
+            <Image Name="vote1.png" />
+          </Folder>
+          <Folder Name="9">
+            <Image Name="bg.jpg" />
+            <Image Name="vote0.png" />
+            <Image Name="vote1.png" />
+            <Image Name="vote2.png" />
+            <Image Name="cloth.png" />
+            <Image Name="light.png" />
+            <Image Name="star0.png" />
+            <Image Name="stars.png" />
+            <Image Name="balloon0.png" />
+            <Image Name="balloon1.png" />
+            <Image Name="curtain0.png" />
+            <Image Name="curtain1.png" />
+            <Image Name="stage.png" />
+          </Folder>
+          <Folder Name="1">
+            <Image Name="brand.png" />
+            <Image Name="donuts.png" />
+            <Image Name="logo.png" />
+            <Image Name="shed0.png" />
+            <Image Name="shed1.png" />
+            <Image Name="shop.png" />
+            <Image Name="A-flower-pot0.png" />
+            <Image Name="A-flower-pot1.png" />
+            <Image Name="balloon.png" />
+            <Image Name="Bulletin-board.png" />
+            <Image Name="donuts0.png" />
+            <Image Name="donuts1.png" />
+            <Image Name="donuts2.png" />
+            <Image Name="donuts3.png" />
+            <Image Name="donuts4.png" />
+            <Image Name="donuts5.png" />
+            <Image Name="stickers0.png" />
+            <Image Name="stickers1.png" />
+            <Image Name="extras1.png" />
+            <Image Name="extras1_1.png" />
+            <Image Name="shop1.png" />
+            <Image Name="balloon0.png" />
+            <Image Name="balloon1.png" />
+            <Image Name="balloon2.png" />
+            <Image Name="extras2.png" />
+            <Image Name="extras2_1.png" />
+            <Image Name="extras3.png" />
+            <Image Name="extras3_1.png" />
+            <Image Name="extras4.png" />
+            <Image Name="extras4_1.png" />
+            <Image Name="shop(3).png" />
+          </Folder>
+          <Folder Name="2">
+            <Image Name="baking-powder.png" />
+            <Image Name="baking-powder_shadow.png" />
+            <Image Name="bg.jpg" />
+            <Image Name="blender.png" />
+            <Image Name="blender_shadow.png" />
+            <Image Name="bowl.png" />
+            <Image Name="bowl_baking-powder.png" />
+            <Image Name="bowl_butter.png" />
+            <Image Name="bowl_cover.png" />
+            <Image Name="bowl_egg0.png" />
+            <Image Name="bowl_egg1.png" />
+            <Image Name="bowl_egg2.png" />
+            <Image Name="bowl_egg3.png" />
+            <Image Name="bowl_flour.png" />
+            <Image Name="bowl_milk.png" />
+            <Image Name="bowl_stir0.png" />
+            <Image Name="bowl_stir1.png" />
+            <Image Name="bowl_stir10.png" />
+            <Image Name="bowl_stir11.png" />
+            <Image Name="bowl_stir12.png" />
+            <Image Name="bowl_stir2.png" />
+            <Image Name="bowl_stir3.png" />
+            <Image Name="bowl_stir4.png" />
+            <Image Name="bowl_stir5.png" />
+            <Image Name="bowl_stir6.png" />
+            <Image Name="bowl_stir7.png" />
+            <Image Name="bowl_stir8.png" />
+            <Image Name="bowl_stir9.png" />
+            <Image Name="bowl_sugar.png" />
+            <Image Name="bowl_water.png" />
+            <Image Name="butter.png" />
+            <Image Name="butter_plate.png" />
+            <Image Name="butter_shadow.png" />
+            <Image Name="egg.png" />
+            <Image Name="egg_shadow.png" />
+            <Image Name="flour.png" />
+            <Image Name="fork.png" />
+            <Image Name="gloves.png" />
+            <Image Name="milk.png" />
+            <Image Name="milk_pouring.png" />
+            <Image Name="plate.png" />
+            <Image Name="plate_stents.png" />
+            <Image Name="salt.png" />
+            <Image Name="salt_shadow.png" />
+            <Image Name="seasoning-bowl.png" />
+            <Image Name="seasoning-bowl_cover.png" />
+            <Image Name="seasoning-bowl_sugar.png" />
+            <Image Name="shelf.png" />
+            <Image Name="spoon.png" />
+            <Image Name="spoon1.png" />
+            <Image Name="spoon1_shadow.png" />
+            <Image Name="stickers.png" />
+            <Image Name="tablecloth.png" />
+            <Image Name="water.png" />
+            <Image Name="water_pouring.png" />
+            <Image Name="flour_shadow.png" />
+            <Image Name="milk_shadow.png" />
+            <Image Name="seasoning-bowl_shadow.png" />
+            <Image Name="water_shadow.png" />
+            <Image Name="blender0.png" />
+            <Image Name="blender1.png" />
+            <Image Name="blender2.png" />
+            <Image Name="blender3.png" />
+            <Image Name="blender3_1.png" />
+            <Image Name="blender3_2.png" />
+            <Image Name="spoon2_1.png" />
+            <Image Name="spoon2_2.png" />
+          </Folder>
+          <Folder Name="3">
+            <Image Name="bg.jpg" />
+            <Image Name="dough-rolling_0.png" />
+            <Image Name="dough-rolling_1.png" />
+            <Image Name="dough-rolling_2.png" />
+            <Image Name="dough-rolling_3.png" />
+            <Image Name="dough-rolling_4.png" />
+            <Image Name="dough-rolling_5.png" />
+            <Image Name="dough-rolling_6.png" />
+            <Image Name="dough-rolling_7.png" />
+            <Image Name="flour.png" />
+            <Image Name="mask.png" />
+            <Image Name="rolling-pin.png" />
+            <Image Name="rolling-pin_shadow.png" />
+            <Image Name="dough.png" />
+            <Image Name="dough0.png" />
+            <Image Name="dough_tool.png" />
+          </Folder>
+          <Folder Name="loading">
+            <Image Name="bg.jpg" />
+            <Image Name="donuts0.png" />
+            <Image Name="donuts1.png" />
+            <Image Name="donuts10.png" />
+            <Image Name="donuts11.png" />
+            <Image Name="donuts2.png" />
+            <Image Name="donuts3.png" />
+            <Image Name="donuts4.png" />
+            <Image Name="donuts5.png" />
+            <Image Name="donuts6.png" />
+            <Image Name="donuts7.png" />
+            <Image Name="donuts8.png" />
+            <Image Name="donuts9.png" />
+            <Image Name="chocolate-donut.png" />
+          </Folder>
+          <Folder Name="fallImage">
+            <Image Name="smoke0.png" />
+            <Image Name="smoke1.png" />
+            <Image Name="smoke2.png" />
+            <Image Name="water0.png" />
+            <Image Name="water1.png" />
+            <Image Name="egg0.png" />
+            <Image Name="egg1.png" />
+          </Folder>
+          <Image Name="pattern.png" />
+        </Folder>
+        <Project Name="HomeLayer.csd" Type="Scene" />
+        <Folder Name="ui">
+          <Folder Name="home">
+            <Image Name="btn-game.png" />
+            <Image Name="btn-menu.png" />
+            <Image Name="btn-play.png" />
+            <Image Name="btn-shop.png" />
+            <Image Name="rateus.png" />
+            <Image Name="design-logo.png" />
+          </Folder>
+          <Folder Name="eat">
+            <Image Name="eat-btn.png" />
+            <Image Name="eat.png" />
+          </Folder>
+          <Folder Name="clock">
+            <Image Name="1.png" />
+            <Image Name="2.png" />
+            <Image Name="3.png" />
+            <Image Name="clockPointer.png" />
+            <Image Name="colock-bg.png" />
+            <Image Name="colock-tips.png" />
+          </Folder>
+          <Folder Name="cook">
+            <Image Name="cook.png" />
+            <Image Name="finger.png" />
+          </Folder>
+          <Folder Name="cut">
+            <Image Name="cut.png" />
+          </Folder>
+          <Folder Name="decoration">
+            <Image Name="bg.png" />
+            <Image Name="bg1.png" />
+            <Image Name="candy.png" />
+            <Image Name="case.png" />
+            <Image Name="down.png" />
+            <Image Name="icing.png" />
+            <Image Name="lock.png" />
+            <Image Name="nuts.png" />
+            <Image Name="other.png" />
+            <Image Name="sauce.png" />
+            <Image Name="up.png" />
+          </Folder>
+          <Folder Name="draw">
+            <Image Name="bg-draw.png" />
+            <Image Name="blue.png" />
+            <Image Name="brush.png" />
+            <Image Name="confirm.png" />
+            <Image Name="delete.png" />
+            <Image Name="hurdle.png" />
+            <Image Name="orange.png" />
+            <Image Name="pattern.png" />
+            <Image Name="pencil.png" />
+            <Image Name="tags.png" />
+            <Image Name="yellow.png" />
+            <Image Name="bg-draw2.png" />
+          </Folder>
+          <Folder Name="fry">
+            <Image Name="fry.png" />
+            <Image Name="pointer.png" />
+            <Image Name="progress-bar.png" />
+            <Image Name="progress-bar2.png" />
+          </Folder>
+          <Folder Name="menu">
+            <Image Name="menu-bg.png" />
+            <Image Name="menu-donutbg.png" />
+            <Image Name="menu-headline.png" />
+            <Image Name="name.png" />
+            <Image Name="name1.png" />
+            <Image Name="album_btn_album.png" />
+          </Folder>
+          <Folder Name="minigame">
+            <Image Name="0.png" />
+            <Image Name="1.png" />
+            <Image Name="2.png" />
+            <Image Name="3.png" />
+            <Image Name="4.png" />
+            <Image Name="5.png" />
+            <Image Name="6.png" />
+            <Image Name="7.png" />
+            <Image Name="8.png" />
+            <Image Name="9.png" />
+            <Image Name="fantastic.png" />
+            <Image Name="good.png" />
+            <Image Name="great.png" />
+            <Image Name="next.png" />
+            <Image Name="colok-bg.png" />
+            <Image Name="donut.png" />
+            <Image Name="tips.png" />
+            <Image Name="x.png" />
+          </Folder>
+          <Folder Name="rolldough">
+            <Image Name="arrows-1.png" />
+            <Image Name="arrows-2.png" />
+            <Image Name="finger-2.png" />
+            <Image Name="next.png" />
+            <Image Name="roll-dough.png" />
+          </Folder>
+          <Folder Name="shop">
+            <Image Name="all.png" />
+            <Image Name="alldecorations.png" />
+            <Image Name="bling.png" />
+            <Image Name="btn-buy.png" />
+            <Image Name="decorations.png" />
+            <Image Name="fullversion.png" />
+            <Image Name="no-ads.png" />
+            <Image Name="removeads.png" />
+            <Image Name="shop-headline.png" />
+            <Image Name="shop-light.png" />
+            <Image Name="restore.png" />
+            <Image Name="shop_bg.jpg" />
+          </Folder>
+          <Folder Name="tips">
+            <Image Name="ok.png" />
+            <Image Name="tips-content.png" />
+            <Image Name="tips.png" />
+            <Image Name="money1.png" />
+            <Image Name="money2.png" />
+          </Folder>
+          <Folder Name="top">
+            <Image Name="light.png" />
+            <Image Name="plate-top1.png" />
+            <Image Name="plate-top2.png" />
+            <Image Name="plate-top3.png" />
+            <Image Name="star-top1.png" />
+            <Image Name="star-top2.png" />
+            <Image Name="star-top3.png" />
+            <Image Name="crown.png" />
+            <Image Name="top-bling.png" />
+            <Image Name="plate-shade.png" />
+          </Folder>
+          <Folder Name="vote">
+            <Image Name="donutbg.png" />
+            <Image Name="vote-bg.png" />
+            <Image Name="vote-headline.png" />
+            <Image Name="vote-plan1.png" />
+            <Image Name="vote-plan2.png" />
+            <Image Name="baifen.png" />
+            <Image Name="jiaobiao.png" />
+            <Image Name="vote-btn-down.png" />
+            <Image Name="vote-btn-up.png" />
+            <Image Name="vote.png" />
+          </Folder>
+          <Folder Name="album">
+            <Image Name="album_bg.png" />
+            <Image Name="album_btn_album.png" />
+            <Image Name="album_btn_email.png" />
+          </Folder>
+          <Folder Name="pubilc">
+            <Image Name="album_btn_album.png" />
+            <Image Name="btn-back.png" />
+            <Image Name="btn-game.png" />
+            <Image Name="btn-play.png" />
+            <Image Name="btn-shop.png" />
+            <Image Name="close.png" />
+            <Image Name="home.png" />
+            <Image Name="next.png" />
+            <Image Name="no.png" />
+            <Image Name="ok.png" />
+            <Image Name="photo.png" />
+            <Image Name="reset.png" />
+            <Image Name="tips.png" />
+            <Image Name="yes.png" />
+            <Image Name="finger1-bg.png" />
+            <Image Name="finger1.png" />
+            <Image Name="finger2-bg.png" />
+            <Image Name="finger2.png" />
+          </Folder>
+          <Folder Name="studio_fonts">
+            <TTF Name="LuckiestGuy.ttf" />
+          </Folder>
+          <Folder Name="congratulations">
+            <Image Name="blue-star.png" />
+            <Image Name="congratulations.png" />
+            <Image Name="red-star.png" />
+            <Image Name="star.png" />
+            <Image Name="tips.png" />
+            <Image Name="fireworks1.png" />
+            <Image Name="fireworks2.png" />
+            <Image Name="fireworks3.png" />
+          </Folder>
+        </Folder>
+        <Project Name="TouchGame.csd" Type="Scene" />
+        <Project Name="MakeStep.csd" Type="Scene" />
+        <Folder Name="particle">
+          <PlistParticleFile Name="pourFlour.plist" />
+          <PlistParticleFile Name="saltParticle.plist" />
+          <PlistParticleFile Name="water.plist" />
+          <PlistParticleFile Name="starParticle.plist" />
+          <PlistParticleFile Name="milkParticle.plist" />
+          <PlistParticleFile Name="sugarParticle.plist" />
+          <Image Name="particleTexture.png" />
+          <PlistParticleFile Name="voteParticles.plist" />
+          <PlistParticleFile Name="smoke.plist" />
+          <PlistParticleFile Name="fallstar.plist" />
+          <PlistParticleFile Name="dountParticle.plist" />
+          <PlistParticleFile Name="curedParticles.plist" />
+          <PlistParticleFile Name="characterSelection_selectGirl1.plist" />
+          <PlistParticleFile Name="characterSelection_selectGirl.plist" />
+          <PlistParticleFile Name="start_1.plist" />
+          <PlistParticleFile Name="colorEndParticle.plist" />
+          <PlistParticleFile Name="goodParticle.plist" />
+          <PlistParticleFile Name="fallStarParticle.plist" />
+          <PlistParticleFile Name="Flow.plist" />
+        </Folder>
+        <Project Name="rollStep.csd" Type="Scene" />
+        <Project Name="FryDount.csd" Type="Scene" />
+        <Project Name="ChooseLove.csd" Type="Scene" />
+        <Folder Name="voteLayer">
+          <Project Name="vote_0.csd" Type="Layer" />
+          <Project Name="vote_1.csd" Type="Layer" />
+          <Project Name="vote_2.csd" Type="Layer" />
+          <Project Name="vote_3.csd" Type="Layer" />
+          <Project Name="vote_4.csd" Type="Layer" />
+          <Project Name="vote_5.csd" Type="Layer" />
+          <Project Name="vote_6.csd" Type="Layer" />
+          <Project Name="vote_7.csd" Type="Layer" />
+          <Project Name="vote_8.csd" Type="Layer" />
+          <Project Name="vote_9.csd" Type="Layer" />
+          <Project Name="vote_10.csd" Type="Layer" />
+          <Project Name="vote_11.csd" Type="Layer" />
+          <Project Name="vote_12.csd" Type="Layer" />
+          <Project Name="vote_13.csd" Type="Layer" />
+          <Project Name="vote_14.csd" Type="Layer" />
+          <Project Name="vote_15.csd" Type="Layer" />
+          <Project Name="vote_16.csd" Type="Layer" />
+          <Project Name="vote_17.csd" Type="Layer" />
+          <Project Name="vote_18.csd" Type="Layer" />
+          <Project Name="vote_19.csd" Type="Layer" />
+        </Folder>
+        <Project Name="VoteEnd.csd" Type="Scene" />
+        <Project Name="PriceLayer.csd" Type="Scene" />
+        <Project Name="MyMenu.csd" Type="Scene" />
+        <Project Name="writeLayer.csd" Type="Scene" />
+        <Project Name="DecorationLayer.csd" Type="Scene" />
+        <Project Name="pop_yesno.csd" Type="Scene" />
+        <Project Name="pop_ok.csd" Type="Scene" />
+        <Folder Name="category">
+          <Folder Name="candy">
+            <Image Name="candy0.png" />
+            <Image Name="candy1.png" />
+            <Image Name="candy10.png" />
+            <Image Name="candy11.png" />
+            <Image Name="candy12.png" />
+            <Image Name="candy13.png" />
+            <Image Name="candy14.png" />
+            <Image Name="candy15.png" />
+            <Image Name="candy16.png" />
+            <Image Name="candy17.png" />
+            <Image Name="candy18.png" />
+            <Image Name="candy19.png" />
+            <Image Name="candy2.png" />
+            <Image Name="candy20.png" />
+            <Image Name="candy21.png" />
+            <Image Name="candy22.png" />
+            <Image Name="candy23.png" />
+            <Image Name="candy24.png" />
+            <Image Name="candy25.png" />
+            <Image Name="candy26.png" />
+            <Image Name="candy27.png" />
+            <Image Name="candy28.png" />
+            <Image Name="candy29.png" />
+            <Image Name="candy3.png" />
+            <Image Name="candy30.png" />
+            <Image Name="candy31.png" />
+            <Image Name="candy32.png" />
+            <Image Name="candy33.png" />
+            <Image Name="candy34.png" />
+            <Image Name="candy35.png" />
+            <Image Name="candy36.png" />
+            <Image Name="candy37.png" />
+            <Image Name="candy38.png" />
+            <Image Name="candy39.png" />
+            <Image Name="candy4.png" />
+            <Image Name="candy40.png" />
+            <Image Name="candy41.png" />
+            <Image Name="candy5.png" />
+            <Image Name="candy6.png" />
+            <Image Name="candy7.png" />
+            <Image Name="candy8.png" />
+            <Image Name="candy9.png" />
+          </Folder>
+          <Folder Name="color">
+            <Image Name="color0.png" />
+            <Image Name="color1.png" />
+            <Image Name="color10.png" />
+            <Image Name="color11.png" />
+            <Image Name="color12.png" />
+            <Image Name="color13.png" />
+            <Image Name="color14.png" />
+            <Image Name="color15.png" />
+            <Image Name="color16.png" />
+            <Image Name="color17.png" />
+            <Image Name="color18.png" />
+            <Image Name="color19.png" />
+            <Image Name="color2.png" />
+            <Image Name="color3.png" />
+            <Image Name="color4.png" />
+            <Image Name="color5.png" />
+            <Image Name="color6.png" />
+            <Image Name="color7.png" />
+            <Image Name="color8.png" />
+            <Image Name="color9.png" />
+          </Folder>
+          <Folder Name="icing">
+            <Image Name="icing0.png" />
+            <Image Name="icing1.png" />
+            <Image Name="icing10.png" />
+            <Image Name="icing11.png" />
+            <Image Name="icing12.png" />
+            <Image Name="icing13.png" />
+            <Image Name="icing14.png" />
+            <Image Name="icing15.png" />
+            <Image Name="icing16.png" />
+            <Image Name="icing17.png" />
+            <Image Name="icing18.png" />
+            <Image Name="icing19.png" />
+            <Image Name="icing2.png" />
+            <Image Name="icing20.png" />
+            <Image Name="icing3.png" />
+            <Image Name="icing4.png" />
+            <Image Name="icing5.png" />
+            <Image Name="icing6.png" />
+            <Image Name="icing7.png" />
+            <Image Name="icing8.png" />
+            <Image Name="icing9.png" />
+          </Folder>
+          <Folder Name="nuts">
+            <Image Name="nuts0.png" />
+            <Image Name="nuts1.png" />
+            <Image Name="nuts10.png" />
+            <Image Name="nuts11.png" />
+            <Image Name="nuts12.png" />
+            <Image Name="nuts13.png" />
+            <Image Name="nuts14.png" />
+            <Image Name="nuts15.png" />
+            <Image Name="nuts16.png" />
+            <Image Name="nuts17.png" />
+            <Image Name="nuts18.png" />
+            <Image Name="nuts19.png" />
+            <Image Name="nuts2.png" />
+            <Image Name="nuts3.png" />
+            <Image Name="nuts4.png" />
+            <Image Name="nuts5.png" />
+            <Image Name="nuts6.png" />
+            <Image Name="nuts7.png" />
+            <Image Name="nuts8.png" />
+            <Image Name="nuts9.png" />
+          </Folder>
+          <Folder Name="other">
+            <Image Name="other0.png" />
+            <Image Name="other1.png" />
+            <Image Name="other10.png" />
+            <Image Name="other11.png" />
+            <Image Name="other12.png" />
+            <Image Name="other13.png" />
+            <Image Name="other14.png" />
+            <Image Name="other15.png" />
+            <Image Name="other16.png" />
+            <Image Name="other17.png" />
+            <Image Name="other18.png" />
+            <Image Name="other19.png" />
+            <Image Name="other2.png" />
+            <Image Name="other3.png" />
+            <Image Name="other4.png" />
+            <Image Name="other5.png" />
+            <Image Name="other6.png" />
+            <Image Name="other7.png" />
+            <Image Name="other8.png" />
+            <Image Name="other9.png" />
+          </Folder>
+          <Folder Name="sauce">
+            <Image Name="sauce0.png" />
+            <Image Name="sauce1.png" />
+            <Image Name="sauce10.png" />
+            <Image Name="sauce11.png" />
+            <Image Name="sauce12.png" />
+            <Image Name="sauce13.png" />
+            <Image Name="sauce14.png" />
+            <Image Name="sauce15.png" />
+            <Image Name="sauce16.png" />
+            <Image Name="sauce17.png" />
+            <Image Name="sauce18.png" />
+            <Image Name="sauce19.png" />
+            <Image Name="sauce2.png" />
+            <Image Name="sauce20.png" />
+            <Image Name="sauce21.png" />
+            <Image Name="sauce22.png" />
+            <Image Name="sauce23.png" />
+            <Image Name="sauce24.png" />
+            <Image Name="sauce25.png" />
+            <Image Name="sauce3.png" />
+            <Image Name="sauce4.png" />
+            <Image Name="sauce5.png" />
+            <Image Name="sauce6.png" />
+            <Image Name="sauce7.png" />
+            <Image Name="sauce8.png" />
+            <Image Name="sauce9.png" />
+          </Folder>
+          <Folder Name="pattern">
+            <Image Name="pattern0.png" />
+            <Image Name="pattern1.png" />
+            <Image Name="pattern10.png" />
+            <Image Name="pattern11.png" />
+            <Image Name="pattern12.png" />
+            <Image Name="pattern13.png" />
+            <Image Name="pattern14.png" />
+            <Image Name="pattern15.png" />
+            <Image Name="pattern16.png" />
+            <Image Name="pattern17.png" />
+            <Image Name="pattern18.png" />
+            <Image Name="pattern19.png" />
+            <Image Name="pattern2.png" />
+            <Image Name="pattern3.png" />
+            <Image Name="pattern4.png" />
+            <Image Name="pattern5.png" />
+            <Image Name="pattern6.png" />
+            <Image Name="pattern7.png" />
+            <Image Name="pattern8.png" />
+            <Image Name="pattern9.png" />
+          </Folder>
+          <Folder Name="stickers">
+            <Image Name="stickers0.png" />
+            <Image Name="stickers1.png" />
+            <Image Name="stickers10.png" />
+            <Image Name="stickers11.png" />
+            <Image Name="stickers12.png" />
+            <Image Name="stickers13.png" />
+            <Image Name="stickers14.png" />
+            <Image Name="stickers15.png" />
+            <Image Name="stickers16.png" />
+            <Image Name="stickers17.png" />
+            <Image Name="stickers18.png" />
+            <Image Name="stickers19.png" />
+            <Image Name="stickers2.png" />
+            <Image Name="stickers20.png" />
+            <Image Name="stickers21.png" />
+            <Image Name="stickers22.png" />
+            <Image Name="stickers23.png" />
+            <Image Name="stickers24.png" />
+            <Image Name="stickers25.png" />
+            <Image Name="stickers3.png" />
+            <Image Name="stickers4.png" />
+            <Image Name="stickers5.png" />
+            <Image Name="stickers6.png" />
+            <Image Name="stickers7.png" />
+            <Image Name="stickers8.png" />
+            <Image Name="stickers9.png" />
+          </Folder>
+        </Folder>
+        <Folder Name="icon_category">
+          <Folder Name="candy">
+            <Image Name="candy0.png" />
+            <Image Name="candy1.png" />
+            <Image Name="candy10.png" />
+            <Image Name="candy11.png" />
+            <Image Name="candy12.png" />
+            <Image Name="candy13.png" />
+            <Image Name="candy14.png" />
+            <Image Name="candy15.png" />
+            <Image Name="candy16.png" />
+            <Image Name="candy17.png" />
+            <Image Name="candy18.png" />
+            <Image Name="candy19.png" />
+            <Image Name="candy2.png" />
+            <Image Name="candy20.png" />
+            <Image Name="candy21.png" />
+            <Image Name="candy22.png" />
+            <Image Name="candy23.png" />
+            <Image Name="candy24.png" />
+            <Image Name="candy25.png" />
+            <Image Name="candy26.png" />
+            <Image Name="candy27.png" />
+            <Image Name="candy28.png" />
+            <Image Name="candy29.png" />
+            <Image Name="candy3.png" />
+            <Image Name="candy30.png" />
+            <Image Name="candy31.png" />
+            <Image Name="candy32.png" />
+            <Image Name="candy33.png" />
+            <Image Name="candy34.png" />
+            <Image Name="candy35.png" />
+            <Image Name="candy36.png" />
+            <Image Name="candy37.png" />
+            <Image Name="candy38.png" />
+            <Image Name="candy39.png" />
+            <Image Name="candy4.png" />
+            <Image Name="candy40.png" />
+            <Image Name="candy41.png" />
+            <Image Name="candy5.png" />
+            <Image Name="candy6.png" />
+            <Image Name="candy7.png" />
+            <Image Name="candy8.png" />
+            <Image Name="candy9.png" />
+          </Folder>
+          <Folder Name="color">
+            <Image Name="color0.png" />
+            <Image Name="color1.png" />
+            <Image Name="color10.png" />
+            <Image Name="color11.png" />
+            <Image Name="color12.png" />
+            <Image Name="color13.png" />
+            <Image Name="color14.png" />
+            <Image Name="color15.png" />
+            <Image Name="color16.png" />
+            <Image Name="color17.png" />
+            <Image Name="color18.png" />
+            <Image Name="color19.png" />
+            <Image Name="color2.png" />
+            <Image Name="color3.png" />
+            <Image Name="color4.png" />
+            <Image Name="color5.png" />
+            <Image Name="color6.png" />
+            <Image Name="color7.png" />
+            <Image Name="color8.png" />
+            <Image Name="color9.png" />
+          </Folder>
+          <Folder Name="icing">
+            <Image Name="icing0.png" />
+            <Image Name="icing1.png" />
+            <Image Name="icing10.png" />
+            <Image Name="icing11.png" />
+            <Image Name="icing12.png" />
+            <Image Name="icing13.png" />
+            <Image Name="icing14.png" />
+            <Image Name="icing15.png" />
+            <Image Name="icing16.png" />
+            <Image Name="icing17.png" />
+            <Image Name="icing18.png" />
+            <Image Name="icing19.png" />
+            <Image Name="icing2.png" />
+            <Image Name="icing20.png" />
+            <Image Name="icing3.png" />
+            <Image Name="icing4.png" />
+            <Image Name="icing5.png" />
+            <Image Name="icing6.png" />
+            <Image Name="icing7.png" />
+            <Image Name="icing8.png" />
+            <Image Name="icing9.png" />
+          </Folder>
+          <Folder Name="nuts">
+            <Image Name="nuts0.png" />
+            <Image Name="nuts1.png" />
+            <Image Name="nuts10.png" />
+            <Image Name="nuts11.png" />
+            <Image Name="nuts12.png" />
+            <Image Name="nuts13.png" />
+            <Image Name="nuts14.png" />
+            <Image Name="nuts15.png" />
+            <Image Name="nuts16.png" />
+            <Image Name="nuts17.png" />
+            <Image Name="nuts18.png" />
+            <Image Name="nuts19.png" />
+            <Image Name="nuts2.png" />
+            <Image Name="nuts3.png" />
+            <Image Name="nuts4.png" />
+            <Image Name="nuts5.png" />
+            <Image Name="nuts6.png" />
+            <Image Name="nuts7.png" />
+            <Image Name="nuts8.png" />
+            <Image Name="nuts9.png" />
+          </Folder>
+          <Folder Name="other">
+            <Image Name="other0.png" />
+            <Image Name="other1.png" />
+            <Image Name="other10.png" />
+            <Image Name="other11.png" />
+            <Image Name="other12.png" />
+            <Image Name="other13.png" />
+            <Image Name="other14.png" />
+            <Image Name="other15.png" />
+            <Image Name="other16.png" />
+            <Image Name="other17.png" />
+            <Image Name="other18.png" />
+            <Image Name="other19.png" />
+            <Image Name="other2.png" />
+            <Image Name="other3.png" />
+            <Image Name="other4.png" />
+            <Image Name="other5.png" />
+            <Image Name="other6.png" />
+            <Image Name="other7.png" />
+            <Image Name="other8.png" />
+            <Image Name="other9.png" />
+          </Folder>
+          <Folder Name="sauce">
+            <Image Name="sauce0.png" />
+            <Image Name="sauce1.png" />
+            <Image Name="sauce10.png" />
+            <Image Name="sauce11.png" />
+            <Image Name="sauce12.png" />
+            <Image Name="sauce13.png" />
+            <Image Name="sauce14.png" />
+            <Image Name="sauce15.png" />
+            <Image Name="sauce16.png" />
+            <Image Name="sauce17.png" />
+            <Image Name="sauce18.png" />
+            <Image Name="sauce19.png" />
+            <Image Name="sauce2.png" />
+            <Image Name="sauce20.png" />
+            <Image Name="sauce21.png" />
+            <Image Name="sauce22.png" />
+            <Image Name="sauce23.png" />
+            <Image Name="sauce24.png" />
+            <Image Name="sauce25.png" />
+            <Image Name="sauce3.png" />
+            <Image Name="sauce4.png" />
+            <Image Name="sauce5.png" />
+            <Image Name="sauce6.png" />
+            <Image Name="sauce7.png" />
+            <Image Name="sauce8.png" />
+            <Image Name="sauce9.png" />
+          </Folder>
+          <Folder Name="pattern">
+            <Image Name="pattern0.png" />
+            <Image Name="pattern1.png" />
+            <Image Name="pattern10.png" />
+            <Image Name="pattern11.png" />
+            <Image Name="pattern12.png" />
+            <Image Name="pattern13.png" />
+            <Image Name="pattern14.png" />
+            <Image Name="pattern15.png" />
+            <Image Name="pattern16.png" />
+            <Image Name="pattern17.png" />
+            <Image Name="pattern18.png" />
+            <Image Name="pattern19.png" />
+            <Image Name="pattern2.png" />
+            <Image Name="pattern3.png" />
+            <Image Name="pattern4.png" />
+            <Image Name="pattern5.png" />
+            <Image Name="pattern6.png" />
+            <Image Name="pattern7.png" />
+            <Image Name="pattern8.png" />
+            <Image Name="pattern9.png" />
+          </Folder>
+          <Folder Name="pencil">
+            <Image Name="pencil0.png" />
+            <Image Name="pencil1.png" />
+            <Image Name="pencil10.png" />
+            <Image Name="pencil11.png" />
+            <Image Name="pencil12.png" />
+            <Image Name="pencil13.png" />
+            <Image Name="pencil14.png" />
+            <Image Name="pencil15.png" />
+            <Image Name="pencil16.png" />
+            <Image Name="pencil17.png" />
+            <Image Name="pencil18.png" />
+            <Image Name="pencil19.png" />
+            <Image Name="pencil2.png" />
+            <Image Name="pencil3.png" />
+            <Image Name="pencil4.png" />
+            <Image Name="pencil5.png" />
+            <Image Name="pencil6.png" />
+            <Image Name="pencil7.png" />
+            <Image Name="pencil8.png" />
+            <Image Name="pencil9.png" />
+          </Folder>
+          <Folder Name="stickers">
+            <Image Name="stickers0.png" />
+            <Image Name="stickers1.png" />
+            <Image Name="stickers10.png" />
+            <Image Name="stickers11.png" />
+            <Image Name="stickers12.png" />
+            <Image Name="stickers13.png" />
+            <Image Name="stickers14.png" />
+            <Image Name="stickers15.png" />
+            <Image Name="stickers16.png" />
+            <Image Name="stickers17.png" />
+            <Image Name="stickers18.png" />
+            <Image Name="stickers19.png" />
+            <Image Name="stickers2.png" />
+            <Image Name="stickers20.png" />
+            <Image Name="stickers21.png" />
+            <Image Name="stickers22.png" />
+            <Image Name="stickers23.png" />
+            <Image Name="stickers24.png" />
+            <Image Name="stickers25.png" />
+            <Image Name="stickers3.png" />
+            <Image Name="stickers4.png" />
+            <Image Name="stickers5.png" />
+            <Image Name="stickers6.png" />
+            <Image Name="stickers7.png" />
+            <Image Name="stickers8.png" />
+            <Image Name="stickers9.png" />
+          </Folder>
+        </Folder>
+        <Project Name="EatLayer.csd" Type="Scene" />
+        <Project Name="ChangeLayer.csd" Type="Scene" />
+        <PlistInfo Name="nums.csi" Type="Plist" />
+        <Project Name="albumLayer.csd" Type="Scene" />
+        <Project Name="VoteLayer.csd" Type="Scene" />
+        <Folder Name="sound">
+          <Folder Name="general">
+            <Audio Name="add water.mp3" />
+            <Audio Name="add_powder.mp3" />
+            <Audio Name="background.mp3" />
+            <Audio Name="button_general.mp3" />
+            <Audio Name="button_play.mp3" />
+            <Audio Name="camera.mp3" />
+            <Audio Name="crack egg.mp3" />
+            <Audio Name="cut donut particle.mp3" />
+            <Audio Name="cut tool fall.mp3" />
+            <Audio Name="cut.mp3" />
+            <Audio Name="dough_mix.mp3" />
+            <Audio Name="fry donut.mp3" />
+            <Audio Name="fry failed.mp3" />
+            <Audio Name="fry_ok.mp3" />
+            <Audio Name="ingredients_fly_in.mp3" />
+            <Audio Name="ingredients_out.mp3" />
+            <Audio Name="pop_up_close.mp3" />
+            <Audio Name="pop_up_open.mp3" />
+            <Audio Name="roll the dough.mp3" />
+            <Audio Name="stir.mp3" />
+            <Audio Name="add salt.mp3" />
+          </Folder>
+          <Folder Name="other">
+            <Audio Name="category_selection_1.mp3" />
+            <Audio Name="draw_success.mp3" />
+            <Audio Name="loading_1.mp3" />
+            <Audio Name="loading_2.mp3" />
+            <Audio Name="loading_3.mp3" />
+            <Audio Name="mini game_miss.mp3" />
+            <Audio Name="pen_drawing.mp3" />
+            <Audio Name="star_1.mp3" />
+            <Audio Name="star_2.mp3" />
+            <Audio Name="star_3.mp3" />
+            <Audio Name="yay.mp3" />
+          </Folder>
+          <Folder Name="Sound">
+            <Audio Name="play button_jump.mp3" />
+            <Audio Name="price tag_back.mp3" />
+          </Folder>
+        </Folder>
+        <Project Name="ShopLayer.csd" Type="Scene" />
+        <Project Name="CngratulationsLayer.csd" Type="Scene" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
